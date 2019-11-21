@@ -81,7 +81,7 @@ const songPlayback = new MotorCortex.AudioPlayback(
   }
 );
 
-//clip.addIncident(songPlayback, 0);
+clip.addIncident(songPlayback, 0);
 
 const svgdrow = new Titles.SvgDrow(
   {
@@ -213,14 +213,14 @@ const textwriting = new Titles.TextWriting(
   }
 );
 
-// clip.addIncident(rolinText, 0);
-// clip.addIncident(svgborder, 4000);
-// clip.addIncident(rotatedline, 8000);
-// clip.addIncident(rotatedlinereveal, 12000);
-// clip.addIncident(circle, 16000);
-// clip.addIncident(svgdrow, 20700);
-clip.addIncident(textwriting, 0);
-// clip.addIncident(logobox, 30000);
+clip.addIncident(rolinText, 0);
+clip.addIncident(svgborder, 4000);
+clip.addIncident(rotatedline, 8000);
+clip.addIncident(rotatedlinereveal, 12000);
+clip.addIncident(circle, 16000);
+clip.addIncident(svgdrow, 20700);
+// clip.addIncident(textwriting, 0);
+clip.addIncident(logobox, 24000);
 
 window.clip = clip;
 
