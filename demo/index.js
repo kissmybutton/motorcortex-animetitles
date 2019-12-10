@@ -76,7 +76,7 @@ const songPlayback = new MotorCortex.AudioPlayback(
   {},
   {
     selector: "~#my-wav",
-    startFrom: 10000,
+    startFrom: 0,
     duration: 35845
   }
 );
