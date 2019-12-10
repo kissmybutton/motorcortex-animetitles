@@ -58,7 +58,7 @@ const clip = new MotorCortex.Clip({
   html,
   audioSources: [
     {
-      src: "./d2.wav",
+      src: "./d2.mp3",
       id: "my-wav",
       base64: false,
       startValues: {
@@ -109,7 +109,7 @@ const rolinText = new Titles.RolingText(
     textColor: "#000",
     subTitle1: "The",
     subTitle2: "MotorCortex Team",
-    subTitle3: "Present",
+    subTitle3: "Presents",
     stopOnLast: false,
     delayEnd: 1000
   },
