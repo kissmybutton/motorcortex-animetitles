@@ -120,10 +120,11 @@ function (_MotorCortex$API$Clip) {
       this.addIncident(animeTextLeft, this.attrs.duration * 0.075);
       this.addIncident(animeTextTop, this.attrs.duration * 0.375);
       this.addIncident(animeTextTopNext, this.attrs.duration * 0.575);
+      var delayEnd = this.attrs.delayEnd || 0;
 
       if (!this.attrs.stopOnLast) {
-        this.addIncident(animeTextLeftBack, this.attrs.duration * 0.75);
-        this.addIncident(animeLineHeightBack, this.attrs.duration * 0.925);
+        this.addIncident(animeTextLeftBack, this.attrs.duration * 0.75 + delayEnd);
+        this.addIncident(animeLineHeightBack, this.attrs.duration * 0.925 + delayEnd);
       }
     }
   }, {

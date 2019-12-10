@@ -29,8 +29,8 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
     return `
     <div class="wrapper">
       <div class="redLine">
-        <div class="text text1"><div class="title ">Kissmybutton</div></div>
-        <div class="text text2"><div class="sub">web app development</div></div>
+        <div class="text text1"><div class="title ">${this.attrs.title}</div></div>
+        <div class="text text2"><div class="sub">${this.attrs.subtitle}</div></div>
       </div>
     </div>
         `;
@@ -78,6 +78,8 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
   }
 
   buildTree() {
+    const grupMc = new MotorCortex.Group();
+
     const lineRotateEnd = new Anime.Anime(
       {
         animatedAttrs: {
@@ -170,7 +172,7 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
         }
       );
 
-      this.addIncident(moveTextOut, this.attrs.duration * 0.625 + i * 100);
+      grupMc.addIncident(moveTextOut, this.attrs.duration * 0.625 + i * 100);
     }
 
     const lineHeight = new Anime.Anime(
@@ -193,7 +195,14 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
     this.addIncident(lineWidthEnd, this.attrs.duration * 0.24);
     this.addIncident(moveText, this.attrs.duration * 0.24);
     this.addIncident(moveSub, this.attrs.duration * 0.4);
-    this.addIncident(lineHeight, this.attrs.duration * 0.85);
+
+    let delayEnd = this.attrs.delayEnd || 0
+    if (!this.attrs.stopOnLast) {
+      this.addIncident(grupMc, delayEnd)
+      this.addIncident(lineHeight, (this.attrs.duration * 0.85) + delayEnd);
+    }
+
+
   }
 }
 

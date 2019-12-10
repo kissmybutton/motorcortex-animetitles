@@ -1,5 +1,7 @@
 # motorcortex-animetitles
 
+## [Demo](https://kissmybutton.github.io/motorcortex-animetitles/demo/)
+
 ## Installation
 
 ```bash
@@ -12,7 +14,7 @@ $ yarn add @kissmybutton/motorcortex-animetitles
 
 ```javascript
 const MotorCortex = require("@kissmybutton/motorcortex/");
-const TitlesPlugin = require("../src/main");
+const TitlesPlugin = require("@kissmybutton/motorcortex-animetitles");
 const Titles = MotorCortex.loadPlugin(TitlesPlugin);
 ```
 
@@ -31,7 +33,9 @@ const nameOfIncident = new Titles.RotatedLine(
     subTitle1: "test",
     subTitle2: "test2",
     subTitle3: "test3",
-    title: "dokimi"
+    title: "dokimi",
+    stopOnLast: false,
+    delayEnd : 3000
   },
   {
     selector: ".rotatedline"
@@ -50,6 +54,8 @@ const nameOfIncident = new Titles.RotatedLine(
 | textColor |  the color of text |  hex values or RGB  |
 | subTitle1 , subTitle2 , subTitle3 |  right texts |  normal text  |
 | title |  left text |  normal text  |
+| stopOnLast |  if you like to stop animation on last text line |  true,false |
+| delayEnd |  delay before last animation |  millisecond  |
 
 
 
@@ -66,7 +72,8 @@ const nameOfIncident = new Titles.RolingText(
     subTitle1: "test",
     subTitle2: "test2",
     subTitle3: "test3",
-    stopOnLast: false
+    stopOnLast: false,
+    delayEnd : 3000
   },
   {
     selector: ".rolingtext"
@@ -85,6 +92,7 @@ const nameOfIncident = new Titles.RolingText(
 | textColor |  the color of text |  hex values or RGB  |
 | subTitle1 , subTitle2 , subTitle3 |  roling text lines |  normal text  |
 | stopOnLast |  if you like to stop animation on last text line |  true,false |
+| delayEnd |  delay before last animation |  millisecond  |
 
 
 
@@ -93,15 +101,16 @@ const nameOfIncident = new Titles.RolingText(
 ```javascript
 const nameOfIncident = new Titles.RotatadLineReveal(
   {
-    duration: 4000,
+    duration: 5000,
     width: 800,
     size: "M",
     lineColor: "#ff0000",
     textColor: "#000",
-    subTitle1: "test",
-    subTitle2: "test2",
-    subTitle3: "test3",
-    leftEnd: 100
+    title: "Animetitle",
+    subtitle: "MC Plugin",
+    leftEnd: 100,
+    stopOnLast: false,
+    delayEnd : 3000
   },
   {
     selector: ".rotatedlinereveal"
@@ -118,8 +127,11 @@ const nameOfIncident = new Titles.RotatadLineReveal(
 | size |  scale of clip components   |  "S","M","L"    |
 | lineColor |  the color of line |  hex values or RGB  |
 | textColor |  the color of text |  hex values or RGB  |
-| subTitle1 , subTitle2 , subTitle3 | text lines |  normal text  |
+| title | title text |  normal text  |
+| subtitle | subtitle text |  normal text  |
 | leftEnd |  left distance of componet from the left side of container |  numbers |
+| stopOnLast |  if you like to stop animation on last text line |  true,false |
+| delayEnd |  delay before last animation |  millisecond  |
 
 
 
@@ -128,15 +140,15 @@ const nameOfIncident = new Titles.RotatadLineReveal(
 ```javascript
 const nameOfIncident = new Titles.SvgBorder(
   {
-    duration: 4000,
-    width: 400,
+   duration: 5000,
     size: "L",
     lineColor: "#ff0000",
     textColor: "#000",
-    subTitle: "Design by",
-    slogan: "-dokimi-",
-    title: "IOAN",
-    titleWidth: 200
+    subTitle: "Develop by",
+    slogan: "-KMB-",
+    title: "MotorCortex Team",
+    stopOnLast: false,
+    delayEnd : 3000
   },
   {
     selector: ".svgborder"
@@ -156,7 +168,8 @@ const nameOfIncident = new Titles.SvgBorder(
 | subTitle | top left text |  normal text  |
 | slogan  | under border text |  normal text  |
 | title  | title text |  normal text  |
-| titleWidth |  The width of the title container  |  numbers |
+| stopOnLast |  if you like to stop animation on last text line |  true,false |
+| delayEnd |  delay before last animation |  millisecond  |
 
 
 
@@ -170,7 +183,9 @@ const nameOfIncident = new Titles.Circle(
     circleColor: "#ff0000",
     textColor: "#000",
     title: "IOAN",
-    sub: "BRAPAPAPA"
+    sub: "BRAPAPAPA",
+    stopOnLast: false,
+    delayEnd : 3000
   },
   {
     selector: ".circle"
@@ -188,6 +203,8 @@ const nameOfIncident = new Titles.Circle(
 | textColor |  the color of text |  hex values or RGB  |
 | subTitle | top left text |  normal text  |
 | title  | svg cobe with 1 path tag only|  svg text  |
+| stopOnLast |  if you like to stop animation on last text line |  true,false |
+| delayEnd |  delay before last animation |  millisecond  |
 
 
 ## SvgDrow
@@ -202,7 +219,9 @@ const nameOfIncident = new Titles.SvgDrow(
     strokeDashOffset: 10000,
     StrokeDashArray: 10000,
     erase: true,
-    svg: `svg code`
+    svg: `svg code`,
+    stopOnLast: false,
+    delayEnd : 3000
   },
   {
     selector: ".svgdrow"
@@ -223,6 +242,8 @@ const nameOfIncident = new Titles.SvgDrow(
 | StrokeDashArray  | The StrokeDashArray attribute is a presentation attribute defining the pattern of dashes and gaps used to paint the outline of the shape; |  number  |
 | erase  | erase svg after drow it |  true, false  |
 | svg |  The width of the title container  |  numbers |
+| stopOnLast |  if you like to stop animation on last text line |  true,false |
+| delayEnd |  delay before last animation |  millisecond  |
 
 
 ## LogoBox
@@ -236,7 +257,8 @@ const nameOfIncident = new Titles.LogoBox(
     subTitle1: "testdawdawddawd",
     subTitle2: "test2",
     subTitle3: "test3",
-    width: 200
+    width: 200,
+    stopOnLast: false
   },
   {
     selector: ".logobox"
@@ -255,6 +277,8 @@ const nameOfIncident = new Titles.LogoBox(
 | textColor |  the color of text |  hex values or RGB  |
 | subTitle1 , subTitle2 , subTitle3 |  right texts |  normal text  |
 | width      | total width of text container | all positive numbers |
+| stopOnLast |  if you like to stop animation on last text line |  true,false |
+
 
 # Add incident to your clip
 

@@ -53,6 +53,7 @@ function (_MotorCortex$API$Clip) {
   _createClass(SvgBorder, [{
     key: "buildTree",
     value: function buildTree() {
+      var delayEnd = this.attrs.delayEnd || 0;
       var borderAnimete = new Anime.Anime({
         animatedAttrs: {
           strokeDashoffset: " -".concat(size.subGap)
@@ -151,7 +152,10 @@ function (_MotorCortex$API$Clip) {
       grupMc.addIncident(titleAnimeteLeft, this.attrs.duration * 0.08);
       grupMc.addIncident(subAnimateLeft, this.attrs.duration * 0.08);
       grupMc.addIncident(sloganAnimateLeft, this.attrs.duration * 0.08);
-      this.addIncident(grupMc, this.attrs.duration * 0.6);
+
+      if (!this.attrs.stopOnLast) {
+        this.addIncident(grupMc, this.attrs.duration * 0.6 + delayEnd);
+      }
     }
   }, {
     key: "html",
@@ -176,7 +180,7 @@ function (_MotorCortex$API$Clip) {
   }, {
     key: "css",
     get: function get() {
-      return "\n    body{\n     font-size: 62.5%;\n    }\n    .svg-wrapper {\n      position: relative;\n      top :10px;\n     \n      height: 100%;\n      color:  ".concat(this.attrs.textColor, ";\n    }\n    \n    .shape2 {\n      stroke-dasharray: 6000;\n      stroke-width: 5px;\n      fill: transparent;\n      stroke: ").concat(this.attrs.lineColor, ";\n      border-bottom: 5px solid black;\n      stroke-dashoffset: -6000;\n    }\n    \n    \n    .text {\n      font-size: ").concat(size.fontSizeTitle, ";\n      \n      letter-spacing: 8px;\n      position: relative;\n      top: ").concat(size.titleTop, "px;\n\n    }\n    \n    .sub--container {\n      position: absolute;\n      white-space: nowrap;\n      overflow: hidden;\n      left: 20px;\n      top: -7%;\n    }\n    .sloganContainer {\n      position: relative;\n      top: -30px;\n      left: 45%;\n      white-space: nowrap;\n      overflow: hidden;\n      width: 150px;\n    }\n    .titleContainer{\n      position: relative;\n      top: -").concat(size.titleContainerTop, "px;\n      left: 34%;\n      white-space: nowrap;\n      overflow: hidden;\n      width: ").concat(this.attrs.titleWidth, "px;\n      height: 50px;\n    }\n    \n    \n    .sub{\n      position: relative;\n      top: ").concat(size.subTop, "px;\n      font-size : ").concat(size.fontSizeSub, ";\n    }\n    \n    .slogan{\n      position: relative;\n      top: -").concat(size.subTop, "px;\n      font-size : ").concat(size.fontSizeSub, ";\n    }\n    \n      \n  ");
+      return "\n    body{\n     font-size: 62.5%;\n    }\n    .svg-wrapper {\n      position: relative;\n      top :10px;\n     \n      height: 100%;\n      color:  ".concat(this.attrs.textColor, ";\n    }\n    \n    .shape2 {\n      stroke-dasharray: 6000;\n      stroke-width: 5px;\n      fill: transparent;\n      stroke: ").concat(this.attrs.lineColor, ";\n      border-bottom: 5px solid black;\n      stroke-dashoffset: -6000;\n    }\n    \n    \n    .text {\n      font-size: ").concat(size.fontSizeTitle, ";\n      \n      letter-spacing: 8px;\n      position: relative;\n      top: ").concat(size.titleTop, "px;\n\n    }\n    \n    .sub--container {\n      position: absolute;\n      white-space: nowrap;\n      overflow: hidden;\n      left: 20px;\n      top: -7%;\n    }\n    .sloganContainer {\n      position: relative;\n      top: -30px;\n      left: 45%;\n      white-space: nowrap;\n      overflow: hidden;\n      width: 150px;\n    }\n    .titleContainer{\n      position: relative;\n      top: -").concat(size.titleContainerTop, "px;\n      white-space: nowrap;\n      overflow: hidden;\n      width: ").concat(size.borderWidth, "px;\n      height: 50px;\n      display: flex;\n      justify-content: center;\n    }\n    \n    \n    .sub{\n      position: relative;\n      top: ").concat(size.subTop, "px;\n      font-size : ").concat(size.fontSizeSub, ";\n    }\n    \n    .slogan{\n      position: relative;\n      top: -").concat(size.subTop, "px;\n      font-size : ").concat(size.fontSizeSub, ";\n    }\n    \n      \n  ");
     }
   }]);
 

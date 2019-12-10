@@ -103,11 +103,12 @@ class SvgBorder extends MotorCortex.API.Clip {
     .titleContainer{
       position: relative;
       top: -${size.titleContainerTop}px;
-      left: 34%;
       white-space: nowrap;
       overflow: hidden;
-      width: ${this.attrs.titleWidth}px;
+      width: ${size.borderWidth}px;
       height: 50px;
+      display: flex;
+      justify-content: center;
     }
     
     
@@ -128,6 +129,8 @@ class SvgBorder extends MotorCortex.API.Clip {
   }
 
   buildTree() {
+
+    let delayEnd = this.attrs.delayEnd || 0
     const borderAnimete = new Anime.Anime(
       {
         animatedAttrs: {
@@ -256,7 +259,10 @@ class SvgBorder extends MotorCortex.API.Clip {
     grupMc.addIncident(titleAnimeteLeft, this.attrs.duration * 0.08);
     grupMc.addIncident(subAnimateLeft, this.attrs.duration * 0.08);
     grupMc.addIncident(sloganAnimateLeft, this.attrs.duration * 0.08);
-    this.addIncident(grupMc, this.attrs.duration * 0.6);
+
+    if (!this.attrs.stopOnLast) {
+      this.addIncident(grupMc, (this.attrs.duration * 0.6) + delayEnd);
+    }
   }
 }
 

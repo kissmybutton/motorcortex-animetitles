@@ -5,8 +5,6 @@ const RotatadLineReveal = require("./incidents/RotatadLineReveal");
 const SvgDrow = require("./incidents/SvgDrow");
 const Circle = require("./incidents/Circle");
 const LogoBox = require("./incidents/LogoBox");
-const TextWriting = require("./incidents/TextWriting");
-
 module.exports = {
   npm_name: "@kissmybutton/motorcortex-titles",
   incidents: [
@@ -37,12 +35,9 @@ module.exports = {
     {
       exportable: LogoBox,
       name: "LogoBox"
-    },
-    {
-      exportable: TextWriting,
-      name: "TextWriting"
     }
+
   ]
 };
 
-//TextWriting
+

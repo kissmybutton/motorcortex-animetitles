@@ -134,23 +134,32 @@ function (_MotorCortex$API$Clip) {
       });
       var circleScaleDownEnd = new Anime.Anime({
         animatedAttrs: {
-          width: 0,
-          height: 0,
-          fontSize: "0"
+          transform: {
+            scale: 0
+          }
+        },
+        initialValues: {
+          transform: {
+            scale: 1
+          }
         },
         attrs: {
           easing: "easeOutElastic"
         }
       }, {
         duration: 600,
-        selector: ".circle,.sub span"
+        selector: ".circle,.sub span,.sub"
       });
       word.addIncident(wrapperDown, 2000);
       this.addIncident(circleScaleDown, 2000);
       this.addIncident(maskDown, 2000);
       this.addIncident(subOut, 2000);
       this.addIncident(circleScale, 0);
-      this.addIncident(circleScaleDownEnd, 3600);
+      var delayEnd = this.attrs.delayEnd || 0;
+
+      if (!this.attrs.stopOnLast) {
+        this.addIncident(circleScaleDownEnd, 3600 + delayEnd);
+      }
     }
   }, {
     key: "html",

@@ -48,6 +48,7 @@ function (_MotorCortex$API$Clip) {
   _createClass(RotatadLineReveal, [{
     key: "buildTree",
     value: function buildTree() {
+      var grupMc = new MotorCortex.Group();
       var lineRotateEnd = new Anime.Anime({
         animatedAttrs: {
           transform: {
@@ -118,7 +119,7 @@ function (_MotorCortex$API$Clip) {
           duration: this.attrs.duration * 0.34,
           selector: ".text" + i
         });
-        this.addIncident(moveTextOut, this.attrs.duration * 0.625 + i * 100);
+        grupMc.addIncident(moveTextOut, this.attrs.duration * 0.625 + i * 100);
       }
 
       var lineHeight = new Anime.Anime({
@@ -137,7 +138,12 @@ function (_MotorCortex$API$Clip) {
       this.addIncident(lineWidthEnd, this.attrs.duration * 0.24);
       this.addIncident(moveText, this.attrs.duration * 0.24);
       this.addIncident(moveSub, this.attrs.duration * 0.4);
-      this.addIncident(lineHeight, this.attrs.duration * 0.85);
+      var delayEnd = this.attrs.delayEnd || 0;
+
+      if (!this.attrs.stopOnLast) {
+        this.addIncident(grupMc, delayEnd);
+        this.addIncident(lineHeight, this.attrs.duration * 0.85 + delayEnd);
+      }
     }
   }, {
     key: "html",
@@ -157,7 +163,7 @@ function (_MotorCortex$API$Clip) {
         default:
       }
 
-      return "\n    <div class=\"wrapper\">\n      <div class=\"redLine\">\n        <div class=\"text text1\"><div class=\"title \">Kissmybutton</div></div>\n        <div class=\"text text2\"><div class=\"sub\">web app development</div></div>\n      </div>\n    </div>\n        ";
+      return "\n    <div class=\"wrapper\">\n      <div class=\"redLine\">\n        <div class=\"text text1\"><div class=\"title \">".concat(this.attrs.title, "</div></div>\n        <div class=\"text text2\"><div class=\"sub\">").concat(this.attrs.subtitle, "</div></div>\n      </div>\n    </div>\n        ");
     }
   }, {
     key: "css",

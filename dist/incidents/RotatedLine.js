@@ -147,13 +147,17 @@ function (_MotorCortex$API$Clip) {
         duration: this.attrs.duration * 0.075,
         selector: ".line"
       });
+      var delayEnd = this.attrs.delayEnd || 0;
       this.addIncident(widthLIne, 0);
       this.addIncident(rotateAminmeEnd, this.attrs.duration * 0.075);
       this.addIncident(leftTextAnimate, this.attrs.duration * 0.15);
-      this.addIncident(rightTextAnimateIn, this.attrs.duration * 0.7);
-      this.addIncident(leftTextAnimateIn, this.attrs.duration * 0.7);
-      this.addIncident(rotateAminmeStartOut, this.attrs.duration * 0.85);
-      this.addIncident(widthLIneOut, this.attrs.duration * 0.925);
+
+      if (!this.attrs.stopOnLast) {
+        this.addIncident(rightTextAnimateIn, this.attrs.duration * 0.7 + delayEnd);
+        this.addIncident(leftTextAnimateIn, this.attrs.duration * 0.7 + delayEnd);
+        this.addIncident(rotateAminmeStartOut, this.attrs.duration * 0.85 + delayEnd);
+        this.addIncident(widthLIneOut, this.attrs.duration * 0.925 + delayEnd);
+      }
     }
   }, {
     key: "html",

@@ -87,9 +87,10 @@ function (_MotorCortex$API$Clip) {
       });
       this.addIncident(textDrow, 0);
       this.addIncident(textBigBack, this.attrs.duration * 0.75);
+      var delayEnd = this.attrs.delayEnd || 0;
 
-      if (this.attrs.erase) {
-        this.addIncident(textErase, this.attrs.duration * 0.95);
+      if (!this.attrs.stopOnLast) {
+        this.addIncident(textErase, this.attrs.duration * 0.95 + delayEnd);
       }
     }
   }, {

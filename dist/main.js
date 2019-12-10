@@ -14,8 +14,6 @@ var Circle = require("./incidents/Circle");
 
 var LogoBox = require("./incidents/LogoBox");
 
-var TextWriting = require("./incidents/TextWriting");
-
 module.exports = {
   npm_name: "@kissmybutton/motorcortex-titles",
   incidents: [{
@@ -39,8 +37,5 @@ module.exports = {
   }, {
     exportable: LogoBox,
     name: "LogoBox"
-  }, {
-    exportable: TextWriting,
-    name: "TextWriting"
   }]
-}; //TextWriting
+};

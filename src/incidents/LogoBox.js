@@ -181,11 +181,34 @@ class LogoBox extends MotorCortex.API.Clip {
       }
     );
 
+
+    const end = new Anime.Anime(
+      {
+        animatedAttrs: {
+          width: "0%"
+        },
+        initialValues: {
+          width: "100%"
+        },
+        attrs: {
+          easing: "linear"
+        }
+      },
+      {
+        duration: 500,
+        selector: ".wrapper"
+      }
+    );
+
     this.addIncident(opacity, 0);
     this.addIncident(border, 0);
     this.addIncident(conteiner, 0);
     this.addIncident(conteinerMore, 1500);
     this.addIncident(yellowW, 1500);
+   
+    if (!this.attrs.stopOnLast) { 
+      this.addIncident(end,3000)
+    }
   }
 }
 

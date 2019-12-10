@@ -111,8 +111,9 @@ class SvgDrow extends MotorCortex.API.Clip {
 
     this.addIncident(textDrow, 0);
     this.addIncident(textBigBack, this.attrs.duration * 0.75);
-    if (this.attrs.erase) {
-      this.addIncident(textErase, this.attrs.duration * 0.95);
+    let delayEnd = this.attrs.delayEnd || 0
+    if (!this.attrs.stopOnLast) {
+      this.addIncident(textErase,( this.attrs.duration * 0.95+delayEnd));
     }
   }
 }
