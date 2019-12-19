@@ -61,10 +61,6 @@ const clip = new MotorCortex.Clip({
       src: "./d2.mp3",
       id: "my-wav",
       base64: false,
-      startValues: {
-        pan: 0,
-        gain: 1
-      }
     }
   ],
   host,
@@ -76,12 +72,12 @@ const songPlayback = new MotorCortex.AudioPlayback(
   {},
   {
     selector: "~#my-wav",
-    startFrom: 0,
+    startFrom: 1,
     duration: 35845
   }
 );
 
-clip.addIncident(songPlayback, 0);
+clip.addIncident(songPlayback, 1);
 
 const svgdrow = new Titles.SvgDrow(
   {

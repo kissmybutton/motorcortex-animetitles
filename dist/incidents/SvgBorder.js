@@ -58,20 +58,17 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           strokeDashoffset: " -".concat(size.subGap)
         },
-        attrs: {
-          easing: "easeInOutQuart"
-        }
+        attrs: {}
       }, {
-        duration: this.attrs.duration * 0.28,
-        selector: ".shape2"
+        duration: Math.round(this.attrs.duration * 0.28),
+        selector: ".shape2",
+        easing: "easeInOutQuart"
       });
       var titleAnimete = new Anime.Anime({
         animatedAttrs: {
           top: 0
         },
-        attrs: {
-          easing: "linear"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.12,
         selector: ".text"
@@ -80,31 +77,27 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           top: 0
         },
-        attrs: {
-          easing: "easeInOutQuart"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.12,
-        selector: ".sub"
+        selector: ".sub",
+        easing: "easeInOutQuart"
       });
       var sloganAnimate = new Anime.Anime({
         animatedAttrs: {
           top: 0
         },
-        attrs: {
-          easing: "easeInOutQuart"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.12,
-        selector: ".slogan"
+        selector: ".slogan",
+        easing: "easeInOutQuart"
       });
       var borderAnimeteLeft = new Anime.Anime({
         animatedAttrs: {
           strokeDashoffset: "-6000"
         },
-        attrs: {
-          easing: "linear"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.24,
         selector: ".shape2"
@@ -113,9 +106,7 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           left: "100%"
         },
-        attrs: {
-          easing: "linear"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.16,
         selector: ".text"
@@ -124,23 +115,21 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           left: "100%"
         },
-        attrs: {
-          easing: "easeInOutQuart"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.16,
-        selector: ".sub"
+        selector: ".sub",
+        easing: "easeInOutQuart"
       });
       var sloganAnimateLeft = new Anime.Anime({
         animatedAttrs: {
           left: "150px"
         },
-        attrs: {
-          easing: "easeInOutQuart"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.16,
-        selector: ".slogan"
+        selector: ".slogan",
+        easing: "easeInOutQuart"
       }); //
 
       this.addIncident(borderAnimete, 0);

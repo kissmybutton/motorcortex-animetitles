@@ -56,12 +56,11 @@ function (_MotorCortex$API$Clip) {
           width: 500,
           height: 500
         },
-        attrs: {
-          easing: "easeOutExpo"
-        }
+        attrs: {}
       }, {
         duration: 500,
-        selector: ".circle"
+        selector: ".circle",
+        easing: "easeOutExpo"
       });
 
       for (var _i = 0; _i < array.length; _i++) {
@@ -70,12 +69,11 @@ function (_MotorCortex$API$Clip) {
             top: "20px",
             opacity: 1
           },
-          attrs: {
-            easing: "easeOutExpo"
-          }
+          attrs: {}
         }, {
           duration: 500,
-          selector: ".letter" + (_i + 1)
+          selector: ".letter" + (_i + 1),
+          easing: "easeOutExpo"
         });
         word.addIncident(textAnimation, 500 + 100 * (_i + 1));
       }
@@ -85,12 +83,11 @@ function (_MotorCortex$API$Clip) {
           width: 400,
           height: 400
         },
-        attrs: {
-          easing: "easeOutElastic"
-        }
+        attrs: {}
       }, {
         duration: 600,
-        selector: ".circle"
+        selector: ".circle",
+        easing: "easeOutElastic"
       });
       var wrapperDown = new Anime.Anime({
         animatedAttrs: {
@@ -100,12 +97,11 @@ function (_MotorCortex$API$Clip) {
             rotate: 10
           }
         },
-        attrs: {
-          easing: "easeOutElastic"
-        }
+        attrs: {}
       }, {
         duration: 600,
-        selector: ".wrapper"
+        selector: ".wrapper",
+        easing: "easeOutElastic"
       });
       var maskDown = new Anime.Anime({
         animatedAttrs: {
@@ -125,12 +121,11 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           top: "0"
         },
-        attrs: {
-          easing: "easeOutElastic"
-        }
+        attrs: {}
       }, {
         duration: 600,
-        selector: ".sub span"
+        selector: ".sub span",
+        easing: "easeOutElastic"
       });
       var circleScaleDownEnd = new Anime.Anime({
         animatedAttrs: {
@@ -143,12 +138,11 @@ function (_MotorCortex$API$Clip) {
             scale: 1
           }
         },
-        attrs: {
-          easing: "easeOutElastic"
-        }
+        attrs: {}
       }, {
         duration: 600,
-        selector: ".circle,.sub span,.sub"
+        selector: ".circle,.sub span,.sub",
+        easing: "easeOutElastic"
       });
       word.addIncident(wrapperDown, 2000);
       this.addIncident(circleScaleDown, 2000);

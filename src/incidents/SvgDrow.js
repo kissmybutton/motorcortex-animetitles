@@ -66,12 +66,13 @@ class SvgDrow extends MotorCortex.API.Clip {
           strokeDashoffset: 0
         },
         attrs: {
-          easing: "easeInSine"
+
         }
       },
       {
         duration: this.attrs.duration * 0.75,
-        selector: `svg path`
+        selector: `svg path`,
+        easing: "easeInSine"
       }
     );
 
@@ -83,14 +84,12 @@ class SvgDrow extends MotorCortex.API.Clip {
             scaleY: 1.3
           }
         },
-        attrs: {
-          easing: "easeOutElastic"
-        }
       },
       {
         duration: this.attrs.duration * 0.425,
         selector: `svg`,
-        id: "transform2"
+        id: "transform2",
+        easing: "easeOutElastic"
       }
     );
 
@@ -100,12 +99,13 @@ class SvgDrow extends MotorCortex.API.Clip {
           strokeDashoffset: this.attrs.strokeDashOffset
         },
         attrs: {
-          easing: "easeInSine"
+
         }
       },
       {
         duration: this.attrs.duration * 0.75,
-        selector: `svg path`
+        selector: `svg path`,
+        easing: "easeInSine"
       }
     );
 
@@ -113,7 +113,7 @@ class SvgDrow extends MotorCortex.API.Clip {
     this.addIncident(textBigBack, this.attrs.duration * 0.75);
     let delayEnd = this.attrs.delayEnd || 0
     if (!this.attrs.stopOnLast) {
-      this.addIncident(textErase,( this.attrs.duration * 0.95+delayEnd));
+      this.addIncident(textErase, (this.attrs.duration * 0.95 + delayEnd));
     }
   }
 }

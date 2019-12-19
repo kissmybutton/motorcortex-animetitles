@@ -94,7 +94,7 @@ class LogoBox extends MotorCortex.API.Clip {
           opacity: 1
         },
         attrs: {
-          easing: "linear"
+
         }
       },
       {
@@ -109,7 +109,7 @@ class LogoBox extends MotorCortex.API.Clip {
           right: "0"
         },
         attrs: {
-          easing: "linear"
+
         }
       },
       {
@@ -124,7 +124,7 @@ class LogoBox extends MotorCortex.API.Clip {
           width: `${this.attrs.width * 0.75 * this.attrs.size}px`
         },
         attrs: {
-          easing: "linear"
+
         }
       },
       {
@@ -140,12 +140,13 @@ class LogoBox extends MotorCortex.API.Clip {
             left: "0px"
           },
           attrs: {
-            easing: "easeOutExpo"
+
           }
         },
         {
           duration: 500 * i,
-          selector: ".text" + i
+          selector: ".text" + i,
+          easing: "easeOutExpo"
         }
       );
       this.addIncident(textLeft, 500);
@@ -157,7 +158,7 @@ class LogoBox extends MotorCortex.API.Clip {
           width: `${this.attrs.width * this.attrs.size}px`
         },
         attrs: {
-          easing: "linear"
+
         }
       },
       {
@@ -172,7 +173,7 @@ class LogoBox extends MotorCortex.API.Clip {
           width: `${80 * this.attrs.size}px`
         },
         attrs: {
-          easing: "linear"
+
         }
       },
       {
@@ -191,7 +192,7 @@ class LogoBox extends MotorCortex.API.Clip {
           width: "100%"
         },
         attrs: {
-          easing: "linear"
+
         }
       },
       {
@@ -205,9 +206,9 @@ class LogoBox extends MotorCortex.API.Clip {
     this.addIncident(conteiner, 0);
     this.addIncident(conteinerMore, 1500);
     this.addIncident(yellowW, 1500);
-   
-    if (!this.attrs.stopOnLast) { 
-      this.addIncident(end,3000)
+
+    if (!this.attrs.stopOnLast) {
+      this.addIncident(end, 3000)
     }
   }
 }

@@ -55,23 +55,21 @@ function (_MotorCortex$API$Clip) {
             rotate: 0
           }
         },
-        attrs: {
-          easing: "easeOutExpo"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.24,
-        selector: ".redLine"
+        selector: ".redLine",
+        easing: "easeOutExpo"
       });
       var lineMoveEnd = new Anime.Anime({
         animatedAttrs: {
           left: "".concat(this.attrs.leftEnd, "px")
         },
-        attrs: {
-          easing: "easeOutExpo"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.4,
-        selector: ".redLine"
+        selector: ".redLine",
+        easing: "easeOutExpo"
       });
       var lineWidthEnd = new Anime.Anime({
         animatedAttrs: {
@@ -88,23 +86,21 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           left: "10px"
         },
-        attrs: {
-          easing: "easeOutExpo"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.16,
-        selector: ".text"
+        selector: ".text",
+        easing: "easeOutExpo"
       });
       var moveSub = new Anime.Anime({
         animatedAttrs: {
           top: "0px"
         },
-        attrs: {
-          easing: "easeOutExpo"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.08,
-        selector: ".sub"
+        selector: ".sub",
+        easing: "easeOutExpo"
       });
 
       for (var i = 1; i <= 2; i++) {
@@ -112,12 +108,11 @@ function (_MotorCortex$API$Clip) {
           animatedAttrs: {
             left: "-".concat(this.attrs.width, "px")
           },
-          attrs: {
-            easing: "easeOutExpo"
-          }
+          attrs: {}
         }, {
-          duration: this.attrs.duration * 0.34,
-          selector: ".text" + i
+          duration: Math.round(this.attrs.duration * 0.34),
+          selector: ".text" + i,
+          easing: "easeOutExpo"
         });
         grupMc.addIncident(moveTextOut, this.attrs.duration * 0.625 + i * 100);
       }
@@ -126,12 +121,11 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           height: "0px"
         },
-        attrs: {
-          easing: "easeInSine"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.08,
-        selector: ".redLine"
+        selector: ".redLine",
+        easing: "easeInSine"
       });
       this.addIncident(lineRotateEnd, 0);
       this.addIncident(lineMoveEnd, 0);

@@ -137,12 +137,13 @@ class SvgBorder extends MotorCortex.API.Clip {
           strokeDashoffset: ` -${size.subGap}`
         },
         attrs: {
-          easing: "easeInOutQuart"
+
         }
       },
       {
-        duration: this.attrs.duration * 0.28,
-        selector: `.shape2`
+        duration: Math.round(this.attrs.duration * 0.28),
+        selector: `.shape2`,
+        easing: "easeInOutQuart"
       }
     );
 
@@ -152,7 +153,7 @@ class SvgBorder extends MotorCortex.API.Clip {
           top: 0
         },
         attrs: {
-          easing: "linear"
+
         }
       },
       {
@@ -166,12 +167,13 @@ class SvgBorder extends MotorCortex.API.Clip {
           top: 0
         },
         attrs: {
-          easing: "easeInOutQuart"
+
         }
       },
       {
         duration: this.attrs.duration * 0.12,
-        selector: `.sub`
+        selector: `.sub`,
+        easing: "easeInOutQuart"
       }
     );
 
@@ -181,12 +183,13 @@ class SvgBorder extends MotorCortex.API.Clip {
           top: 0
         },
         attrs: {
-          easing: "easeInOutQuart"
+
         }
       },
       {
         duration: this.attrs.duration * 0.12,
-        selector: `.slogan`
+        selector: `.slogan`,
+        easing: "easeInOutQuart"
       }
     );
 
@@ -196,7 +199,7 @@ class SvgBorder extends MotorCortex.API.Clip {
           strokeDashoffset: "-6000"
         },
         attrs: {
-          easing: "linear"
+
         }
       },
       {
@@ -211,7 +214,7 @@ class SvgBorder extends MotorCortex.API.Clip {
           left: "100%"
         },
         attrs: {
-          easing: "linear"
+
         }
       },
       {
@@ -225,12 +228,13 @@ class SvgBorder extends MotorCortex.API.Clip {
           left: "100%"
         },
         attrs: {
-          easing: "easeInOutQuart"
+
         }
       },
       {
         duration: this.attrs.duration * 0.16,
-        selector: `.sub`
+        selector: `.sub`,
+        easing: "easeInOutQuart"
       }
     );
 
@@ -240,12 +244,13 @@ class SvgBorder extends MotorCortex.API.Clip {
           left: "150px"
         },
         attrs: {
-          easing: "easeInOutQuart"
+
         }
       },
       {
         duration: this.attrs.duration * 0.16,
-        selector: `.slogan`
+        selector: `.slogan`,
+        easing: "easeInOutQuart"
       }
     );
 

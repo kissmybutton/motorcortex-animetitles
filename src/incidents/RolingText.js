@@ -102,14 +102,14 @@ class RolingText extends MotorCortex.API.Clip {
 
   buildTree() {
 
-   
+
     const animeLineHeight = new Anime.Anime(
       {
         animatedAttrs: {
           height: size.lineHeight
         },
         attrs: {
-          easing: "linear"
+
         }
       },
       {
@@ -124,7 +124,7 @@ class RolingText extends MotorCortex.API.Clip {
           left: "0"
         },
         attrs: {
-          easing: "linear"
+
         }
       },
       {
@@ -139,7 +139,7 @@ class RolingText extends MotorCortex.API.Clip {
           top: size.topMove
         },
         attrs: {
-          easing: "linear"
+
         }
       },
       {
@@ -154,7 +154,7 @@ class RolingText extends MotorCortex.API.Clip {
           top: size.topMove2
         },
         attrs: {
-          easing: "linear"
+
         }
       },
       {
@@ -169,7 +169,7 @@ class RolingText extends MotorCortex.API.Clip {
           left: `-${this.attrs.width / 2}px`
         },
         attrs: {
-          easing: "linear"
+
         }
       },
       {
@@ -184,7 +184,7 @@ class RolingText extends MotorCortex.API.Clip {
           height: "0px"
         },
         attrs: {
-          easing: "linear"
+
         }
       },
       {
@@ -197,11 +197,11 @@ class RolingText extends MotorCortex.API.Clip {
     this.addIncident(animeTextLeft, this.attrs.duration * 0.075);
     this.addIncident(animeTextTop, this.attrs.duration * 0.375);
     this.addIncident(animeTextTopNext, this.attrs.duration * 0.575);
-    
+
     let delayEnd = this.attrs.delayEnd || 0
     if (!this.attrs.stopOnLast) {
-      this.addIncident(animeTextLeftBack, (this.attrs.duration * 0.75)+delayEnd);
-      this.addIncident(animeLineHeightBack, (this.attrs.duration * 0.925)+delayEnd);
+      this.addIncident(animeTextLeftBack, (this.attrs.duration * 0.75) + delayEnd);
+      this.addIncident(animeLineHeightBack, (this.attrs.duration * 0.925) + delayEnd);
     }
   }
 }

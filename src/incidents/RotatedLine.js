@@ -105,12 +105,13 @@ class RotatedLine extends MotorCortex.API.Clip {
           }
         },
         attrs: {
-          easing: "easeInOutQuart"
+
         }
       },
       {
         duration: this.attrs.duration * 0.075,
-        selector: `.wrapper`
+        selector: `.wrapper`,
+        easing: "easeInOutQuart"
       }
     );
 
@@ -120,12 +121,13 @@ class RotatedLine extends MotorCortex.API.Clip {
           height: size.lineHeight
         },
         attrs: {
-          easing: "easeInOutQuart"
+
         }
       },
       {
         duration: this.attrs.duration * 0.075,
-        selector: `.line`
+        selector: `.line`,
+        easing: "easeInOutQuart"
       }
     );
 
@@ -135,12 +137,13 @@ class RotatedLine extends MotorCortex.API.Clip {
           right: `${size.gap}%`
         },
         attrs: {
-          easing: "easeInOutQuart"
+
         }
       },
       {
         duration: this.attrs.duration * 0.15,
-        selector: `.text-left`
+        selector: `.text-left`,
+        easing: "easeInOutQuart"
       }
     );
 
@@ -151,12 +154,13 @@ class RotatedLine extends MotorCortex.API.Clip {
             right: `-${size.gap}%`
           },
           attrs: {
-            easing: "easeOutExpo"
+
           }
         },
         {
           duration: this.attrs.duration * 0.15 * i,
-          selector: ".text-right" + i
+          selector: ".text-right" + i,
+          easing: "easeOutExpo"
         }
       );
 
@@ -169,12 +173,13 @@ class RotatedLine extends MotorCortex.API.Clip {
           right: "100%"
         },
         attrs: {
-          easing: "easeOutExpo"
+
         }
       },
       {
         duration: this.attrs.duration * 0.15,
-        selector: ".text-right"
+        selector: ".text-right",
+        easing: "easeOutExpo"
       }
     );
 
@@ -184,12 +189,13 @@ class RotatedLine extends MotorCortex.API.Clip {
           right: "-100%"
         },
         attrs: {
-          easing: "easeOutExpo"
+
         }
       },
       {
         duration: this.attrs.duration * 0.15,
-        selector: `.text-left`
+        selector: `.text-left`,
+        easing: "easeOutExpo"
       }
     );
 
@@ -201,12 +207,13 @@ class RotatedLine extends MotorCortex.API.Clip {
           }
         },
         attrs: {
-          easing: "easeInOutQuart"
+
         }
       },
       {
         duration: this.attrs.duration * 0.075,
-        selector: `.wrapper`
+        selector: `.wrapper`,
+        easing: "easeInOutQuart"
       }
     );
 
@@ -216,12 +223,13 @@ class RotatedLine extends MotorCortex.API.Clip {
           height: "0rem"
         },
         attrs: {
-          easing: "easeInOutQuart"
+
         }
       },
       {
         duration: this.attrs.duration * 0.075,
-        selector: `.line`
+        selector: `.line`,
+        easing: "easeInOutQuart"
       }
     );
 
@@ -231,11 +239,11 @@ class RotatedLine extends MotorCortex.API.Clip {
     this.addIncident(widthLIne, 0);
     this.addIncident(rotateAminmeEnd, this.attrs.duration * 0.075);
     this.addIncident(leftTextAnimate, this.attrs.duration * 0.15);
-    if (!this.attrs.stopOnLast){
-      this.addIncident(rightTextAnimateIn, (this.attrs.duration * 0.7)+delayEnd);
-      this.addIncident(leftTextAnimateIn, (this.attrs.duration * 0.7)+delayEnd);
-      this.addIncident(rotateAminmeStartOut,( this.attrs.duration * 0.85)+delayEnd);
-      this.addIncident(widthLIneOut, (this.attrs.duration * 0.925)+delayEnd);
+    if (!this.attrs.stopOnLast) {
+      this.addIncident(rightTextAnimateIn, (this.attrs.duration * 0.7) + delayEnd);
+      this.addIncident(leftTextAnimateIn, (this.attrs.duration * 0.7) + delayEnd);
+      this.addIncident(rotateAminmeStartOut, (this.attrs.duration * 0.85) + delayEnd);
+      this.addIncident(widthLIneOut, (this.attrs.duration * 0.925) + delayEnd);
     }
   }
 }

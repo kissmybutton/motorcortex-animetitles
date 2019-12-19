@@ -54,9 +54,7 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           height: size.lineHeight
         },
-        attrs: {
-          easing: "linear"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.075,
         selector: ".line"
@@ -65,9 +63,7 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           left: "0"
         },
-        attrs: {
-          easing: "linear"
-        }
+        attrs: {}
       }, {
         duration: 800,
         selector: ".textClip span"
@@ -76,9 +72,7 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           top: size.topMove
         },
-        attrs: {
-          easing: "linear"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.15,
         selector: ".textClip span"
@@ -87,9 +81,7 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           top: size.topMove2
         },
-        attrs: {
-          easing: "linear"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.15,
         selector: ".textClip span"
@@ -98,9 +90,7 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           left: "-".concat(this.attrs.width / 2, "px")
         },
-        attrs: {
-          easing: "linear"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.15,
         selector: ".textClip span"
@@ -109,9 +99,7 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           height: "0px"
         },
-        attrs: {
-          easing: "linear"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.075,
         selector: ".line"

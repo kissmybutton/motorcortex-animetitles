@@ -52,12 +52,11 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           strokeDashoffset: 0
         },
-        attrs: {
-          easing: "easeInSine"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.75,
-        selector: "svg path"
+        selector: "svg path",
+        easing: "easeInSine"
       });
       var textBigBack = new Anime.Anime({
         animatedAttrs: {
@@ -65,25 +64,22 @@ function (_MotorCortex$API$Clip) {
             scaleX: 1.3,
             scaleY: 1.3
           }
-        },
-        attrs: {
-          easing: "easeOutElastic"
         }
       }, {
         duration: this.attrs.duration * 0.425,
         selector: "svg",
-        id: "transform2"
+        id: "transform2",
+        easing: "easeOutElastic"
       });
       var textErase = new Anime.Anime({
         animatedAttrs: {
           strokeDashoffset: this.attrs.strokeDashOffset
         },
-        attrs: {
-          easing: "easeInSine"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.75,
-        selector: "svg path"
+        selector: "svg path",
+        easing: "easeInSine"
       });
       this.addIncident(textDrow, 0);
       this.addIncident(textBigBack, this.attrs.duration * 0.75);

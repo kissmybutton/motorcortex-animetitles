@@ -56,34 +56,31 @@ function (_MotorCortex$API$Clip) {
             rotate: 0
           }
         },
-        attrs: {
-          easing: "easeInOutQuart"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.075,
-        selector: ".wrapper"
+        selector: ".wrapper",
+        easing: "easeInOutQuart"
       });
       var widthLIne = new Anime.Anime({
         animatedAttrs: {
           height: size.lineHeight
         },
-        attrs: {
-          easing: "easeInOutQuart"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.075,
-        selector: ".line"
+        selector: ".line",
+        easing: "easeInOutQuart"
       });
       var leftTextAnimate = new Anime.Anime({
         animatedAttrs: {
           right: "".concat(size.gap, "%")
         },
-        attrs: {
-          easing: "easeInOutQuart"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.15,
-        selector: ".text-left"
+        selector: ".text-left",
+        easing: "easeInOutQuart"
       });
 
       for (var i = 1; i <= 3; i++) {
@@ -91,12 +88,11 @@ function (_MotorCortex$API$Clip) {
           animatedAttrs: {
             right: "-".concat(size.gap, "%")
           },
-          attrs: {
-            easing: "easeOutExpo"
-          }
+          attrs: {}
         }, {
           duration: this.attrs.duration * 0.15 * i,
-          selector: ".text-right" + i
+          selector: ".text-right" + i,
+          easing: "easeOutExpo"
         });
         this.addIncident(rightTextAnimate, this.attrs.duration * 0.25);
       }
@@ -105,23 +101,21 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           right: "100%"
         },
-        attrs: {
-          easing: "easeOutExpo"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.15,
-        selector: ".text-right"
+        selector: ".text-right",
+        easing: "easeOutExpo"
       });
       var leftTextAnimateIn = new Anime.Anime({
         animatedAttrs: {
           right: "-100%"
         },
-        attrs: {
-          easing: "easeOutExpo"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.15,
-        selector: ".text-left"
+        selector: ".text-left",
+        easing: "easeOutExpo"
       });
       var rotateAminmeStartOut = new Anime.Anime({
         animatedAttrs: {
@@ -129,23 +123,21 @@ function (_MotorCortex$API$Clip) {
             rotate: 90
           }
         },
-        attrs: {
-          easing: "easeInOutQuart"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.075,
-        selector: ".wrapper"
+        selector: ".wrapper",
+        easing: "easeInOutQuart"
       });
       var widthLIneOut = new Anime.Anime({
         animatedAttrs: {
           height: "0rem"
         },
-        attrs: {
-          easing: "easeInOutQuart"
-        }
+        attrs: {}
       }, {
         duration: this.attrs.duration * 0.075,
-        selector: ".line"
+        selector: ".line",
+        easing: "easeInOutQuart"
       });
       var delayEnd = this.attrs.delayEnd || 0;
       this.addIncident(widthLIne, 0);

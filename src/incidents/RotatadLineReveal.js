@@ -88,12 +88,13 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
           }
         },
         attrs: {
-          easing: "easeOutExpo"
+
         }
       },
       {
         duration: this.attrs.duration * 0.24,
-        selector: `.redLine`
+        selector: `.redLine`,
+        easing: "easeOutExpo"
       }
     );
 
@@ -103,12 +104,13 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
           left: `${this.attrs.leftEnd}px`
         },
         attrs: {
-          easing: "easeOutExpo"
+
         }
       },
       {
         duration: this.attrs.duration * 0.4,
-        selector: `.redLine`
+        selector: `.redLine`,
+        easing: "easeOutExpo"
       }
     );
 
@@ -133,12 +135,13 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
           left: "10px"
         },
         attrs: {
-          easing: "easeOutExpo"
+
         }
       },
       {
         duration: this.attrs.duration * 0.16,
-        selector: `.text`
+        selector: `.text`,
+        easing: "easeOutExpo"
       }
     );
     const moveSub = new Anime.Anime(
@@ -147,12 +150,13 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
           top: "0px"
         },
         attrs: {
-          easing: "easeOutExpo"
+
         }
       },
       {
         duration: this.attrs.duration * 0.08,
-        selector: `.sub`
+        selector: `.sub`,
+        easing: "easeOutExpo"
       }
     );
 
@@ -163,12 +167,13 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
             left: `-${this.attrs.width}px`
           },
           attrs: {
-            easing: "easeOutExpo"
+
           }
         },
         {
-          duration: this.attrs.duration * 0.34,
-          selector: ".text" + i
+          duration: Math.round(this.attrs.duration * 0.34),
+          selector: ".text" + i,
+          easing: "easeOutExpo"
         }
       );
 
@@ -181,12 +186,13 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
           height: "0px"
         },
         attrs: {
-          easing: "easeInSine"
+
         }
       },
       {
         duration: this.attrs.duration * 0.08,
-        selector: `.redLine`
+        selector: `.redLine`,
+        easing: "easeInSine"
       }
     );
 

@@ -109,12 +109,13 @@ class Circle extends MotorCortex.API.Clip {
           height: 500
         },
         attrs: {
-          easing: "easeOutExpo"
+
         }
       },
       {
         duration: 500,
-        selector: ".circle"
+        selector: ".circle",
+        easing: "easeOutExpo"
       }
     );
 
@@ -126,12 +127,13 @@ class Circle extends MotorCortex.API.Clip {
             opacity: 1
           },
           attrs: {
-            easing: "easeOutExpo"
+
           }
         },
         {
           duration: 500,
-          selector: ".letter" + (i + 1)
+          selector: ".letter" + (i + 1),
+          easing: "easeOutExpo"
         }
       );
 
@@ -145,12 +147,13 @@ class Circle extends MotorCortex.API.Clip {
           height: 400
         },
         attrs: {
-          easing: "easeOutElastic"
+
         }
       },
       {
         duration: 600,
-        selector: ".circle"
+        selector: ".circle",
+        easing: "easeOutElastic"
       }
     );
 
@@ -164,12 +167,13 @@ class Circle extends MotorCortex.API.Clip {
           }
         },
         attrs: {
-          easing: "easeOutElastic"
+
         }
       },
       {
         duration: 600,
-        selector: ".wrapper"
+        selector: ".wrapper",
+        easing: "easeOutElastic"
       }
     );
 
@@ -197,12 +201,13 @@ class Circle extends MotorCortex.API.Clip {
           top: "0"
         },
         attrs: {
-          easing: "easeOutElastic"
+
         }
       },
       {
         duration: 600,
-        selector: ".sub span"
+        selector: ".sub span",
+        easing: "easeOutElastic"
       }
     );
 
@@ -218,13 +223,12 @@ class Circle extends MotorCortex.API.Clip {
             scale: 1
           }
         },
-        attrs: {
-          easing: "easeOutElastic"
-        }
+        attrs: {}
       },
       {
         duration: 600,
-        selector: ".circle,.sub span,.sub"
+        selector: ".circle,.sub span,.sub",
+        easing: "easeOutElastic"
       }
     );
 

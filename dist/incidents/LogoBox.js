@@ -42,9 +42,7 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           opacity: 1
         },
-        attrs: {
-          easing: "linear"
-        }
+        attrs: {}
       }, {
         duration: 1,
         selector: ".redLineContainer"
@@ -53,9 +51,7 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           right: "0"
         },
-        attrs: {
-          easing: "linear"
-        }
+        attrs: {}
       }, {
         duration: 1000,
         selector: ".redLine"
@@ -64,9 +60,7 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           width: "".concat(this.attrs.width * 0.75 * this.attrs.size, "px")
         },
-        attrs: {
-          easing: "linear"
-        }
+        attrs: {}
       }, {
         duration: 1000,
         selector: ".redLineContainer"
@@ -77,12 +71,11 @@ function (_MotorCortex$API$Clip) {
           animatedAttrs: {
             left: "0px"
           },
-          attrs: {
-            easing: "easeOutExpo"
-          }
+          attrs: {}
         }, {
           duration: 500 * i,
-          selector: ".text" + i
+          selector: ".text" + i,
+          easing: "easeOutExpo"
         });
         this.addIncident(textLeft, 500);
       }
@@ -91,9 +84,7 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           width: "".concat(this.attrs.width * this.attrs.size, "px")
         },
-        attrs: {
-          easing: "linear"
-        }
+        attrs: {}
       }, {
         duration: 500,
         selector: ".redLineContainer"
@@ -102,9 +93,7 @@ function (_MotorCortex$API$Clip) {
         animatedAttrs: {
           width: "".concat(80 * this.attrs.size, "px")
         },
-        attrs: {
-          easing: "linear"
-        }
+        attrs: {}
       }, {
         duration: 500,
         selector: ".yellow"
@@ -116,9 +105,7 @@ function (_MotorCortex$API$Clip) {
         initialValues: {
           width: "100%"
         },
-        attrs: {
-          easing: "linear"
-        }
+        attrs: {}
       }, {
         duration: 500,
         selector: ".wrapper"
