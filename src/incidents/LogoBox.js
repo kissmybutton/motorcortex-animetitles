@@ -1,5 +1,5 @@
-const MotorCortex = require("@kissmybutton/motorcortex/");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime/dist/main");
+const MotorCortex = require("@kissmybutton/motorcortex");
+const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 
 class LogoBox extends MotorCortex.API.Clip {
@@ -93,9 +93,7 @@ class LogoBox extends MotorCortex.API.Clip {
         animatedAttrs: {
           opacity: 1
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: 1,
@@ -106,11 +104,9 @@ class LogoBox extends MotorCortex.API.Clip {
     const border = new Anime.Anime(
       {
         animatedAttrs: {
-          right: "0"
+          right: "0px"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: 1000,
@@ -123,9 +119,7 @@ class LogoBox extends MotorCortex.API.Clip {
         animatedAttrs: {
           width: `${this.attrs.width * 0.75 * this.attrs.size}px`
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: 1000,
@@ -139,9 +133,7 @@ class LogoBox extends MotorCortex.API.Clip {
           animatedAttrs: {
             left: "0px"
           },
-          attrs: {
-
-          }
+          attrs: {}
         },
         {
           duration: 500 * i,
@@ -157,9 +149,7 @@ class LogoBox extends MotorCortex.API.Clip {
         animatedAttrs: {
           width: `${this.attrs.width * this.attrs.size}px`
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: 500,
@@ -172,16 +162,13 @@ class LogoBox extends MotorCortex.API.Clip {
         animatedAttrs: {
           width: `${80 * this.attrs.size}px`
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: 500,
         selector: ".yellow"
       }
     );
-
 
     const end = new Anime.Anime(
       {
@@ -191,9 +178,7 @@ class LogoBox extends MotorCortex.API.Clip {
         initialValues: {
           width: "100%"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: 500,
@@ -208,7 +193,7 @@ class LogoBox extends MotorCortex.API.Clip {
     this.addIncident(yellowW, 1500);
 
     if (!this.attrs.stopOnLast) {
-      this.addIncident(end, 3000)
+      this.addIncident(end, 3000);
     }
   }
 }

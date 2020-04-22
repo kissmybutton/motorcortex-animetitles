@@ -1,5 +1,5 @@
-const MotorCortex = require("@kissmybutton/motorcortex/");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime/dist/main");
+const MotorCortex = require("@kissmybutton/motorcortex");
+const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 class Size {
   constructor(svgWidth, svgHeight, lineSize) {
@@ -23,7 +23,7 @@ class SvgDrow extends MotorCortex.API.Clip {
         break;
       case "L":
         size = new Size(500, 400, "7rem");
-
+        break;
       default:
     }
     return `<div class="svg-wrapper">${this.attrs.svg} </div>`;
@@ -63,11 +63,9 @@ class SvgDrow extends MotorCortex.API.Clip {
     const textDrow = new Anime.Anime(
       {
         animatedAttrs: {
-          strokeDashoffset: 0
+          strokeDashoffset: "0px"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.75,
@@ -83,7 +81,7 @@ class SvgDrow extends MotorCortex.API.Clip {
             scaleX: 1.3,
             scaleY: 1.3
           }
-        },
+        }
       },
       {
         duration: this.attrs.duration * 0.425,
@@ -98,9 +96,7 @@ class SvgDrow extends MotorCortex.API.Clip {
         animatedAttrs: {
           strokeDashoffset: this.attrs.strokeDashOffset
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.75,
@@ -111,9 +107,9 @@ class SvgDrow extends MotorCortex.API.Clip {
 
     this.addIncident(textDrow, 0);
     this.addIncident(textBigBack, this.attrs.duration * 0.75);
-    let delayEnd = this.attrs.delayEnd || 0
+    const delayEnd = this.attrs.delayEnd || 0;
     if (!this.attrs.stopOnLast) {
-      this.addIncident(textErase, (this.attrs.duration * 0.95 + delayEnd));
+      this.addIncident(textErase, this.attrs.duration * 0.95 + delayEnd);
     }
   }
 }

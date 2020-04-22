@@ -1,5 +1,5 @@
-const MotorCortex = require("@kissmybutton/motorcortex/");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime/dist/main");
+const MotorCortex = require("@kissmybutton/motorcortex");
+const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 class Size {
   constructor(fontSizeLeft, topMove, lineHeight, gap, topMove2) {
@@ -101,16 +101,12 @@ class RolingText extends MotorCortex.API.Clip {
   }
 
   buildTree() {
-
-
     const animeLineHeight = new Anime.Anime(
       {
         animatedAttrs: {
           height: size.lineHeight
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.075,
@@ -121,11 +117,9 @@ class RolingText extends MotorCortex.API.Clip {
     const animeTextLeft = new Anime.Anime(
       {
         animatedAttrs: {
-          left: "0"
+          left: "0px"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: 800,
@@ -138,9 +132,7 @@ class RolingText extends MotorCortex.API.Clip {
         animatedAttrs: {
           top: size.topMove
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.15,
@@ -153,9 +145,7 @@ class RolingText extends MotorCortex.API.Clip {
         animatedAttrs: {
           top: size.topMove2
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.15,
@@ -168,9 +158,7 @@ class RolingText extends MotorCortex.API.Clip {
         animatedAttrs: {
           left: `-${this.attrs.width / 2}px`
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.15,
@@ -183,9 +171,7 @@ class RolingText extends MotorCortex.API.Clip {
         animatedAttrs: {
           height: "0px"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.075,
@@ -198,10 +184,16 @@ class RolingText extends MotorCortex.API.Clip {
     this.addIncident(animeTextTop, this.attrs.duration * 0.375);
     this.addIncident(animeTextTopNext, this.attrs.duration * 0.575);
 
-    let delayEnd = this.attrs.delayEnd || 0
+    const delayEnd = this.attrs.delayEnd || 0;
     if (!this.attrs.stopOnLast) {
-      this.addIncident(animeTextLeftBack, (this.attrs.duration * 0.75) + delayEnd);
-      this.addIncident(animeLineHeightBack, (this.attrs.duration * 0.925) + delayEnd);
+      this.addIncident(
+        animeTextLeftBack,
+        this.attrs.duration * 0.75 + delayEnd
+      );
+      this.addIncident(
+        animeLineHeightBack,
+        this.attrs.duration * 0.925 + delayEnd
+      );
     }
   }
 }

@@ -36,8 +36,5 @@ module.exports = {
       exportable: LogoBox,
       name: "LogoBox"
     }
-
   ]
 };
-
-

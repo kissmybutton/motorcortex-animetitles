@@ -1,5 +1,5 @@
-const MotorCortex = require("@kissmybutton/motorcortex/");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime/dist/main");
+const MotorCortex = require("@kissmybutton/motorcortex");
+const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 
 class Circle extends MotorCortex.API.Clip {
@@ -88,10 +88,10 @@ class Circle extends MotorCortex.API.Clip {
 
   buildTree() {
     const array = this.attrs.title.split("");
-
+    let html3 = "";
     for (let i = 0; i < array.length; i++) {
       const html = `<span class='letter letter${i + 1}'>${array[i]}</span>`;
-      var html3 = html3 + html;
+      html3 += html;
     }
 
     const word = new MotorCortex.Clip({
@@ -105,12 +105,10 @@ class Circle extends MotorCortex.API.Clip {
     const circleScale = new Anime.Anime(
       {
         animatedAttrs: {
-          width: 500,
-          height: 500
+          width: "500px",
+          height: "500px"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: 500,
@@ -126,9 +124,7 @@ class Circle extends MotorCortex.API.Clip {
             top: "20px",
             opacity: 1
           },
-          attrs: {
-
-          }
+          attrs: {}
         },
         {
           duration: 500,
@@ -143,12 +139,10 @@ class Circle extends MotorCortex.API.Clip {
     const circleScaleDown = new Anime.Anime(
       {
         animatedAttrs: {
-          width: 400,
-          height: 400
+          width: "400px",
+          height: "400px"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: 600,
@@ -160,15 +154,13 @@ class Circle extends MotorCortex.API.Clip {
     const wrapperDown = new Anime.Anime(
       {
         animatedAttrs: {
-          width: 400,
-          height: 400,
+          width: "400px",
+          height: "400px",
           transform: {
-            rotate: 10
+            rotate: "10deg"
           }
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: 600,
@@ -182,7 +174,7 @@ class Circle extends MotorCortex.API.Clip {
         animatedAttrs: {
           maskSize: "400px",
           transform: {
-            rotate: -10
+            rotate: "-10deg"
           }
         },
         attrs: {
@@ -198,11 +190,9 @@ class Circle extends MotorCortex.API.Clip {
     const subOut = new Anime.Anime(
       {
         animatedAttrs: {
-          top: "0"
+          top: "0px"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: 600,
@@ -232,14 +222,13 @@ class Circle extends MotorCortex.API.Clip {
       }
     );
 
-
     word.addIncident(wrapperDown, 2000);
     this.addIncident(circleScaleDown, 2000);
     this.addIncident(maskDown, 2000);
     this.addIncident(subOut, 2000);
     this.addIncident(circleScale, 0);
 
-    let delayEnd = this.attrs.delayEnd || 0
+    const delayEnd = this.attrs.delayEnd || 0;
     if (!this.attrs.stopOnLast) {
       this.addIncident(circleScaleDownEnd, 3600 + delayEnd);
     }

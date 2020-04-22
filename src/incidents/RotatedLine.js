@@ -1,5 +1,5 @@
-const MotorCortex = require("@kissmybutton/motorcortex/");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime/dist/main");
+const MotorCortex = require("@kissmybutton/motorcortex");
+const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 class Size {
   constructor(fontSizeLeft, fontSizeRigth, lineWidth, lineHeight, gap) {
@@ -101,12 +101,10 @@ class RotatedLine extends MotorCortex.API.Clip {
       {
         animatedAttrs: {
           transform: {
-            rotate: 0
+            rotate: "0deg"
           }
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.075,
@@ -120,9 +118,7 @@ class RotatedLine extends MotorCortex.API.Clip {
         animatedAttrs: {
           height: size.lineHeight
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.075,
@@ -136,9 +132,7 @@ class RotatedLine extends MotorCortex.API.Clip {
         animatedAttrs: {
           right: `${size.gap}%`
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.15,
@@ -153,9 +147,7 @@ class RotatedLine extends MotorCortex.API.Clip {
           animatedAttrs: {
             right: `-${size.gap}%`
           },
-          attrs: {
-
-          }
+          attrs: {}
         },
         {
           duration: this.attrs.duration * 0.15 * i,
@@ -172,9 +164,7 @@ class RotatedLine extends MotorCortex.API.Clip {
         animatedAttrs: {
           right: "100%"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.15,
@@ -188,9 +178,7 @@ class RotatedLine extends MotorCortex.API.Clip {
         animatedAttrs: {
           right: "-100%"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.15,
@@ -203,12 +191,10 @@ class RotatedLine extends MotorCortex.API.Clip {
       {
         animatedAttrs: {
           transform: {
-            rotate: 90
+            rotate: "90deg"
           }
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.075,
@@ -222,9 +208,7 @@ class RotatedLine extends MotorCortex.API.Clip {
         animatedAttrs: {
           height: "0rem"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.075,
@@ -233,17 +217,22 @@ class RotatedLine extends MotorCortex.API.Clip {
       }
     );
 
-    let delayEnd = this.attrs.delayEnd || 0
-
+    const delayEnd = this.attrs.delayEnd || 0;
 
     this.addIncident(widthLIne, 0);
     this.addIncident(rotateAminmeEnd, this.attrs.duration * 0.075);
     this.addIncident(leftTextAnimate, this.attrs.duration * 0.15);
     if (!this.attrs.stopOnLast) {
-      this.addIncident(rightTextAnimateIn, (this.attrs.duration * 0.7) + delayEnd);
-      this.addIncident(leftTextAnimateIn, (this.attrs.duration * 0.7) + delayEnd);
-      this.addIncident(rotateAminmeStartOut, (this.attrs.duration * 0.85) + delayEnd);
-      this.addIncident(widthLIneOut, (this.attrs.duration * 0.925) + delayEnd);
+      this.addIncident(
+        rightTextAnimateIn,
+        this.attrs.duration * 0.7 + delayEnd
+      );
+      this.addIncident(leftTextAnimateIn, this.attrs.duration * 0.7 + delayEnd);
+      this.addIncident(
+        rotateAminmeStartOut,
+        this.attrs.duration * 0.85 + delayEnd
+      );
+      this.addIncident(widthLIneOut, this.attrs.duration * 0.925 + delayEnd);
     }
   }
 }

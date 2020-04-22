@@ -1,5 +1,5 @@
-const MotorCortex = require("@kissmybutton/motorcortex/");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime/dist/main");
+const MotorCortex = require("@kissmybutton/motorcortex");
+const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 class Size {
   constructor(fontSize, fontSizeSub, lineSize) {
@@ -23,7 +23,7 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
         break;
       case "L":
         size = new Size("3.5rem", "2rem", "7rem");
-
+        break;
       default:
     }
     return `
@@ -84,12 +84,10 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
       {
         animatedAttrs: {
           transform: {
-            rotate: 0
+            rotate: "0deg"
           }
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.24,
@@ -103,9 +101,7 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
         animatedAttrs: {
           left: `${this.attrs.leftEnd}px`
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.4,
@@ -134,9 +130,7 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
         animatedAttrs: {
           left: "10px"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.16,
@@ -149,9 +143,7 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
         animatedAttrs: {
           top: "0px"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.08,
@@ -166,9 +158,7 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
           animatedAttrs: {
             left: `-${this.attrs.width}px`
           },
-          attrs: {
-
-          }
+          attrs: {}
         },
         {
           duration: Math.round(this.attrs.duration * 0.34),
@@ -185,9 +175,7 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
         animatedAttrs: {
           height: "0px"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.08,
@@ -202,13 +190,11 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
     this.addIncident(moveText, this.attrs.duration * 0.24);
     this.addIncident(moveSub, this.attrs.duration * 0.4);
 
-    let delayEnd = this.attrs.delayEnd || 0
+    const delayEnd = this.attrs.delayEnd || 0;
     if (!this.attrs.stopOnLast) {
-      this.addIncident(grupMc, delayEnd)
-      this.addIncident(lineHeight, (this.attrs.duration * 0.85) + delayEnd);
+      this.addIncident(grupMc, delayEnd);
+      this.addIncident(lineHeight, this.attrs.duration * 0.85 + delayEnd);
     }
-
-
   }
 }
 

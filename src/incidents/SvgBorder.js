@@ -1,5 +1,5 @@
-const MotorCortex = require("@kissmybutton/motorcortex/");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime/dist/main");
+const MotorCortex = require("@kissmybutton/motorcortex");
+const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 class Size {
   constructor(
@@ -36,7 +36,7 @@ class SvgBorder extends MotorCortex.API.Clip {
         break;
       case "L":
         size = new Size(1000, 110, "3.5rem", "2.5rem", 200, 55, 45, 80);
-
+        break;
       default:
     }
     return `
@@ -129,16 +129,13 @@ class SvgBorder extends MotorCortex.API.Clip {
   }
 
   buildTree() {
-
-    let delayEnd = this.attrs.delayEnd || 0
+    const delayEnd = this.attrs.delayEnd || 0;
     const borderAnimete = new Anime.Anime(
       {
         animatedAttrs: {
-          strokeDashoffset: ` -${size.subGap}`
+          strokeDashoffset: ` -${size.subGap}px`
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: Math.round(this.attrs.duration * 0.28),
@@ -150,11 +147,9 @@ class SvgBorder extends MotorCortex.API.Clip {
     const titleAnimete = new Anime.Anime(
       {
         animatedAttrs: {
-          top: 0
+          top: "0px"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.12,
@@ -164,11 +159,9 @@ class SvgBorder extends MotorCortex.API.Clip {
     const subAnimate = new Anime.Anime(
       {
         animatedAttrs: {
-          top: 0
+          top: "0px"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.12,
@@ -180,11 +173,9 @@ class SvgBorder extends MotorCortex.API.Clip {
     const sloganAnimate = new Anime.Anime(
       {
         animatedAttrs: {
-          top: 0
+          top: "0px"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.12,
@@ -196,11 +187,9 @@ class SvgBorder extends MotorCortex.API.Clip {
     const borderAnimeteLeft = new Anime.Anime(
       {
         animatedAttrs: {
-          strokeDashoffset: "-6000"
+          strokeDashoffset: "-6000px"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.24,
@@ -213,9 +202,7 @@ class SvgBorder extends MotorCortex.API.Clip {
         animatedAttrs: {
           left: "100%"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.16,
@@ -227,9 +214,7 @@ class SvgBorder extends MotorCortex.API.Clip {
         animatedAttrs: {
           left: "100%"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.16,
@@ -243,9 +228,7 @@ class SvgBorder extends MotorCortex.API.Clip {
         animatedAttrs: {
           left: "150px"
         },
-        attrs: {
-
-        }
+        attrs: {}
       },
       {
         duration: this.attrs.duration * 0.16,
@@ -266,7 +249,7 @@ class SvgBorder extends MotorCortex.API.Clip {
     grupMc.addIncident(sloganAnimateLeft, this.attrs.duration * 0.08);
 
     if (!this.attrs.stopOnLast) {
-      this.addIncident(grupMc, (this.attrs.duration * 0.6) + delayEnd);
+      this.addIncident(grupMc, this.attrs.duration * 0.6 + delayEnd);
     }
   }
 }
