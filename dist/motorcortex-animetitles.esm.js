@@ -2796,7 +2796,7 @@ var Circle = /*#__PURE__*/function (_MotorCortex$API$Clip) {
 
       var word = new MC.Clip({
         css: this.css,
-        html: " <div class=\"wrapper\" >".concat(html3.split("undefined")[1], " </div>"),
+        html: " <div class=\"wrapper\" >".concat(html3, " </div>"),
         selector: ".word"
       });
       this.addIncident(word, 0);
@@ -2907,7 +2907,7 @@ var Circle = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   }, {
     key: "html",
     get: function get() {
-      return "\n    <div class=\"wrapper\" >\n    <div class=\"circle\">\n      <div class=\"word\">\n      </div>\n    </div>\n    <div class=\"sub\">\n          <span >".concat(this.attrs.sub, "</span>\n        </div>\n    </div>\n        ");
+      return "\n    <div class=\"wrapper\"  >\n    <div class=\"circle\">\n      <div class=\"word\">\n      </div>\n    </div>\n    <div class=\"sub\">\n          <span >".concat(this.attrs.subTitle, "</span>\n        </div>\n    </div>\n        ");
     }
   }, {
     key: "css",
@@ -3036,26 +3036,357 @@ var LogoBox = /*#__PURE__*/function (_MotorCortex$API$Clip) {
 
 var LogoBox_1 = LogoBox;
 
+var _COLOR$1 = "color";
+var RotatedLIne = {
+  duration: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  width: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  size: {
+    type: "enum",
+    values: ["S", "M", "L", "XL"]
+  },
+  lineColor: {
+    optional: true,
+    type: _COLOR$1
+  },
+  textColor: {
+    optional: true,
+    type: _COLOR$1
+  },
+  subTitle1: {
+    optional: false,
+    type: "string"
+  },
+  subTitle2: {
+    optional: false,
+    type: "string"
+  },
+  subTitle3: {
+    optional: false,
+    type: "string"
+  },
+  title: {
+    optional: false,
+    type: "string"
+  },
+  stopOnLast: {
+    optional: false,
+    type: "boolean"
+  },
+  delayEnd: {
+    optional: true,
+    type: "number",
+    min: 0
+  }
+};
+var RolingText$1 = {
+  duration: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  width: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  size: {
+    type: "enum",
+    values: ["S", "M", "L", "XL", "XXL", "XXXL"]
+  },
+  lineColor: {
+    optional: true,
+    type: _COLOR$1
+  },
+  textColor: {
+    optional: true,
+    type: _COLOR$1
+  },
+  subTitle1: {
+    optional: false,
+    type: "string"
+  },
+  subTitle2: {
+    optional: false,
+    type: "string"
+  },
+  subTitle3: {
+    optional: false,
+    type: "string"
+  },
+  stopOnLast: {
+    optional: false,
+    type: "boolean"
+  },
+  delayEnd: {
+    optional: true,
+    type: "number",
+    min: 0
+  }
+};
+var RotatadLineReveal$1 = {
+  duration: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  width: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  size: {
+    type: "enum",
+    values: ["S", "M", "L"]
+  },
+  lineColor: {
+    optional: true,
+    type: _COLOR$1
+  },
+  textColor: {
+    optional: true,
+    type: _COLOR$1
+  },
+  title: {
+    optional: false,
+    type: "string"
+  },
+  subtitle: {
+    optional: false,
+    type: "string"
+  },
+  stopOnLast: {
+    optional: false,
+    type: "boolean"
+  },
+  leftEnd: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  delayEnd: {
+    optional: true,
+    type: "number",
+    min: 0
+  }
+};
+var SvgBorder$1 = {
+  duration: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  width: {
+    optional: true,
+    type: "number",
+    min: 0
+  },
+  size: {
+    type: "enum",
+    values: ["S", "M", "L"]
+  },
+  lineColor: {
+    optional: true,
+    type: _COLOR$1
+  },
+  textColor: {
+    optional: true,
+    type: _COLOR$1
+  },
+  title: {
+    optional: false,
+    type: "string"
+  },
+  slogan: {
+    optional: false,
+    type: "string"
+  },
+  subTitle: {
+    optional: false,
+    type: "string"
+  },
+  stopOnLast: {
+    optional: false,
+    type: "boolean"
+  },
+  delayEnd: {
+    optional: true,
+    type: "number",
+    min: 0
+  }
+};
+var Circle$1 = {
+  duration: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  width: {
+    optional: true,
+    type: "number",
+    min: 0
+  },
+  fontsize: {
+    optional: true,
+    type: "number",
+    min: 1
+  },
+  circleColor: {
+    optional: true,
+    type: _COLOR$1
+  },
+  textColor: {
+    optional: true,
+    type: _COLOR$1
+  },
+  title: {
+    optional: false,
+    type: "string"
+  },
+  subTitle: {
+    optional: false,
+    type: "string"
+  },
+  stopOnLast: {
+    optional: false,
+    type: "boolean"
+  },
+  delayEnd: {
+    optional: true,
+    type: "number",
+    min: 0
+  }
+};
+var SvgDrow$1 = {
+  duration: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  width: {
+    optional: true,
+    type: "number",
+    min: 0
+  },
+  size: {
+    type: "enum",
+    values: ["S", "M", "L"]
+  },
+  lineColor: {
+    optional: true,
+    type: _COLOR$1
+  },
+  textColor: {
+    optional: true,
+    type: _COLOR$1
+  },
+  strokeDashOffset: {
+    optional: true,
+    type: "number"
+  },
+  StrokeDashArray: {
+    optional: true,
+    type: "number"
+  },
+  erase: {
+    optional: true,
+    type: "boolean"
+  },
+  svg: {
+    optional: true,
+    type: "string"
+  },
+  stopOnLast: {
+    optional: false,
+    type: "boolean"
+  },
+  delayEnd: {
+    optional: true,
+    type: "number",
+    min: 0
+  }
+};
+var LogoBox$1 = {
+  size: {
+    optional: true,
+    type: "number",
+    min: 0
+  },
+  bgColor: {
+    optional: true,
+    type: _COLOR$1
+  },
+  textColor: {
+    optional: true,
+    type: _COLOR$1
+  },
+  subTitle1: {
+    optional: false,
+    type: "string"
+  },
+  subTitle2: {
+    optional: false,
+    type: "string"
+  },
+  subTitle3: {
+    optional: false,
+    type: "string"
+  },
+  width: {
+    optional: true,
+    type: "number",
+    min: 0
+  },
+  stopOnLast: {
+    optional: false,
+    type: "boolean"
+  }
+};
+
+var validation = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  RotatedLIne: RotatedLIne,
+  RolingText: RolingText$1,
+  RotatadLineReveal: RotatadLineReveal$1,
+  SvgBorder: SvgBorder$1,
+  Circle: Circle$1,
+  SvgDrow: SvgDrow$1,
+  LogoBox: LogoBox$1
+});
+
 var src = {
   npm_name: "@kissmybutton/motorcortex-titles",
   incidents: [{
     exportable: RotatedLine_1,
-    name: "RotatedLine"
+    name: "RotatedLine",
+    attributesValidationRules: validation.RotatedLIne
   }, {
     exportable: RolingText_1,
-    name: "RolingText"
+    name: "RolingText",
+    attributesValidationRules: validation.RolingText
   }, {
     exportable: SvgBorder_1,
-    name: "SvgBorder"
+    name: "SvgBorder",
+    attributesValidationRules: validation.SvgBorder
   }, {
     exportable: RotatadLineReveal_1,
-    name: "RotatadLineReveal"
+    name: "RotatadLineReveal",
+    attributesValidationRules: validation.RotatadLineReveal
   }, {
     exportable: SvgDrow_1,
-    name: "SvgDrow"
+    name: "SvgDrow",
+    attributesValidationRules: validation.SvgDrow
   }, {
     exportable: Circle_1,
-    name: "Circle"
+    name: "Circle",
+    attributesValidationRules: validation.Circle
   }, {
     exportable: LogoBox_1,
     name: "LogoBox"

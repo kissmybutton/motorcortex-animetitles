@@ -5,13 +5,13 @@ const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 class Circle extends MotorCortex.API.Clip {
   get html() {
     return `
-    <div class="wrapper" >
+    <div class="wrapper"  >
     <div class="circle">
       <div class="word">
       </div>
     </div>
     <div class="sub">
-          <span >${this.attrs.sub}</span>
+          <span >${this.attrs.subTitle}</span>
         </div>
     </div>
         `;
@@ -88,6 +88,7 @@ class Circle extends MotorCortex.API.Clip {
 
   buildTree() {
     const array = this.attrs.title.split("");
+
     let html3 = "";
     for (let i = 0; i < array.length; i++) {
       const html = `<span class='letter letter${i + 1}'>${array[i]}</span>`;
@@ -96,7 +97,7 @@ class Circle extends MotorCortex.API.Clip {
 
     const word = new MotorCortex.Clip({
       css: this.css,
-      html: ` <div class="wrapper" >${html3.split("undefined")[1]} </div>`,
+      html: ` <div class="wrapper" >${html3} </div>`,
       selector: ".word"
     });
 

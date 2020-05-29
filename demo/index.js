@@ -121,7 +121,7 @@ const rotatedlinereveal = new Titles.RotatadLineReveal(
     size: "M",
     lineColor: "#ff0000",
     textColor: "#000",
-    title: "Animetitle",
+    title: "Animetitlet",
     subtitle: "MC Plugin",
     leftEnd: 100,
     stopOnLast: false
@@ -175,7 +175,7 @@ const circle = new Titles.Circle(
     circleColor: "#ff0000",
     textColor: "#000",
     title: "ANIMATED",
-    sub: "TITLES",
+    subTitle: "TITLESs",
     stopOnLast: false
     // delayEnd : 3000
   },
