@@ -175,7 +175,7 @@ const circle = new Titles.Circle(
     circleColor: "#ff0000",
     textColor: "#000",
     title: "ANIMATED",
-    subTitle: "TITLESs",
+    subTitle: "TITLES",
     stopOnLast: false
     // delayEnd : 3000
   },
