@@ -3362,7 +3362,7 @@ var validation = /*#__PURE__*/Object.freeze({
 });
 
 var src = {
-  npm_name: "@kissmybutton/motorcortex-titles",
+  npm_name: "@kissmybutton/motorcortex-animetitles",
   incidents: [{
     exportable: RotatedLine_1,
     name: "RotatedLine",
