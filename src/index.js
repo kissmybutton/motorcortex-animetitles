@@ -7,7 +7,7 @@ const Circle = require("./incidents/Circle");
 const LogoBox = require("./incidents/LogoBox");
 const attrs = require("./validation");
 module.exports = {
-  npm_name: "@kissmybutton/motorcortex-titles",
+  npm_name: "@kissmybutton/motorcortex-animetitles",
   incidents: [
     {
       exportable: RotatedLIne,
