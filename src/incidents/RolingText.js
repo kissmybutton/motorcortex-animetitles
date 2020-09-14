@@ -28,27 +28,26 @@ class RolingText extends MotorCortex.API.Clip {
   get css() {
     switch (this.attrs.size) {
       case "S":
-        size = new Size(1.5, "-26px", "30px", 0.5, "-52px");
+        size = new Size(21, "-21px", "21px", 0.5, "-42px");
 
         break;
       case "M":
-        size = new Size(2, "-36px", "3rem", 1, "-73px");
+        size = new Size(28, "-28px", "28px", 1, "-56px");
 
         break;
       case "L":
-        size = new Size(2.5, "-45px", "3rem", 1.5, "-87px");
-
+        size = new Size(35, "-35px", "35px", 1.5, "-70px");
         break;
       case "XL":
-        size = new Size(3, "-50px", "4rem", 2, "-100px");
+        size = new Size(42, "-42px", "42px", 2, "-84px");
 
         break;
       case "XXL":
-        size = new Size(3.5, "-60px", "4rem", 2, "-120px");
+        size = new Size(49, "-49px", "49px", 2, "-98px");
 
         break;
       case "XXXL":
-        size = new Size(5, "-86px", "5rem", 2, "-172px");
+        size = new Size(70, "-70px", "70px", 2, "-140px", 86);
 
         break;
 
@@ -84,10 +83,10 @@ class RolingText extends MotorCortex.API.Clip {
       position: relative;
       display: flex;
       flex-direction: column;
-      font-size: ${size.fontSizeLeft}rem;
+      font-size: ${size.fontSizeLeft}px;
       white-space: nowrap;
       overflow: hidden;
-      height: ${size.fontSizeLeft}rem;
+      height: ${size.fontSizeLeft}px;
       
     }
   
@@ -96,6 +95,7 @@ class RolingText extends MotorCortex.API.Clip {
       position: relative;
       left : -${this.attrs.width / 2}px;
       width : 100%;
+      height: ${size.fontSizeLeft}px;
     }
   `;
   }

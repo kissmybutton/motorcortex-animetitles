@@ -100,7 +100,7 @@ const rolinText = new Titles.RolingText(
   {
     duration: 6000,
     width: 350,
-    size: "L",
+    size: "S",
     lineColor: "#ff0000",
     textColor: "#000",
     subTitle1: "The",

@@ -2342,31 +2342,31 @@ var RolingText = /*#__PURE__*/function (_MotorCortex$API$Clip) {
     get: function get() {
       switch (this.attrs.size) {
         case "S":
-          size$1 = new Size$1(1.5, "-26px", "30px", 0.5, "-52px");
+          size$1 = new Size$1(21, "-21px", "21px", 0.5, "-42px");
           break;
 
         case "M":
-          size$1 = new Size$1(2, "-36px", "3rem", 1, "-73px");
+          size$1 = new Size$1(28, "-28px", "28px", 1, "-56px");
           break;
 
         case "L":
-          size$1 = new Size$1(2.5, "-45px", "3rem", 1.5, "-87px");
+          size$1 = new Size$1(35, "-35px", "35px", 1.5, "-70px");
           break;
 
         case "XL":
-          size$1 = new Size$1(3, "-50px", "4rem", 2, "-100px");
+          size$1 = new Size$1(42, "-42px", "42px", 2, "-84px");
           break;
 
         case "XXL":
-          size$1 = new Size$1(3.5, "-60px", "4rem", 2, "-120px");
+          size$1 = new Size$1(49, "-49px", "49px", 2, "-98px");
           break;
 
         case "XXXL":
-          size$1 = new Size$1(5, "-86px", "5rem", 2, "-172px");
+          size$1 = new Size$1(70, "-70px", "70px", 2, "-140px", 86);
           break;
       }
 
-      return "\n    body{\n     font-size: 62.5%;\n    }\n    .wrapper{\n      white-space: nowrap;\n      overflow: hidden;\n      display: flex;\n      height: ".concat(size$1.lineHeight, ";\n      width : ").concat(this.attrs.width, "px;\n      justify-content: center;\n      align-items: center;\n    }\n  \n    .line{\n      position: relative; \n      height: 0;\n      width: 3px;\n      justify-content: center;\n      background: ").concat(this.attrs.lineColor, " ;\n      margin-right: ").concat(size$1.gap, "rem;\n    \n    }\n    \n    .textClip{\n      position: relative; \n      \n      position: relative;\n      display: flex;\n      flex-direction: column;\n      font-size: ").concat(size$1.fontSizeLeft, "rem;\n      white-space: nowrap;\n      overflow: hidden;\n      height: ").concat(size$1.fontSizeLeft, "rem;\n      \n    }\n  \n    .textClip span{\n      color : ").concat(this.attrs.textColor, ";\n      position: relative;\n      left : -").concat(this.attrs.width / 2, "px;\n      width : 100%;\n    }\n  ");
+      return "\n    body{\n     font-size: 62.5%;\n    }\n    .wrapper{\n      white-space: nowrap;\n      overflow: hidden;\n      display: flex;\n      height: ".concat(size$1.lineHeight, ";\n      width : ").concat(this.attrs.width, "px;\n      justify-content: center;\n      align-items: center;\n    }\n  \n    .line{\n      position: relative; \n      height: 0;\n      width: 3px;\n      justify-content: center;\n      background: ").concat(this.attrs.lineColor, " ;\n      margin-right: ").concat(size$1.gap, "rem;\n    \n    }\n    \n    .textClip{\n      position: relative; \n      \n      position: relative;\n      display: flex;\n      flex-direction: column;\n      font-size: ").concat(size$1.fontSizeLeft, "px;\n      white-space: nowrap;\n      overflow: hidden;\n      height: ").concat(size$1.fontSizeLeft, "px;\n      \n    }\n  \n    .textClip span{\n      color : ").concat(this.attrs.textColor, ";\n      position: relative;\n      left : -").concat(this.attrs.width / 2, "px;\n      width : 100%;\n      height: ").concat(size$1.fontSizeLeft, "px;\n    }\n  ");
     }
   }]);
 
