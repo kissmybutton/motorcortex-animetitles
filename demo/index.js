@@ -2,7 +2,6 @@ const MotorCortex = require("@kissmybutton/motorcortex/");
 const Player = require("@kissmybutton/motorcortex-player/");
 const TitlesPlugin = require("../dist/motorcortex-animetitles.umd");
 const Titles = MotorCortex.loadPlugin(TitlesPlugin);
-
 const css = `
 body { 
   background-color : white; 
@@ -30,18 +29,25 @@ body {
     flex-direction: column;
     position: absolute;
    }
+   .full{
+     width:${document.getElementById("clip").offsetWidth}px;
+     height:${document.getElementById("clip").offsetHeight}px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   }
   `;
 const html = `<div class="container">
 
   <div class="row" >
-    <div class="cel"> <div class="rolingtext"></div>  </div>
-    <div class="cel"><div class="svgborder"></div> </div>
-    <div class="cel"> <div class="rotatedline"></div> </div>
-    <div class="cel"> <div class="rotatedlinereveal"></div> </div>
-    <div class="cel"><div class="svgdrow"></div> </div>
-    <div class="cel"><div class="circle"></div> </div>
-    <div class="cel"><div class="logobox"></div> </div>
-    <div class="cel"><div class="textwriting"></div> </div>
+    <div class="cel"> <div class="rolingtext full"></div>  </div>
+    <div class="cel"><div class="svgborder full"></div> </div>
+    <div class="cel"> <div class="rotatedline full"></div> </div>
+    <div class="cel"> <div class="rotatedlinereveal full"></div> </div>
+    <div class="cel"><div class="svgdrow full"></div> </div>
+    <div class="cel"><div class="circle full"></div> </div>
+    <div class="cel"><div class="logobox full"></div> </div>
+    <div class="cel"><div class="textwriting full"></div> </div>
   </div>
 
 </div>`;

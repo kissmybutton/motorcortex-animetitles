@@ -178,13 +178,12 @@ class Circle extends MotorCortex.API.Clip {
             rotate: "-10deg"
           }
         },
-        attrs: {
-          easing: "easeOutElastic"
-        }
+        attrs: {}
       },
       {
         duration: 600,
-        selector: ".circle"
+        selector: ".circle",
+        easing: "easeOutElastic"
       }
     );
 

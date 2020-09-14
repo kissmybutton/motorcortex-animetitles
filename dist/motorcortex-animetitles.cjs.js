@@ -2865,12 +2865,11 @@ var Circle = /*#__PURE__*/function (_MotorCortex$API$Clip) {
             rotate: "-10deg"
           }
         },
-        attrs: {
-          easing: "easeOutElastic"
-        }
+        attrs: {}
       }, {
         duration: 600,
-        selector: ".circle"
+        selector: ".circle",
+        easing: "easeOutElastic"
       });
       var subOut = new Anime$6.Anime({
         animatedAttrs: {
