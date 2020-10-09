@@ -182,8 +182,8 @@ const circle = new Titles.Circle(
     textColor: "#000",
     title: "ANIMATED",
     subTitle: "TITLES",
-    stopOnLast: false
-    // delayEnd : 3000
+    stopOnLast: false,
+    width:500
   },
   {
     selector: ".circle"

@@ -2802,8 +2802,8 @@ var Circle = /*#__PURE__*/function (_MotorCortex$API$Clip) {
       this.addIncident(word, 0);
       var circleScale = new Anime$6.Anime({
         animatedAttrs: {
-          width: "500px",
-          height: "500px"
+          width: "".concat(this.attrs.width, "px"),
+          height: "".concat(this.attrs.width, "px")
         },
         attrs: {}
       }, {
@@ -2815,7 +2815,7 @@ var Circle = /*#__PURE__*/function (_MotorCortex$API$Clip) {
       for (var _i = 0; _i < array.length; _i++) {
         var textAnimation = new Anime$6.Anime({
           animatedAttrs: {
-            top: "20px",
+            top: "0px",
             opacity: 1
           },
           attrs: {}
@@ -2829,8 +2829,8 @@ var Circle = /*#__PURE__*/function (_MotorCortex$API$Clip) {
 
       var circleScaleDown = new Anime$6.Anime({
         animatedAttrs: {
-          width: "400px",
-          height: "400px"
+          width: "".concat(this.attrs.width * 0.8, "px"),
+          height: "".concat(this.attrs.width * 0.8, "px")
         },
         attrs: {}
       }, {
@@ -2840,8 +2840,8 @@ var Circle = /*#__PURE__*/function (_MotorCortex$API$Clip) {
       });
       var wrapperDown = new Anime$6.Anime({
         animatedAttrs: {
-          width: "400px",
-          height: "400px",
+          width: "".concat(this.attrs.width * 0.8, "px"),
+          height: "".concat(this.attrs.width * 0.8, "px"),
           transform: {
             rotate: "10deg"
           }
@@ -2854,7 +2854,7 @@ var Circle = /*#__PURE__*/function (_MotorCortex$API$Clip) {
       });
       var maskDown = new Anime$6.Anime({
         animatedAttrs: {
-          maskSize: "400px",
+          maskSize: "".concat(this.attrs.width * 0.8, "px"),
           transform: {
             rotate: "-10deg"
           }
@@ -2911,7 +2911,7 @@ var Circle = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   }, {
     key: "css",
     get: function get() {
-      return "\n    .wrapper{\n      white-space: nowrap;\n      overflow: hidden;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      \n      width: 500px;\n      height: 500px;\n    }\n    .circle{\n      width: 0px;\n      height: 0px;\n      background: ".concat(this.attrs.circleColor, ";\n      position: relative;\n      border-radius: 50%;\n      mask: url(./img.svg);\n      mask-position-y: 69px;\n      mask-size: 810px;\n    }  \n    .word{\n      overflow: hidden;\n      width: 9px;\n      height: 3px;\n      position: relative;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      width: 100%;\n      height: 100%;\n    }\n    \n    .letter{\n      font-size: ").concat(this.attrs.fontSize, "px;\n      color: ").concat(this.attrs.textColor, ";\n      left: 2.5px;\n      position: relative;\n      text-align: center;\n      top : 300px;\n      width: 100%;\n      background-color:#ffffff00\n      \n    }\n\n  .sub{\n    position: absolute;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    overflow: hidden;\n    top: 33%;\n    transform: rotate(-10deg);\n    width: 400px;\n    height: 400px;\n\n  }\n  .sub span{\n    font-size: ").concat(this.attrs.fontSize * 0.8, "px;\n    position: relative;\n    top:100%;\n    letter-spacing: 3px;\n  }\n\n\n  ");
+      return "\n    .wrapper{\n      white-space: nowrap;\n      overflow: hidden;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      width: ".concat(this.attrs.width, "px;\n      height: ").concat(this.attrs.width, "px;\n    }\n    .circle{\n      width: 0px;\n      height: 0px;\n      background: ").concat(this.attrs.circleColor, ";\n      position: relative;\n      border-radius: 100%;\n      mask: url(./img.svg);\n      mask-position-y: 69px;\n      mask-size: 810px;\n    }  \n    .word{\n      overflow: hidden;\n      width: 9px;\n      height: 3px;\n      position: relative;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      width: 100%;\n      height: 100%;\n    }\n    \n    .letter{\n      font-size: ").concat(this.attrs.fontSize, "px;\n      color: ").concat(this.attrs.textColor, ";\n      left: 2.5px;\n      position: relative;\n      text-align: center;\n      top : ").concat(this.attrs.width, "px;\n      width: 100%;\n      background-color:#ffffff00\n      \n    }\n\n  .sub{\n    position: absolute;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    overflow: hidden;\n    top: 33%;\n    transform: rotate(-10deg);\n    width: 400px;\n    height: 400px;\n\n  }\n  .sub span{\n    font-size: ").concat(this.attrs.fontSize * 0.8, "px;\n    position: relative;\n    top:100%;\n    letter-spacing: 3px;\n  }\n\n\n  ");
     }
   }]);
 

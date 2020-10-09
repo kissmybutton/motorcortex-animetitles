@@ -183,9 +183,10 @@ const nameOfIncident = new Titles.Circle(
     circleColor: "#ff0000",
     textColor: "#000",
     title: "IOAN",
-    sub: "BRAPAPAPA",
+    subTitle: "BRAPAPAPA",
     stopOnLast: false,
-    delayEnd : 3000
+    delayEnd : 3000,
+    width:500
   },
   {
     selector: ".circle"
@@ -198,7 +199,7 @@ const nameOfIncident = new Titles.Circle(
 | Name        | Are           | Values  |
 | ------------- |:-------------:| -----:|
 | duration     | is the total time that animation will play  | all positive numbers |
-| width      | total width of clip container | all positive numbers |
+| width      | total width of clip container and width/height of the circle | all positive numbers |
 | circleColor |  the color of circle |  hex values or RGB  |
 | textColor |  the color of text |  hex values or RGB  |
 | subTitle | top left text |  normal text  |

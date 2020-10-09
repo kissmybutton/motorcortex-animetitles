@@ -25,16 +25,15 @@ class Circle extends MotorCortex.API.Clip {
       display: flex;
       justify-content: center;
       align-items: center;
-      
-      width: 500px;
-      height: 500px;
+      width: ${this.attrs.width}px;
+      height: ${this.attrs.width}px;
     }
     .circle{
       width: 0px;
       height: 0px;
       background: ${this.attrs.circleColor};
       position: relative;
-      border-radius: 50%;
+      border-radius: 100%;
       mask: url(./img.svg);
       mask-position-y: 69px;
       mask-size: 810px;
@@ -57,7 +56,7 @@ class Circle extends MotorCortex.API.Clip {
       left: 2.5px;
       position: relative;
       text-align: center;
-      top : 300px;
+      top : ${this.attrs.width}px;
       width: 100%;
       background-color:#ffffff00
       
@@ -106,8 +105,8 @@ class Circle extends MotorCortex.API.Clip {
     const circleScale = new Anime.Anime(
       {
         animatedAttrs: {
-          width: "500px",
-          height: "500px"
+          width: `${this.attrs.width}px`,
+          height: `${this.attrs.width}px`
         },
         attrs: {}
       },
@@ -122,7 +121,7 @@ class Circle extends MotorCortex.API.Clip {
       const textAnimation = new Anime.Anime(
         {
           animatedAttrs: {
-            top: "20px",
+            top: "0px",
             opacity: 1
           },
           attrs: {}
@@ -140,8 +139,8 @@ class Circle extends MotorCortex.API.Clip {
     const circleScaleDown = new Anime.Anime(
       {
         animatedAttrs: {
-          width: "400px",
-          height: "400px"
+          width: `${this.attrs.width*0.8}px`,
+          height: `${this.attrs.width*0.8}px`
         },
         attrs: {}
       },
@@ -155,8 +154,8 @@ class Circle extends MotorCortex.API.Clip {
     const wrapperDown = new Anime.Anime(
       {
         animatedAttrs: {
-          width: "400px",
-          height: "400px",
+          width: `${this.attrs.width*0.8}px`,
+          height: `${this.attrs.width*0.8}px`,
           transform: {
             rotate: "10deg"
           }
@@ -173,7 +172,7 @@ class Circle extends MotorCortex.API.Clip {
     const maskDown = new Anime.Anime(
       {
         animatedAttrs: {
-          maskSize: "400px",
+          maskSize: `${this.attrs.width*0.8}px`,
           transform: {
             rotate: "-10deg"
           }
