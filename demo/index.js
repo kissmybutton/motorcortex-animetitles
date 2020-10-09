@@ -127,7 +127,7 @@ const rotatedlinereveal = new Titles.RotatadLineReveal(
     size: "M",
     lineColor: "#ff0000",
     textColor: "#000",
-    title: "Animetitlet",
+    title: "Animetitles",
     subtitle: "MC Plugin",
     leftEnd: 100,
     stopOnLast: false
@@ -163,7 +163,7 @@ const svgborder = new Titles.SvgBorder(
     size: "L",
     lineColor: "#ff0000",
     textColor: "#000",
-    subTitle: "Develop by",
+    subTitle: "Developt by",
     slogan: "-KMB-",
     title: "MotorCortex Team",
     stopOnLast: false
