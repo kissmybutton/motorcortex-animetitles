@@ -48,8 +48,9 @@ const html = `<div class="container">
     <div class="cel"><div class="circle full"></div> </div>
     <div class="cel"><div class="logobox full"></div> </div>
     <div class="cel"><div class="textwriting full"></div> </div>
+    <div class="cel"><div class="rightopacity full"></div> </div>
   </div>
-
+  
 </div>`;
 
 const host = document.getElementById("clip");
@@ -69,6 +70,13 @@ const clip = new MotorCortex.Clip({
       base64: false
     }
   ],
+  fonts: [
+    {
+      type: `google-font`,
+      src: `https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap`
+    }
+
+  ],
   host,
   containerParams,
   id: "root"
@@ -83,7 +91,7 @@ const songPlayback = new MotorCortex.AudioPlayback(
   }
 );
 
-clip.addIncident(songPlayback, 1);
+// clip.addIncident(songPlayback, 1);
 
 const svgdrow = new Titles.SvgDrow(
   {
@@ -183,7 +191,7 @@ const circle = new Titles.Circle(
     title: "ANIMATED",
     subTitle: "TITLES",
     stopOnLast: false,
-    width:500
+    width: 500
   },
   {
     selector: ".circle"
@@ -206,13 +214,48 @@ const logobox = new Titles.LogoBox(
   }
 );
 
-clip.addIncident(rolinText, 0);
-clip.addIncident(rotatedlinereveal, 7000);
-clip.addIncident(svgborder, 11025);
-clip.addIncident(rotatedline, 16025);
-clip.addIncident(circle, 22025);
-clip.addIncident(logobox, 26225);
-clip.addIncident(svgdrow, 29725);
+const RightOpacity = new Titles.RightOpacity(
+  {
+    width: 900,
+    height: 250,
+    text: "soukabli",
+    color: "transparent",
+    fontSize: 100,
+    stroke: true,
+    strokeSize: 2,
+    strokeColor: "rebeccapurple",
+    fontFamily: "Rubik Mono One"
+  },
+  {
+    selector: ".rightopacity"
+  }
+);
+
+const FlushStroke = new Titles.FlushStroke(
+  {
+    width: 900,
+    height: 900,
+    text: ["souka", "bliat", "ti", "ven", "katalavenis"],
+
+    fontSize: 100,
+    strokeSize: 2,
+    strokeColor: [102, 51, 153],
+    fontFamily: "Rubik Mono One"
+  },
+  {
+    selector: ".rightopacity"
+  }
+);
+
+// clip.addIncident(rolinText, 0);
+// clip.addIncident(rotatedlinereveal, 7000);
+// clip.addIncident(svgborder, 11025);
+// clip.addIncident(rotatedline, 16025);
+// clip.addIncident(circle, 22025);
+// clip.addIncident(logobox, 26225);
+// clip.addIncident(svgdrow, 29725);
+// clip.addIncident(RightOpacity, 0)
+clip.addIncident(FlushStroke, 0)
 
 window.clip = clip;
 

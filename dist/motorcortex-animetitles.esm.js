@@ -3035,6 +3035,147 @@ var LogoBox = /*#__PURE__*/function (_MotorCortex$API$Clip) {
 
 var LogoBox_1 = LogoBox;
 
+var Anime$8 = MC.loadPlugin(index);
+
+var RightOpacity = /*#__PURE__*/function (_MotorCortex$API$Clip) {
+  _inherits(RightOpacity, _MotorCortex$API$Clip);
+
+  var _super = _createSuper(RightOpacity);
+
+  function RightOpacity() {
+    _classCallCheck(this, RightOpacity);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(RightOpacity, [{
+    key: "buildTree",
+    value: function buildTree() {
+      var left = new Anime$8.Anime({
+        animatedAttrs: {
+          left: "@expression(index * ".concat(this.attrs.width / this.list.length, ")px")
+        },
+        initialValues: {
+          left: "@expression((index * ".concat(this.attrs.width / this.list.length, ")+").concat(this.attrs.width / 2, ")px")
+        }
+      }, {
+        duration: 1,
+        selector: ".letter",
+        delay: "@stagger(0, 0)"
+      });
+      this.addIncident(left, 0);
+      var opacity = new Anime$8.Anime({
+        animatedAttrs: {
+          opacity: 1 // left: `@expression(index * ${this.attrs.width / this.list.length})px`
+
+        },
+        initialValues: {
+          opacity: 0 // left: `@expression((index * ${this.attrs.width / this.list.length})+${this.attrs.width / 2})px`
+
+        }
+      }, {
+        duration: 300,
+        selector: ".letter",
+        delay: "@stagger(0, 300)"
+      });
+      this.addIncident(opacity, 10);
+      var left2 = new Anime$8.Anime({
+        animatedAttrs: {
+          left: "0px"
+        },
+        initialValues: {
+          left: "".concat(this.attrs.width * 0.50, "px")
+        }
+      }, {
+        duration: 300,
+        selector: ".letter-wrapper" // delay: "@stagger(0, 300)"
+
+      });
+      this.addIncident(left2, 0);
+      var leftLetter = new Anime$8.Anime({
+        animatedAttrs: {
+          left: "".concat(this.attrs.width / 2, "px")
+        }
+      }, {
+        duration: 300,
+        selector: ".letter",
+        delay: "@stagger(0, 300,0.5,linear,omni,true)"
+      });
+      this.addIncident(leftLetter, 900);
+    }
+  }, {
+    key: "html",
+    get: function get() {
+      this.list;
+      this.list = this.attrs.text.split("");
+      var divList = this.list.map(function (e, i) {
+        return "<div class=\"letter letter-item-".concat(i, "\">").concat(e, "</div>");
+      }).join("");
+      return "\n    <div class=\"wrapper\">\n    <div class=\"letter-wrapper\">\n      ".concat(divList, "\n    </div>\n    </div>\n        ");
+    }
+  }, {
+    key: "css",
+    get: function get() {
+      var stroke = this.attrs.stroke === true ? "-webkit-text-stroke:".concat(this.attrs.strokeSize, "px ").concat(this.attrs.strokeColor, ";") : "";
+      return "\n    .wrapper{\n      width:".concat(this.attrs.width, "px;\n      height: ").concat(this.attrs.height, "px;\n      white-space: nowrap;\n      overflow: hidden;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n    }\n\n    .letter{\n      font-size:").concat(this.attrs.fontSize, "px;\n      color:").concat(this.attrs.color, ";\n      ").concat(stroke, "\n      text-transform:uppercase;\n      font-family: ").concat(this.attrs.fontFamily, ";\n      position: absolute;\n    }\n    .letter-wrapper{\n      width:").concat(this.attrs.width, "px;\n      height: ").concat(this.attrs.height, "px;\n      position: relative;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n    }\n\n  ");
+    }
+  }]);
+
+  return RightOpacity;
+}(MC.API.Clip);
+
+var RightOpacity_1 = RightOpacity;
+
+var Anime$9 = MC.loadPlugin(index);
+
+var FlushStroke = /*#__PURE__*/function (_MotorCortex$API$Clip) {
+  _inherits(FlushStroke, _MotorCortex$API$Clip);
+
+  var _super = _createSuper(FlushStroke);
+
+  function FlushStroke() {
+    _classCallCheck(this, FlushStroke);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(FlushStroke, [{
+    key: "buildTree",
+    value: function buildTree() {
+      var left = new Anime$9.Anime({
+        animatedAttrs: {
+          color: "rgba(".concat(this.attrs.strokeColor[0], ",").concat(this.attrs.strokeColor[1], ",").concat(this.attrs.strokeColor[2], ",1)")
+        },
+        initialValues: {
+          color: "rgba(".concat(this.attrs.strokeColor[0], ",").concat(this.attrs.strokeColor[1], ",").concat(this.attrs.strokeColor[2], ",0)")
+        }
+      }, {
+        duration: 150,
+        selector: ".letter",
+        delay: "@stagger(0, 300)"
+      });
+      this.addIncident(left, 0);
+    }
+  }, {
+    key: "html",
+    get: function get() {
+      var divList = this.attrs.text.map(function (e, i) {
+        return "<div class=\"letter letter-item-".concat(i, "\">").concat(e, "</div>");
+      }).join("");
+      return "\n    <div class=\"wrapper\">\n    \n      ".concat(divList, "\n    \n    </div>\n        ");
+    }
+  }, {
+    key: "css",
+    get: function get() {
+      return "\n    .wrapper{\n      width:".concat(this.attrs.width, "px;\n      height: ").concat(this.attrs.height, "px;\n      white-space: nowrap;\n      overflow: hidden;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      flex-direction: column;\n    }\n\n    .letter{\n      font-size:").concat(this.attrs.fontSize, "px;\n      color:rgba(").concat(this.attrs.strokeColor[0], ",").concat(this.attrs.strokeColor[1], ",").concat(this.attrs.strokeColor[2], ",0);\n      text-transform:uppercase;\n      font-family: ").concat(this.attrs.fontFamily, ";\n      -webkit-text-stroke:").concat(this.attrs.strokeSize, "px rgb(").concat(this.attrs.strokeColor[0], ",").concat(this.attrs.strokeColor[1], ",").concat(this.attrs.strokeColor[2], ");\n\n    }\n  ");
+    }
+  }]);
+
+  return FlushStroke;
+}(MC.API.Clip);
+
+var FlushStroke_1 = FlushStroke;
+
 var _COLOR$1 = "color";
 var RotatedLIne = {
   duration: {
@@ -3389,6 +3530,14 @@ var src = {
   }, {
     exportable: LogoBox_1,
     name: "LogoBox"
+  }, {
+    exportable: RightOpacity_1,
+    name: "RightOpacity" // attributesValidationRules: attrs.Circle
+
+  }, {
+    exportable: FlushStroke_1,
+    name: "FlushStroke" // attributesValidationRules: attrs.Circle
+
   }]
 };
 var src_1 = src.npm_name;

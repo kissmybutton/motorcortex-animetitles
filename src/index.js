@@ -5,6 +5,8 @@ const RotatadLineReveal = require("./incidents/RotatadLineReveal");
 const SvgDrow = require("./incidents/SvgDrow");
 const Circle = require("./incidents/Circle");
 const LogoBox = require("./incidents/LogoBox");
+const RightOpacity = require("./incidents/RightOpacity")
+const FlushStroke = require("./incidents/FlushStroke")
 const attrs = require("./validation");
 module.exports = {
   npm_name: "@kissmybutton/motorcortex-animetitles",
@@ -42,6 +44,19 @@ module.exports = {
     {
       exportable: LogoBox,
       name: "LogoBox"
-    }
+    },
+    {
+      exportable: RightOpacity,
+      name: "RightOpacity",
+      // attributesValidationRules: attrs.Circle
+    },
+    {
+      exportable: FlushStroke,
+      name: "FlushStroke",
+      // attributesValidationRules: attrs.Circle
+    },
   ]
 };
+
+
+
