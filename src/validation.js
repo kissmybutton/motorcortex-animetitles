@@ -317,3 +317,156 @@ export const LogoBox = {
     type: "boolean"
   }
 };
+
+
+export const RigthOpacityValidation = {
+  width: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  height: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  text: {
+    optional: false,
+    type: "string"
+  },
+  color: {
+    optional: true,
+    type: _COLOR
+  },
+  fontSize: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  stroke: {
+    optional: false,
+    type: "boolean"
+  },
+  strokeSize: {
+    optional: true,
+    type: "number",
+    min: 0
+  },
+  strokeColor: {
+    optional: true,
+    type: _COLOR
+  },
+  fontFamily: {
+    optional: false,
+    type: "string"
+  },
+  exitTime: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+};
+
+
+export const LetterScaleValidation = {
+  width: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  height: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  text: {
+    optional: false,
+    type: "string"
+  },
+  color: {
+    optional: true,
+    type: _COLOR
+  },
+  fontSize: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  stroke: {
+    optional: false,
+    type: "boolean"
+  },
+  strokeSize: {
+    optional: true,
+    type: "number",
+    min: 0
+  },
+  strokeColor: {
+    optional: true,
+    type: _COLOR
+  },
+  fontFamily: {
+    optional: false,
+    type: "string"
+  }
+};
+
+export const CircularTextValidation = {
+  width: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  height: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  color: {
+    optional: true,
+    type: _COLOR
+  },
+  text: {
+    optional: false,
+    type: "string"
+  },
+  fontSize: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  viewBox: {
+    optional: false,
+    type: "number"
+  },
+  path: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  fill: {
+    optional: false,
+    type: _COLOR
+  },
+  fontFamily: {
+    optional: false,
+    type: "string"
+  },
+  timing: {
+    optional: false,
+    type: "number",
+    min: 1
+  },
+  repeats: {
+    optional: false,
+    type: "number",
+    min: 1
+  },
+};
+
+
+
+
+
+
+

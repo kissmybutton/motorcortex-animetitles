@@ -44,24 +44,22 @@ class FlushStroke extends MotorCortex.API.Clip {
   }
 
   buildTree() {
-    const left = new Anime.Anime(
-      {
-        animatedAttrs: {
-
-          color: `rgba(${this.attrs.strokeColor[0]},${this.attrs.strokeColor[1]},${this.attrs.strokeColor[2]},1)`
-        },
-        initialValues: {
-          color: `rgba(${this.attrs.strokeColor[0]},${this.attrs.strokeColor[1]},${this.attrs.strokeColor[2]},0)`
-
-        }
-      },
-      {
-        duration: 150,
-        selector: ".letter",
-        delay: "@stagger(0, 300)"
-      }
-    );
-    this.addIncident(left, 0)
+    // const left = new Anime.Anime(
+    //   {
+    //     animatedAttrs: {
+    //       color: `rgba(${this.attrs.strokeColor[0]},${this.attrs.strokeColor[1]},${this.attrs.strokeColor[2]},1)`
+    //     },
+    //     initialValues: {
+    //       color: `rgba(${this.attrs.strokeColor[0]},${this.attrs.strokeColor[1]},${this.attrs.strokeColor[2]},0)`
+    //     }
+    //   },
+    //   {
+    //     duration: 150,
+    //     selector: ".letter",
+    //     delay: "@stagger(0, 300)"
+    //   }
+    // );
+    // this.addIncident(left, 0)
   }
 }
 

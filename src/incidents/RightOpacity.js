@@ -85,6 +85,7 @@ class RightOpacity extends MotorCortex.API.Clip {
       {
         duration: 300,
         selector: ".letter",
+        easing: "easeOutExpo",
         delay: "@stagger(0, 300)"
       }
     );
@@ -103,6 +104,7 @@ class RightOpacity extends MotorCortex.API.Clip {
       {
         duration: 300,
         selector: ".letter-wrapper",
+        easing: "easeOutExpo"
         // delay: "@stagger(0, 300)"
       }
     );
@@ -111,18 +113,30 @@ class RightOpacity extends MotorCortex.API.Clip {
     const leftLetter = new Anime.Anime(
       {
         animatedAttrs: {
-
           left: `${this.attrs.width / 2}px`
         },
-
       },
       {
         duration: 300,
         selector: ".letter",
-        delay: "@stagger(0, 300,0.5,linear,omni,true)"
+        easing: "easeInQuad",
+        delay: "@stagger(0, 300,0.5,easeInQuad,omni)"
       }
     );
-    this.addIncident(leftLetter, 900)
+    this.addIncident(leftLetter, this.attrs.exitTime)
+    const opacityback = new Anime.Anime(
+      {
+        animatedAttrs: {
+          opacity: 0
+        },
+      },
+      {
+        duration: 300,
+        selector: ".letter",
+      
+      }
+    );
+    this.addIncident(opacityback, this.calculatedDuration -300)
   }
 }
 

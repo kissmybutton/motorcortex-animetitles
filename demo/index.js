@@ -1,6 +1,8 @@
 const MotorCortex = require("@kissmybutton/motorcortex/");
 const Player = require("@kissmybutton/motorcortex-player/");
 const TitlesPlugin = require("../dist/motorcortex-animetitles.umd");
+const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
+const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 const Titles = MotorCortex.loadPlugin(TitlesPlugin);
 const css = `
 body { 
@@ -49,6 +51,8 @@ const html = `<div class="container">
     <div class="cel"><div class="logobox full"></div> </div>
     <div class="cel"><div class="textwriting full"></div> </div>
     <div class="cel"><div class="rightopacity full"></div> </div>
+    <div class="cel"><div class="letterscale full"></div> </div>
+    <div class="cel"><div class="circulartext full"></div> </div>
   </div>
   
 </div>`;
@@ -74,6 +78,14 @@ const clip = new MotorCortex.Clip({
     {
       type: `google-font`,
       src: `https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap`
+    },
+    {
+      type: `google-font`,
+      src: `https://fonts.googleapis.com/css2?family=Righteous&display=swap`
+    },
+    {
+      type:"google-font",
+      src:"https://fonts.googleapis.com/css2?family=Commissioner:wght@100;200;300;400;500;600;700;800;900&display=swap"
     }
 
   ],
@@ -218,28 +230,44 @@ const RightOpacity = new Titles.RightOpacity(
   {
     width: 900,
     height: 250,
-    text: "soukabli",
-    color: "transparent",
+    text: "soukabl",
+    color: "#0000",
     fontSize: 100,
     stroke: true,
     strokeSize: 2,
     strokeColor: "rebeccapurple",
-    fontFamily: "Rubik Mono One"
+    fontFamily: "Rubik Mono One",
+    exitTime: 900
   },
   {
     selector: ".rightopacity"
   }
 );
+
+const rightopacityOpacity = new Anime.Anime(
+  {
+    animatedAttrs: {
+      opacity: 1
+    },
+    initialValues: {
+      opacity: 0
+    }
+  },
+  {
+    duration: 1,
+    selector: ".rightopacity"
+  }
+);
+
 
 const FlushStroke = new Titles.FlushStroke(
   {
     width: 900,
     height: 900,
     text: ["souka", "bliat", "ti", "ven", "katalavenis"],
-
     fontSize: 100,
     strokeSize: 2,
-    strokeColor: [102, 51, 153],
+    strokeColor: [102, 51, 143],
     fontFamily: "Rubik Mono One"
   },
   {
@@ -247,16 +275,102 @@ const FlushStroke = new Titles.FlushStroke(
   }
 );
 
-// clip.addIncident(rolinText, 0);
-// clip.addIncident(rotatedlinereveal, 7000);
-// clip.addIncident(svgborder, 11025);
-// clip.addIncident(rotatedline, 16025);
-// clip.addIncident(circle, 22025);
-// clip.addIncident(logobox, 26225);
-// clip.addIncident(svgdrow, 29725);
-// clip.addIncident(RightOpacity, 0)
-clip.addIncident(FlushStroke, 0)
+const LetterScale = new Titles.LetterScale(
+  {
+    width: 900,
+    height: 900,
+    color: "rebeccapurple",
+    text: "DOKIMASTIKO",
+    fontSize: 100,
+    stroke: false,
+    strokeSize: 2,
+    strokeColor: "rebeccapurple",
+    fontFamily: "Righteous"
+  },
+  {
+    selector: ".letterscale"
+  }
+)
+
+const LetterScaleOpacity = new Anime.Anime(
+  {
+    animatedAttrs: {
+      opacity: 1
+    },
+    initialValues: {
+      opacity: 0
+    }
+  },
+  {
+    duration: 1,
+    selector: ".letterscale"
+  }
+);
+const LetterScaleOpacityBack = new Anime.Anime(
+  {
+    animatedAttrs: {
+      opacity: 0
+    }
+  },
+  {
+    duration: 1,
+    selector: ".letterscale"
+  }
+);
+
+const CircularText = new Titles.CircularText(
+  {
+    width: 500,
+    height: 500,
+    color: "#ff0000",
+    text: "CircularText - AnimeTitles - MotorCortex - Plugin -",
+    fontSize: 10,
+    viewBox:100,
+    path:38,
+    fill: "#ff000000",
+    timing:10,
+    repeats:2,
+    fontFamily: "Righteous"
+  },
+  {
+    selector: ".circulartext"
+  }
+);
+
+const CircularTextOpacity = new Anime.Anime(
+  {
+    animatedAttrs: {
+      opacity: 1
+    },
+    initialValues: {
+      opacity: 0
+    }
+  },
+  {
+    duration: 1,
+    selector: ".circulartext"
+  }
+);
+
+
+
+
+clip.addIncident(rolinText, 0);
+clip.addIncident(rotatedlinereveal, 7000);
+clip.addIncident(svgborder, 11025);
+clip.addIncident(rotatedline, 16025);
+clip.addIncident(circle, 22025);
+clip.addIncident(logobox, 26225);
+clip.addIncident(svgdrow, 29725);
+clip.addIncident(rightopacityOpacity,35845)
+clip.addIncident(RightOpacity, 35846)
+clip.addIncident(LetterScaleOpacity,clip.calculatedDuration)
+// //clip.addIncident(FlushStroke, 0)
+clip.addIncident(LetterScale,clip.calculatedDuration)
+clip.addIncident(LetterScaleOpacityBack,clip.calculatedDuration)
+clip.addIncident(CircularTextOpacity,clip.calculatedDuration)
+clip.addIncident(CircularText,clip.calculatedDuration)
 
 window.clip = clip;
 
-new Player({ clip, pointerEvents: true });
+new Player({ clip, pointerEvents: true ,timeFormat: "ms"});

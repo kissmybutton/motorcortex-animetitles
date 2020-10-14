@@ -7,6 +7,8 @@ const Circle = require("./incidents/Circle");
 const LogoBox = require("./incidents/LogoBox");
 const RightOpacity = require("./incidents/RightOpacity")
 const FlushStroke = require("./incidents/FlushStroke")
+const LetterScale = require("./incidents/LetterScale")
+const CircularText = require("./incidents/CircularText")
 const attrs = require("./validation");
 module.exports = {
   npm_name: "@kissmybutton/motorcortex-animetitles",
@@ -48,15 +50,26 @@ module.exports = {
     {
       exportable: RightOpacity,
       name: "RightOpacity",
-      // attributesValidationRules: attrs.Circle
+      attributesValidationRules: attrs.RigthOpacityValidation
     },
     {
       exportable: FlushStroke,
       name: "FlushStroke",
       // attributesValidationRules: attrs.Circle
     },
+    {
+      exportable: LetterScale,
+      name: "LetterScale",
+      attributesValidationRules: attrs.LetterScaleValidation
+    },
+    {
+      exportable: CircularText,
+      name: "CircularText",
+      // attributesValidationRules: attrs.CircularTextValidation
+    },
   ]
 };
+
 
 
 

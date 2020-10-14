@@ -3082,6 +3082,7 @@ var RightOpacity = /*#__PURE__*/function (_MotorCortex$API$Clip) {
       }, {
         duration: 300,
         selector: ".letter",
+        easing: "easeOutExpo",
         delay: "@stagger(0, 300)"
       });
       this.addIncident(opacity, 10);
@@ -3094,7 +3095,8 @@ var RightOpacity = /*#__PURE__*/function (_MotorCortex$API$Clip) {
         }
       }, {
         duration: 300,
-        selector: ".letter-wrapper" // delay: "@stagger(0, 300)"
+        selector: ".letter-wrapper",
+        easing: "easeOutExpo" // delay: "@stagger(0, 300)"
 
       });
       this.addIncident(left2, 0);
@@ -3105,9 +3107,19 @@ var RightOpacity = /*#__PURE__*/function (_MotorCortex$API$Clip) {
       }, {
         duration: 300,
         selector: ".letter",
-        delay: "@stagger(0, 300,0.5,linear,omni,true)"
+        easing: "easeInQuad",
+        delay: "@stagger(0, 300,0.5,easeInQuad,omni)"
       });
-      this.addIncident(leftLetter, 900);
+      this.addIncident(leftLetter, this.attrs.exitTime);
+      var opacityback = new Anime$8.Anime({
+        animatedAttrs: {
+          opacity: 0
+        }
+      }, {
+        duration: 300,
+        selector: ".letter"
+      });
+      this.addIncident(opacityback, this.calculatedDuration - 300);
     }
   }, {
     key: "html",
@@ -3147,20 +3159,22 @@ var FlushStroke = /*#__PURE__*/function (_MotorCortex$API$Clip) {
 
   _createClass(FlushStroke, [{
     key: "buildTree",
-    value: function buildTree() {
-      var left = new Anime$9.Anime({
-        animatedAttrs: {
-          color: "rgba(".concat(this.attrs.strokeColor[0], ",").concat(this.attrs.strokeColor[1], ",").concat(this.attrs.strokeColor[2], ",1)")
-        },
-        initialValues: {
-          color: "rgba(".concat(this.attrs.strokeColor[0], ",").concat(this.attrs.strokeColor[1], ",").concat(this.attrs.strokeColor[2], ",0)")
-        }
-      }, {
-        duration: 150,
-        selector: ".letter",
-        delay: "@stagger(0, 300)"
-      });
-      this.addIncident(left, 0);
+    value: function buildTree() {// const left = new Anime.Anime(
+      //   {
+      //     animatedAttrs: {
+      //       color: `rgba(${this.attrs.strokeColor[0]},${this.attrs.strokeColor[1]},${this.attrs.strokeColor[2]},1)`
+      //     },
+      //     initialValues: {
+      //       color: `rgba(${this.attrs.strokeColor[0]},${this.attrs.strokeColor[1]},${this.attrs.strokeColor[2]},0)`
+      //     }
+      //   },
+      //   {
+      //     duration: 150,
+      //     selector: ".letter",
+      //     delay: "@stagger(0, 300)"
+      //   }
+      // );
+      // this.addIncident(left, 0)
     }
   }, {
     key: "html",
@@ -3181,6 +3195,107 @@ var FlushStroke = /*#__PURE__*/function (_MotorCortex$API$Clip) {
 }(MC.API.Clip);
 
 var FlushStroke_1 = FlushStroke;
+
+var Anime$a = MC.loadPlugin(index);
+
+var LetterScale = /*#__PURE__*/function (_MotorCortex$API$Clip) {
+  _inherits(LetterScale, _MotorCortex$API$Clip);
+
+  var _super = _createSuper(LetterScale);
+
+  function LetterScale() {
+    _classCallCheck(this, LetterScale);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(LetterScale, [{
+    key: "buildTree",
+    value: function buildTree() {
+      var left = new Anime$a.Anime({
+        animatedAttrs: {
+          fontSize: "".concat(this.attrs.fontSize, "px")
+        },
+        initialValues: {
+          fontSize: "".concat(this.attrs.fontSize * 0.7, "px")
+        }
+      }, {
+        duration: 300,
+        selector: ".letter",
+        easing: "easeOutExpo",
+        delay: "@stagger(0, 300,0.5,linear,omni)"
+      });
+      this.addIncident(left, 0);
+    }
+  }, {
+    key: "html",
+    get: function get() {
+      this.list;
+      this.list = this.attrs.text.split("");
+      var divList = this.list.map(function (e, i) {
+        return "<div class=\"letter letter-item-".concat(i, "\">").concat(e, "</div>");
+      }).join("");
+      return "\n    <div class=\"wrapper\">\n    <div class=\"letter-wrapper\">\n      ".concat(divList, "\n    </div>\n    </div>\n        ");
+    }
+  }, {
+    key: "css",
+    get: function get() {
+      var stroke = this.attrs.stroke === true ? "-webkit-text-stroke:".concat(this.attrs.strokeSize, "px ").concat(this.attrs.strokeColor, ";") : "";
+      return "\n    .wrapper{\n      width:".concat(this.attrs.width, "px;\n      height: ").concat(this.attrs.height, "px;\n      white-space: nowrap;\n      overflow: hidden;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n    }\n\n    .letter{\n      font-size:").concat(this.attrs.fontSize, "px;\n      color:").concat(this.attrs.color, ";\n      text-transform:uppercase;\n      font-family: ").concat(this.attrs.fontFamily, ";\n      position: relative;\n      ").concat(stroke, "\n    }\n    .letter-wrapper{\n      width:").concat(this.attrs.width, "px;\n      height: ").concat(this.attrs.height, "px;\n      position: relative;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n    }\n\n  ");
+    }
+  }]);
+
+  return LetterScale;
+}(MC.API.Clip);
+
+var LetterScale_1 = LetterScale;
+
+var Anime$b = MC.loadPlugin(index);
+
+var CircularText = /*#__PURE__*/function (_MotorCortex$API$Clip) {
+  _inherits(CircularText, _MotorCortex$API$Clip);
+
+  var _super = _createSuper(CircularText);
+
+  function CircularText() {
+    _classCallCheck(this, CircularText);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(CircularText, [{
+    key: "buildTree",
+    value: function buildTree() {
+      var left = new Anime$b.Anime({
+        animatedAttrs: {
+          transform: {
+            rotate: "360deg"
+          }
+        }
+      }, {
+        duration: 1000 * this.attrs.timing,
+        selector: ".circle svg",
+        repeats: this.attrs.repeats
+      });
+      this.addIncident(left, 0);
+    }
+  }, {
+    key: "html",
+    get: function get() {
+      console.log(this.attrs.viewBox / 2 - this.attrs.path);
+      return "\n    <div class=\"wrapper\">\n      <div class=\"circle\">\n        <svg viewBox=\"0 0 ".concat(this.attrs.viewBox, " ").concat(this.attrs.viewBox, "\">\n          <path d=\"M ").concat(this.attrs.viewBox / 2 - this.attrs.path, ",").concat(this.attrs.viewBox / 2, " a ").concat(this.attrs.path, ", ").concat(this.attrs.path, " 0 1, 1 0,1 z\" id=\"circular\" />\n        <text class=\"text\"><textPath xlink:href=\"#circular\">\n        ").concat(this.attrs.text, "\n          </textPath>\n        </text>\n        </svg>\n      </div>\n    </div>\n        ");
+    }
+  }, {
+    key: "css",
+    get: function get() {
+      return "\n    .wrapper{\n      width:".concat(this.attrs.width, "px;\n      height: ").concat(this.attrs.height, "px;\n      white-space: nowrap;\n      overflow: hidden;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      \n    }\n\n    .circle path { fill: ").concat(this.attrs.fill, ";1px solid black; }\n\n    .circle {\n      width:").concat(this.attrs.width, "px;\n      height: ").concat(this.attrs.height, "px;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      \n    }\n    .circle svg {\n      display: block;\n      overflow: visible;\n     \n     }\n    .text{\n      font-size: ").concat(this.attrs.fontSize, "px;\n    }\n    .circle text {\n      fill: ").concat(this.attrs.color, ";\n      font-family: ").concat(this.attrs.fontFamily, ";\n    }\n\n  ");
+    }
+  }]);
+
+  return CircularText;
+}(MC.API.Clip);
+
+var CircularText_1 = CircularText;
 
 var _COLOR$1 = "color";
 var RotatedLIne = {
@@ -3495,6 +3610,147 @@ var LogoBox$1 = {
     type: "boolean"
   }
 };
+var RigthOpacityValidation = {
+  width: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  height: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  text: {
+    optional: false,
+    type: "string"
+  },
+  color: {
+    optional: true,
+    type: _COLOR$1
+  },
+  fontSize: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  stroke: {
+    optional: false,
+    type: "boolean"
+  },
+  strokeSize: {
+    optional: true,
+    type: "number",
+    min: 0
+  },
+  strokeColor: {
+    optional: true,
+    type: _COLOR$1
+  },
+  fontFamily: {
+    optional: false,
+    type: "string"
+  },
+  exitTime: {
+    optional: false,
+    type: "number",
+    min: 0
+  }
+};
+var LetterScaleValidation = {
+  width: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  height: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  text: {
+    optional: false,
+    type: "string"
+  },
+  color: {
+    optional: true,
+    type: _COLOR$1
+  },
+  fontSize: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  stroke: {
+    optional: false,
+    type: "boolean"
+  },
+  strokeSize: {
+    optional: true,
+    type: "number",
+    min: 0
+  },
+  strokeColor: {
+    optional: true,
+    type: _COLOR$1
+  },
+  fontFamily: {
+    optional: false,
+    type: "string"
+  }
+};
+var CircularTextValidation = {
+  width: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  height: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  color: {
+    optional: true,
+    type: _COLOR$1
+  },
+  text: {
+    optional: false,
+    type: "string"
+  },
+  fontSize: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  viewBox: {
+    optional: false,
+    type: "number"
+  },
+  path: {
+    optional: false,
+    type: "number",
+    min: 0
+  },
+  fill: {
+    optional: false,
+    type: _COLOR$1
+  },
+  fontFamily: {
+    optional: false,
+    type: "string"
+  },
+  timing: {
+    optional: false,
+    type: "number",
+    min: 1
+  },
+  repeats: {
+    optional: false,
+    type: "number",
+    min: 1
+  }
+};
 
 var validation = /*#__PURE__*/Object.freeze({
   __proto__: null,
@@ -3504,7 +3760,10 @@ var validation = /*#__PURE__*/Object.freeze({
   SvgBorder: SvgBorder$1,
   Circle: Circle$1,
   SvgDrow: SvgDrow$1,
-  LogoBox: LogoBox$1
+  LogoBox: LogoBox$1,
+  RigthOpacityValidation: RigthOpacityValidation,
+  LetterScaleValidation: LetterScaleValidation,
+  CircularTextValidation: CircularTextValidation
 });
 
 var src = {
@@ -3538,11 +3797,19 @@ var src = {
     name: "LogoBox"
   }, {
     exportable: RightOpacity_1,
-    name: "RightOpacity" // attributesValidationRules: attrs.Circle
-
+    name: "RightOpacity",
+    attributesValidationRules: validation.RigthOpacityValidation
   }, {
     exportable: FlushStroke_1,
     name: "FlushStroke" // attributesValidationRules: attrs.Circle
+
+  }, {
+    exportable: LetterScale_1,
+    name: "LetterScale",
+    attributesValidationRules: validation.LetterScaleValidation
+  }, {
+    exportable: CircularText_1,
+    name: "CircularText" // attributesValidationRules: attrs.CircularTextValidation
 
   }]
 };
