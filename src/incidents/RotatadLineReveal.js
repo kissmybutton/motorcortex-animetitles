@@ -42,6 +42,7 @@ class RotatadLineReveal extends MotorCortex.API.Clip {
     .wrapper{
       width:${this.attrs.width}px;
       height:100%;
+      font-family: ${this.attrs.fontFamily} !important;
     }
      .redLine {
       border-left: 2px solid ${this.attrs.lineColor};

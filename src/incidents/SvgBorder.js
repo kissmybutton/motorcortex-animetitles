@@ -64,6 +64,7 @@ class SvgBorder extends MotorCortex.API.Clip {
      
       height: 100%;
       color:  ${this.attrs.textColor};
+      font-family: ${this.attrs.fontFamily} !important;
     }
     
     .shape2 {

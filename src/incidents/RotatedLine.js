@@ -63,7 +63,8 @@ class RotatedLine extends MotorCortex.API.Clip {
         overflow: hidden;
         width : 100%;
         width : ${this.attrs.width + size.lineWidth}px;
-        color : ${this.attrs.textColor}
+        color : ${this.attrs.textColor};
+        font-family: ${this.attrs.fontFamily} !important;
         
       }
       .line {

@@ -65,6 +65,7 @@ class RolingText extends MotorCortex.API.Clip {
       width : ${this.attrs.width}px;
       justify-content: center;
       align-items: center;
+      font-family: ${this.attrs.fontFamily} !important;
     }
   
     .line{

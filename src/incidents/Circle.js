@@ -27,6 +27,7 @@ class Circle extends MotorCortex.API.Clip {
       align-items: center;
       width: ${this.attrs.width}px;
       height: ${this.attrs.width}px;
+      font-family: ${this.attrs.fontFamily} !important;
     }
     .circle{
       width: 0px;

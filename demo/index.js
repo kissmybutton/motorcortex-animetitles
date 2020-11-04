@@ -133,7 +133,8 @@ const rolinText = new Titles.RolingText(
     subTitle2: "MotorCortex Team",
     subTitle3: "Presents",
     stopOnLast: false,
-    delayEnd: 1000
+    delayEnd: 1000,
+    fontFamily: 'Commissioner'
   },
   {
     selector: ".rolingtext"
@@ -150,8 +151,9 @@ const rotatedlinereveal = new Titles.RotatadLineReveal(
     title: "Animetitles",
     subtitle: "MC Plugin",
     leftEnd: 100,
-    stopOnLast: false
-    // delayEnd : 3000
+    stopOnLast: false,
+    // delayEnd : 3000,
+    fontFamily: 'Commissioner'
   },
   {
     selector: ".rotatedlinereveal"
@@ -169,7 +171,8 @@ const rotatedline = new Titles.RotatedLine(
     subTitle2: "Elegant",
     subTitle3: "Modern",
     title: "Title",
-    stopOnLast: false
+    stopOnLast: false,
+    fontFamily: 'Commissioner'
     // delayEnd : 3000
   },
   {
@@ -186,7 +189,8 @@ const svgborder = new Titles.SvgBorder(
     subTitle: "Developt by",
     slogan: "-KMB-",
     title: "MotorCortex Team",
-    stopOnLast: false
+    stopOnLast: false,
+    fontFamily: 'Commissioner'
     // delayEnd : 3000
   },
   {
@@ -203,6 +207,7 @@ const circle = new Titles.Circle(
     title: "ANIMATED",
     subTitle: "TITLES",
     stopOnLast: false,
+    fontFamily: 'Commissioner',
     width: 500
   },
   {
@@ -219,7 +224,8 @@ const logobox = new Titles.LogoBox(
     subTitle2: "ANIMATION",
     subTitle3: "BY",
     width: 200,
-    stopOnLast: false
+    stopOnLast: false,
+    fontFamily: 'Commissioner'
   },
   {
     selector: ".logobox"
@@ -228,9 +234,9 @@ const logobox = new Titles.LogoBox(
 
 const RightOpacity = new Titles.RightOpacity(
   {
-    width: 900,
+    width: 1000,
     height: 250,
-    text: "soukabl",
+    text: "RightOpacity",
     color: "#0000",
     fontSize: 100,
     stroke: true,
@@ -280,7 +286,7 @@ const LetterScale = new Titles.LetterScale(
     width: 900,
     height: 900,
     color: "rebeccapurple",
-    text: "DOKIMASTIKO",
+    text: "LetterScale",
     fontSize: 100,
     stroke: false,
     strokeSize: 2,

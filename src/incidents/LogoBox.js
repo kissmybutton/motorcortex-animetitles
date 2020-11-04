@@ -31,7 +31,7 @@ class LogoBox extends MotorCortex.API.Clip {
       display: flex;
       justify-content: center;
       align-items: center;
-     
+      font-family: ${this.attrs.fontFamily} !important;
     }
     .redLineContainer {
       white-space: nowrap;

@@ -31,7 +31,7 @@ class CircularText extends MotorCortex.API.Clip {
       display: flex;
       justify-content: center;
       align-items: center;
-      
+      font-family: ${this.attrs.fontFamily} !important;
     }
 
     .circle path { fill: ${this.attrs.fill};1px solid black; }

@@ -1,6 +1,6 @@
 {
   "name": "@kissmybutton/motorcortex-animetitles",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "Animetitles plugin for MotorCortex",
   "main": "dist/motorcortex-animetitles.cjs.js",
   "module": "dist/motorcortex-animetitles.esm.js",
@@ -75,10 +75,10 @@
     "browserslist": "^4.12.0",
     "caniuse-lite": "^1.0.30001045",
     "svg-url-loader": "^3.0.3",
-    "@kissmybutton/motorcortex-anime": "1.4.13"
+    "@kissmybutton/motorcortex-anime": "1.4.15"
   },
   "peerDependencies": {
-    "@kissmybutton/motorcortex": "3.9.4"
+    "@kissmybutton/motorcortex": "5.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -87,7 +87,7 @@
     "@commitlint/cli": "^7.2.1",
     "@commitlint/config-conventional": "^7.0.1",
     "@kissmybutton/motorcortex-player": "1.5.11",
-    "@kissmybutton/motorcortex": "3.9.4",
+    "@kissmybutton/motorcortex": "5.0.0",
     "@semantic-release/changelog": "^3.0.6",
     "@semantic-release/git": "^7.0.18",
     "@semantic-release/github": "^5.5.8",
