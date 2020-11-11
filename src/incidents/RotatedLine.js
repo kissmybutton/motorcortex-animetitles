@@ -12,7 +12,7 @@ class Size {
 }
 let size;
 
-class RotatedLine extends MotorCortex.API.Clip {
+class RotatedLine extends MotorCortex.HTMLClip {
   get html() {
     return `
           <div class="wrapper">

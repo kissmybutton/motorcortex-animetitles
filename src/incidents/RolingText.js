@@ -13,7 +13,7 @@ class Size {
 
 let size;
 
-class RolingText extends MotorCortex.API.Clip {
+class RolingText extends MotorCortex.HTMLClip {
   get html() {
     return `
       <div class="wrapper">

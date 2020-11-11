@@ -2,7 +2,7 @@ const MotorCortex = require("@kissmybutton/motorcortex");
 const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 
-class LogoBox extends MotorCortex.API.Clip {
+class LogoBox extends MotorCortex.HTMLClip {
   get html() {
     return `
     <div class="wrapper">

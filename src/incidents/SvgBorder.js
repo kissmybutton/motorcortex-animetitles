@@ -24,7 +24,7 @@ class Size {
 }
 let size;
 
-class SvgBorder extends MotorCortex.API.Clip {
+class SvgBorder extends MotorCortex.HTMLClip {
   get html() {
     switch (this.attrs.size) {
       case "S":

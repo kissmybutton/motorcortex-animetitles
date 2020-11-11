@@ -10,7 +10,7 @@ class Size {
 }
 let size;
 
-class RotatadLineReveal extends MotorCortex.API.Clip {
+class RotatadLineReveal extends MotorCortex.HTMLClip {
   get html() {
     switch (this.attrs.size) {
       case "S":

@@ -64,7 +64,7 @@ const containerParams = {
   height: "100%"
 };
 
-const clip = new MotorCortex.Clip({
+const clip = new MotorCortex.HTMLClip({
   css,
   html,
   audioSources: [
@@ -377,6 +377,5 @@ clip.addIncident(LetterScaleOpacityBack,clip.calculatedDuration)
 clip.addIncident(CircularTextOpacity,clip.calculatedDuration)
 clip.addIncident(CircularText,clip.calculatedDuration)
 
-window.clip = clip;
 
 new Player({ clip, pointerEvents: true ,timeFormat: "ms"});

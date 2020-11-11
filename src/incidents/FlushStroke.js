@@ -2,7 +2,7 @@ const MotorCortex = require("@kissmybutton/motorcortex");
 const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 
-class FlushStroke extends MotorCortex.API.Clip {
+class FlushStroke extends MotorCortex.HTMLClip {
 
   get html() {
 

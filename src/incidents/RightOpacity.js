@@ -2,7 +2,7 @@ const MotorCortex = require("@kissmybutton/motorcortex");
 const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 
-class RightOpacity extends MotorCortex.API.Clip {
+class RightOpacity extends MotorCortex.HTMLClip {
 
   get html() {
     this.list

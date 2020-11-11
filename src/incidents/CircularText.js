@@ -2,10 +2,9 @@ const MotorCortex = require("@kissmybutton/motorcortex");
 const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 
-class CircularText extends MotorCortex.API.Clip {
+class CircularText extends MotorCortex.HTMLClip {
 
   get html() {
-  console.log((this.attrs.viewBox/2 - this.attrs.path))
     return `
     <div class="wrapper">
       <div class="circle">

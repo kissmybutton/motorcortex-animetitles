@@ -10,7 +10,7 @@ class Size {
 }
 let size;
 
-class SvgDrow extends MotorCortex.API.Clip {
+class SvgDrow extends MotorCortex.HTMLClip {
   get html() {
     switch (this.attrs.size) {
       case "S":

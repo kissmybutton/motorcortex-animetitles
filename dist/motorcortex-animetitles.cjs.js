@@ -254,7 +254,7 @@ function _createSuper$1(Derived) {
 }
 /*
  * anime.js v3.1.0
- * (c) 2019 Julian Garnier
+ * (c) 2020 Julian Garnier
  * Released under the MIT license
  * animejs.com
  */
@@ -1075,6 +1075,151 @@ function anime(params) {
 
   instance.reset();
   return instance;
+} // getTotalLength() equivalent for circle, rect, polyline, polygon and line shapes
+// adapted from https://gist.github.com/SebLambla/3e0550c496c236709744
+
+
+function getDistance(p1, p2) {
+  return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+}
+
+function getCircleLength(el) {
+  return Math.PI * 2 * getAttribute(el, 'r');
+}
+
+function getRectLength(el) {
+  return getAttribute(el, 'width') * 2 + getAttribute(el, 'height') * 2;
+}
+
+function getLineLength(el) {
+  return getDistance({
+    x: getAttribute(el, 'x1'),
+    y: getAttribute(el, 'y1')
+  }, {
+    x: getAttribute(el, 'x2'),
+    y: getAttribute(el, 'y2')
+  });
+}
+
+function getPolylineLength(el) {
+  var points = el.points;
+  var totalLength = 0;
+  var previousPos;
+
+  for (var i = 0; i < points.numberOfItems; i++) {
+    var currentPos = points.getItem(i);
+
+    if (i > 0) {
+      totalLength += getDistance(previousPos, currentPos);
+    }
+
+    previousPos = currentPos;
+  }
+
+  return totalLength;
+}
+
+function getPolygonLength(el) {
+  var points = el.points;
+  return getPolylineLength(el) + getDistance(points.getItem(points.numberOfItems - 1), points.getItem(0));
+} // Path animation
+
+
+function getTotalLength(el) {
+  if (el.getTotalLength) {
+    return el.getTotalLength();
+  }
+
+  switch (el.tagName.toLowerCase()) {
+    case 'circle':
+      return getCircleLength(el);
+
+    case 'rect':
+      return getRectLength(el);
+
+    case 'line':
+      return getLineLength(el);
+
+    case 'polyline':
+      return getPolylineLength(el);
+
+    case 'polygon':
+      return getPolygonLength(el);
+  }
+} // Motion path
+
+
+function getParentSvgEl(el) {
+  var parentEl = el.parentNode;
+
+  while (is.svg(parentEl)) {
+    if (!is.svg(parentEl.parentNode)) {
+      break;
+    }
+
+    parentEl = parentEl.parentNode;
+  }
+
+  return parentEl;
+}
+
+function getParentSvg(pathEl, svgData) {
+  var svg = svgData || {};
+  var parentSvgEl = svg.el || getParentSvgEl(pathEl);
+  var rect = parentSvgEl.getBoundingClientRect();
+  var viewBoxAttr = getAttribute(parentSvgEl, 'viewBox');
+  var width = rect.width;
+  var height = rect.height;
+  var viewBox = svg.viewBox || (viewBoxAttr ? viewBoxAttr.split(' ') : [0, 0, width, height]);
+  return {
+    el: parentSvgEl,
+    viewBox: viewBox,
+    x: viewBox[0] / 1,
+    y: viewBox[1] / 1,
+    w: width,
+    h: height,
+    vW: viewBox[2],
+    vH: viewBox[3]
+  };
+}
+
+function getPath(path, percent) {
+  var pathEl = is.str(path) ? selectString(path)[0] : path;
+  var p = percent || 100;
+  return function (property) {
+    return {
+      property: property,
+      el: pathEl,
+      svg: getParentSvg(pathEl),
+      totalLength: getTotalLength(pathEl) * (p / 100)
+    };
+  };
+}
+
+function getPathProgress(path, progress, isPathTargetInsideSVG) {
+  function point(offset) {
+    if (offset === void 0) offset = 0;
+    var l = progress + offset >= 1 ? progress + offset : 0;
+    return path.el.getPointAtLength(l);
+  }
+
+  var svg = getParentSvg(path.el, path.svg);
+  var p = point();
+  var p0 = point(-1);
+  var p1 = point(+1);
+  var scaleX = isPathTargetInsideSVG ? 1 : svg.w / svg.vW;
+  var scaleY = isPathTargetInsideSVG ? 1 : svg.h / svg.vH;
+
+  switch (path.property) {
+    case 'x':
+      return (p.x - svg.x) * scaleX;
+
+    case 'y':
+      return (p.y - svg.y) * scaleY;
+
+    case 'angle':
+      return Math.atan2(p1.y - p0.y, p1.x - p0.x) * 180 / Math.PI;
+  }
 }
 
 anime.version = '3.1.0';
@@ -1082,6 +1227,8 @@ anime.get = getOriginalTargetValue;
 anime.set = setTargetsValue;
 anime.convertPx = convertPxToUnit;
 anime.penner = penner;
+anime.path = getPath;
+anime.getPathProgress = getPathProgress;
 var transform = ["translateX", "translateY", "translateZ", "rotate", "rotateX", "rotateY", "rotateZ", "scale", "scaleX", "scaleY", "scaleZ", "skewX", "skewY", "perspective"];
 var compositeAttributes = {
   transform: transform
@@ -1125,8 +1272,8 @@ function getMatrix2D(win, element) {
   return qrDecompone(values);
 }
 
-var Anime = /*#__PURE__*/function (_MC$API$MonoIncident) {
-  _inherits$1(Anime, _MC$API$MonoIncident);
+var Anime = /*#__PURE__*/function (_MC$Effect) {
+  _inherits$1(Anime, _MC$Effect);
 
   var _super = _createSuper$1(Anime);
 
@@ -1140,7 +1287,6 @@ var Anime = /*#__PURE__*/function (_MC$API$MonoIncident) {
     key: "onGetContext",
     value: function onGetContext() {
       var options = {};
-      var initialize = {};
 
       if (Object.prototype.hasOwnProperty.call(compositeAttributes, this.attributeKey)) {
         var compoAttribute = compositeAttributes[this.attributeKey];
@@ -1151,11 +1297,9 @@ var Anime = /*#__PURE__*/function (_MC$API$MonoIncident) {
           }
 
           options[compoAttribute[i]] = [this.getInitialValue()[compoAttribute[i]], this.targetValue[compoAttribute[i]]];
-          initialize[compoAttribute[i]] = [this.getScratchValue(), this.targetValue[compoAttribute[i]]];
         }
       } else {
         options[this.attributeKey] = [this.getInitialValue(), this.targetValue];
-        initialize[this.targetValue] = [this.getScratchValue(), this.targetValue];
       }
 
       this.target = anime(_objectSpread2({
@@ -1198,7 +1342,7 @@ var Anime = /*#__PURE__*/function (_MC$API$MonoIncident) {
   }]);
 
   return Anime;
-}(MC.API.MonoIncident);
+}(MC.Effect);
 
 var nu = ["cm", "mm", "in", "px", "pt", "pc", "em", "ex", "ch", "rem", "vw", "vh", "vmin", "vmax", "%"];
 var ru = ["deg", "rad", "grad", "turn"];
@@ -2089,8 +2233,8 @@ var Size = function Size(fontSizeLeft, fontSizeRigth, lineWidth, lineHeight, gap
 
 var size;
 
-var RotatedLine = /*#__PURE__*/function (_MotorCortex$API$Clip) {
-  _inherits(RotatedLine, _MotorCortex$API$Clip);
+var RotatedLine = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
+  _inherits(RotatedLine, _MotorCortex$HTMLClip);
 
   var _super = _createSuper(RotatedLine);
 
@@ -2235,7 +2379,7 @@ var RotatedLine = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   }]);
 
   return RotatedLine;
-}(MC.API.Clip);
+}(MC.HTMLClip);
 
 var RotatedLine_1 = RotatedLine;
 
@@ -2253,8 +2397,8 @@ var Size$1 = function Size(fontSizeLeft, topMove, lineHeight, gap, topMove2) {
 
 var size$1;
 
-var RolingText = /*#__PURE__*/function (_MotorCortex$API$Clip) {
-  _inherits(RolingText, _MotorCortex$API$Clip);
+var RolingText = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
+  _inherits(RolingText, _MotorCortex$HTMLClip);
 
   var _super = _createSuper(RolingText);
 
@@ -2371,7 +2515,7 @@ var RolingText = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   }]);
 
   return RolingText;
-}(MC.API.Clip);
+}(MC.HTMLClip);
 
 var RolingText_1 = RolingText;
 
@@ -2392,8 +2536,8 @@ var Size$2 = function Size(borderWidth, borderHeight, fontSizeTitle, fontSizeSub
 
 var size$2;
 
-var SvgBorder = /*#__PURE__*/function (_MotorCortex$API$Clip) {
-  _inherits(SvgBorder, _MotorCortex$API$Clip);
+var SvgBorder = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
+  _inherits(SvgBorder, _MotorCortex$HTMLClip);
 
   var _super = _createSuper(SvgBorder);
 
@@ -2526,7 +2670,7 @@ var SvgBorder = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   }]);
 
   return SvgBorder;
-}(MC.API.Clip);
+}(MC.HTMLClip);
 
 var SvgBorder_1 = SvgBorder;
 
@@ -2542,8 +2686,8 @@ var Size$3 = function Size(fontSize, fontSizeSub, lineSize) {
 
 var size$3;
 
-var RotatadLineReveal = /*#__PURE__*/function (_MotorCortex$API$Clip) {
-  _inherits(RotatadLineReveal, _MotorCortex$API$Clip);
+var RotatadLineReveal = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
+  _inherits(RotatadLineReveal, _MotorCortex$HTMLClip);
 
   var _super = _createSuper(RotatadLineReveal);
 
@@ -2674,7 +2818,7 @@ var RotatadLineReveal = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   }]);
 
   return RotatadLineReveal;
-}(MC.API.Clip);
+}(MC.HTMLClip);
 
 var RotatadLineReveal_1 = RotatadLineReveal;
 
@@ -2690,8 +2834,8 @@ var Size$4 = function Size(svgWidth, svgHeight, lineSize) {
 
 var size$4;
 
-var SvgDrow = /*#__PURE__*/function (_MotorCortex$API$Clip) {
-  _inherits(SvgDrow, _MotorCortex$API$Clip);
+var SvgDrow = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
+  _inherits(SvgDrow, _MotorCortex$HTMLClip);
 
   var _super = _createSuper(SvgDrow);
 
@@ -2772,14 +2916,14 @@ var SvgDrow = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   }]);
 
   return SvgDrow;
-}(MC.API.Clip);
+}(MC.HTMLClip);
 
 var SvgDrow_1 = SvgDrow;
 
 var Anime$6 = MC.loadPlugin(index);
 
-var Circle = /*#__PURE__*/function (_MotorCortex$API$Clip) {
-  _inherits(Circle, _MotorCortex$API$Clip);
+var Circle = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
+  _inherits(Circle, _MotorCortex$HTMLClip);
 
   var _super = _createSuper(Circle);
 
@@ -2800,7 +2944,7 @@ var Circle = /*#__PURE__*/function (_MotorCortex$API$Clip) {
         html3 += html;
       }
 
-      var word = new MC.Clip({
+      var word = new MC.HTMLClip({
         css: this.css,
         html: " <div class=\"wrapper\" >".concat(html3, " </div>"),
         selector: ".word"
@@ -2922,14 +3066,14 @@ var Circle = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   }]);
 
   return Circle;
-}(MC.API.Clip);
+}(MC.HTMLClip);
 
 var Circle_1 = Circle;
 
 var Anime$7 = MC.loadPlugin(index);
 
-var LogoBox = /*#__PURE__*/function (_MotorCortex$API$Clip) {
-  _inherits(LogoBox, _MotorCortex$API$Clip);
+var LogoBox = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
+  _inherits(LogoBox, _MotorCortex$HTMLClip);
 
   var _super = _createSuper(LogoBox);
 
@@ -3037,14 +3181,14 @@ var LogoBox = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   }]);
 
   return LogoBox;
-}(MC.API.Clip);
+}(MC.HTMLClip);
 
 var LogoBox_1 = LogoBox;
 
 var Anime$8 = MC.loadPlugin(index);
 
-var RightOpacity = /*#__PURE__*/function (_MotorCortex$API$Clip) {
-  _inherits(RightOpacity, _MotorCortex$API$Clip);
+var RightOpacity = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
+  _inherits(RightOpacity, _MotorCortex$HTMLClip);
 
   var _super = _createSuper(RightOpacity);
 
@@ -3140,14 +3284,14 @@ var RightOpacity = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   }]);
 
   return RightOpacity;
-}(MC.API.Clip);
+}(MC.HTMLClip);
 
 var RightOpacity_1 = RightOpacity;
 
 var Anime$9 = MC.loadPlugin(index);
 
-var FlushStroke = /*#__PURE__*/function (_MotorCortex$API$Clip) {
-  _inherits(FlushStroke, _MotorCortex$API$Clip);
+var FlushStroke = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
+  _inherits(FlushStroke, _MotorCortex$HTMLClip);
 
   var _super = _createSuper(FlushStroke);
 
@@ -3192,14 +3336,14 @@ var FlushStroke = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   }]);
 
   return FlushStroke;
-}(MC.API.Clip);
+}(MC.HTMLClip);
 
 var FlushStroke_1 = FlushStroke;
 
 var Anime$a = MC.loadPlugin(index);
 
-var LetterScale = /*#__PURE__*/function (_MotorCortex$API$Clip) {
-  _inherits(LetterScale, _MotorCortex$API$Clip);
+var LetterScale = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
+  _inherits(LetterScale, _MotorCortex$HTMLClip);
 
   var _super = _createSuper(LetterScale);
 
@@ -3246,14 +3390,14 @@ var LetterScale = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   }]);
 
   return LetterScale;
-}(MC.API.Clip);
+}(MC.HTMLClip);
 
 var LetterScale_1 = LetterScale;
 
 var Anime$b = MC.loadPlugin(index);
 
-var CircularText = /*#__PURE__*/function (_MotorCortex$API$Clip) {
-  _inherits(CircularText, _MotorCortex$API$Clip);
+var CircularText = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
+  _inherits(CircularText, _MotorCortex$HTMLClip);
 
   var _super = _createSuper(CircularText);
 
@@ -3282,7 +3426,6 @@ var CircularText = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   }, {
     key: "html",
     get: function get() {
-      console.log(this.attrs.viewBox / 2 - this.attrs.path);
       return "\n    <div class=\"wrapper\">\n      <div class=\"circle\">\n        <svg viewBox=\"0 0 ".concat(this.attrs.viewBox, " ").concat(this.attrs.viewBox, "\">\n          <path d=\"M ").concat(this.attrs.viewBox / 2 - this.attrs.path, ",").concat(this.attrs.viewBox / 2, " a ").concat(this.attrs.path, ", ").concat(this.attrs.path, " 0 1, 1 0,1 z\" id=\"circular\" />\n        <text class=\"text\"><textPath xlink:href=\"#circular\">\n        ").concat(this.attrs.text, "\n          </textPath>\n        </text>\n        </svg>\n      </div>\n    </div>\n        ");
     }
   }, {
@@ -3293,7 +3436,7 @@ var CircularText = /*#__PURE__*/function (_MotorCortex$API$Clip) {
   }]);
 
   return CircularText;
-}(MC.API.Clip);
+}(MC.HTMLClip);
 
 var CircularText_1 = CircularText;
 
