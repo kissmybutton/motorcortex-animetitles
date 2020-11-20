@@ -1,4 +1,4 @@
-import MC from '@kissmybutton/motorcortex';
+import MotorCortex from '@kissmybutton/motorcortex';
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -247,7 +247,14 @@ function _createSuper$1(Derived) {
   };
 }
 /*
- * anime.js v3.1.0
+ * anime.js v3.1.4
+ * (c) 2020 Julian Garnier
+ * Released under the MIT license
+ * animejs.com
+ */
+
+/*
+ * anime.js v3.1.2
  * (c) 2020 Julian Garnier
  * Released under the MIT license
  * animejs.com
@@ -907,7 +914,10 @@ function createNewInstance(params) {
 
 
 function anime(params) {
-  if (params === void 0) params = {};
+  if (params === void 0) {
+    params = {};
+  }
+
   var children,
       childrenLength = 0;
   var resolve = null;
@@ -1177,23 +1187,25 @@ function getParentSvg(pathEl, svgData) {
   };
 }
 
-function getPath(path, percent) {
-  var pathEl = is.str(path) ? selectString(path)[0] : path;
-  var p = percent || 100;
-  return function (property) {
-    return {
-      property: property,
-      el: pathEl,
-      svg: getParentSvg(pathEl),
-      totalLength: getTotalLength(pathEl) * (p / 100)
-    };
+function getPath(path) {
+  return {
+    el: path,
+    svg: getParentSvg(path),
+    totalLength: getTotalLength(path),
+    deltaCorrections: {
+      x: 4,
+      y: 5
+    }
   };
 }
 
 function getPathProgress(path, progress, isPathTargetInsideSVG) {
   function point(offset) {
     if (offset === void 0) offset = 0;
-    var l = progress + offset >= 1 ? progress + offset : 0;
+
+    var _progress = progress * path.totalLength;
+
+    var l = _progress + offset >= 1 ? _progress + offset : 0;
     return path.el.getPointAtLength(l);
   }
 
@@ -1203,17 +1215,11 @@ function getPathProgress(path, progress, isPathTargetInsideSVG) {
   var p1 = point(+1);
   var scaleX = isPathTargetInsideSVG ? 1 : svg.w / svg.vW;
   var scaleY = isPathTargetInsideSVG ? 1 : svg.h / svg.vH;
-
-  switch (path.property) {
-    case 'x':
-      return (p.x - svg.x) * scaleX;
-
-    case 'y':
-      return (p.y - svg.y) * scaleY;
-
-    case 'angle':
-      return Math.atan2(p1.y - p0.y, p1.x - p0.x) * 180 / Math.PI;
-  }
+  return {
+    x: (p.x - svg.x) * scaleX,
+    y: (p.y - svg.y) * scaleY,
+    angle: Math.atan2(p1.y - p0.y, p1.x - p0.x) * 180 / Math.PI
+  };
 }
 
 anime.version = '3.1.0';
@@ -1223,6 +1229,7 @@ anime.convertPx = convertPxToUnit;
 anime.penner = penner;
 anime.path = getPath;
 anime.getPathProgress = getPathProgress;
+var anime_es = anime;
 var transform = ["translateX", "translateY", "translateZ", "rotate", "rotateX", "rotateY", "rotateZ", "scale", "scaleX", "scaleY", "scaleZ", "skewX", "skewY", "perspective"];
 var compositeAttributes = {
   transform: transform
@@ -1266,8 +1273,8 @@ function getMatrix2D(win, element) {
   return qrDecompone(values);
 }
 
-var Anime = /*#__PURE__*/function (_MC$Effect) {
-  _inherits$1(Anime, _MC$Effect);
+var Anime = /*#__PURE__*/function (_MotorCortex$Effect) {
+  _inherits$1(Anime, _MotorCortex$Effect);
 
   var _super = _createSuper$1(Anime);
 
@@ -1296,7 +1303,7 @@ var Anime = /*#__PURE__*/function (_MC$Effect) {
         options[this.attributeKey] = [this.getInitialValue(), this.targetValue];
       }
 
-      this.target = anime(_objectSpread2({
+      this.target = anime_es(_objectSpread2({
         autoplay: false,
         duration: this.props.duration,
         easing: "linear",
@@ -1315,14 +1322,14 @@ var Anime = /*#__PURE__*/function (_MC$Effect) {
           if (Object.prototype.hasOwnProperty.call(currentTransform, transform[i])) {
             obj[transform[i]] = currentTransform[transform[i]];
           } else {
-            obj[transform[i]] = anime.get(this.element, transform[i]);
+            obj[transform[i]] = anime_es.get(this.element, transform[i]);
           }
         }
 
         return obj;
       }
 
-      return anime.get(this.element, this.attributeKey);
+      return anime_es.get(this.element, this.attributeKey);
     }
     /**
      * @param {number} f
@@ -1336,7 +1343,50 @@ var Anime = /*#__PURE__*/function (_MC$Effect) {
   }]);
 
   return Anime;
-}(MC.Effect);
+}(MotorCortex.Effect);
+/**
+ * Takes as attributes:
+ * {
+ *  animatedAttrs: {
+ *      positionOn: {
+ *          pathElement: "selector of the path element"
+ *      }
+ *  }
+ * }
+ }
+**/
+
+
+var MotionPath = /*#__PURE__*/function (_MotorCortex$Effect) {
+  _inherits$1(MotionPath, _MotorCortex$Effect);
+
+  var _super = _createSuper$1(MotionPath);
+
+  function MotionPath() {
+    _classCallCheck$1(this, MotionPath);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass$1(MotionPath, [{
+    key: "onGetContext",
+    value: function onGetContext() {
+      var svgEl = this.context.getElements(this.targetValue.pathElement)[0];
+      this.path = anime_es.path(svgEl);
+      this.isPathTargetInsideSVG = this.element instanceof SVGElement;
+    }
+  }, {
+    key: "onProgress",
+    value: function onProgress(f) {
+      var position = anime_es.getPathProgress(this.path, f, this.isPathTargetInsideSVG); // console.log(position);
+
+      var toSet = "\n            translateX(".concat(position.x, "px) \n            translateY(").concat(position.y, "px) \n            rotate(").concat(position.angle, "deg)\n        ");
+      this.element.style.transform = toSet;
+    }
+  }]);
+
+  return MotionPath;
+}(MotorCortex.Effect);
 
 var nu = ["cm", "mm", "in", "px", "pt", "pc", "em", "ex", "ch", "rem", "vw", "vh", "vmin", "vmax", "%"];
 var ru = ["deg", "rad", "grad", "turn"];
@@ -2209,11 +2259,29 @@ var index = {
     attributesValidationRules: {
       animatedAttrs: animatedAttrs
     }
+  }, {
+    exportable: MotionPath,
+    name: "MotionPath",
+    attributesValidationRules: {
+      animatedAttrs: {
+        type: "object",
+        props: {
+          positionOn: {
+            type: "object",
+            props: {
+              pathElement: {
+                type: "string"
+              }
+            }
+          }
+        }
+      }
+    }
   }],
   compositeAttributes: compositeAttributes
 };
 
-var Anime$1 = MC.loadPlugin(index);
+var Anime$1 = MotorCortex.loadPlugin(index);
 
 var Size = function Size(fontSizeLeft, fontSizeRigth, lineWidth, lineHeight, gap) {
   _classCallCheck(this, Size);
@@ -2373,11 +2441,11 @@ var RotatedLine = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   }]);
 
   return RotatedLine;
-}(MC.HTMLClip);
+}(MotorCortex.HTMLClip);
 
 var RotatedLine_1 = RotatedLine;
 
-var Anime$2 = MC.loadPlugin(index);
+var Anime$2 = MotorCortex.loadPlugin(index);
 
 var Size$1 = function Size(fontSizeLeft, topMove, lineHeight, gap, topMove2) {
   _classCallCheck(this, Size);
@@ -2509,11 +2577,11 @@ var RolingText = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   }]);
 
   return RolingText;
-}(MC.HTMLClip);
+}(MotorCortex.HTMLClip);
 
 var RolingText_1 = RolingText;
 
-var Anime$3 = MC.loadPlugin(index);
+var Anime$3 = MotorCortex.loadPlugin(index);
 
 var Size$2 = function Size(borderWidth, borderHeight, fontSizeTitle, fontSizeSub, subGap, titleTop, subTop, titleContainerTop) {
   _classCallCheck(this, Size);
@@ -2627,7 +2695,7 @@ var SvgBorder = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
       this.addIncident(titleAnimete, this.attrs.duration * 0.12);
       this.addIncident(subAnimate, this.attrs.duration * 0.24);
       this.addIncident(sloganAnimate, this.attrs.duration * 0.24);
-      var grupMc = new MC.Group();
+      var grupMc = new MotorCortex.Group();
       grupMc.addIncident(borderAnimeteLeft, this.attrs.duration * 0.16);
       grupMc.addIncident(titleAnimeteLeft, this.attrs.duration * 0.08);
       grupMc.addIncident(subAnimateLeft, this.attrs.duration * 0.08);
@@ -2664,11 +2732,11 @@ var SvgBorder = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   }]);
 
   return SvgBorder;
-}(MC.HTMLClip);
+}(MotorCortex.HTMLClip);
 
 var SvgBorder_1 = SvgBorder;
 
-var Anime$4 = MC.loadPlugin(index);
+var Anime$4 = MotorCortex.loadPlugin(index);
 
 var Size$3 = function Size(fontSize, fontSizeSub, lineSize) {
   _classCallCheck(this, Size);
@@ -2694,7 +2762,7 @@ var RotatadLineReveal = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   _createClass(RotatadLineReveal, [{
     key: "buildTree",
     value: function buildTree() {
-      var grupMc = new MC.Group();
+      var grupMc = new MotorCortex.Group();
       var lineRotateEnd = new Anime$4.Anime({
         animatedAttrs: {
           transform: {
@@ -2812,11 +2880,11 @@ var RotatadLineReveal = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   }]);
 
   return RotatadLineReveal;
-}(MC.HTMLClip);
+}(MotorCortex.HTMLClip);
 
 var RotatadLineReveal_1 = RotatadLineReveal;
 
-var Anime$5 = MC.loadPlugin(index);
+var Anime$5 = MotorCortex.loadPlugin(index);
 
 var Size$4 = function Size(svgWidth, svgHeight, lineSize) {
   _classCallCheck(this, Size);
@@ -2910,11 +2978,11 @@ var SvgDrow = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   }]);
 
   return SvgDrow;
-}(MC.HTMLClip);
+}(MotorCortex.HTMLClip);
 
 var SvgDrow_1 = SvgDrow;
 
-var Anime$6 = MC.loadPlugin(index);
+var Anime$6 = MotorCortex.loadPlugin(index);
 
 var Circle = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   _inherits(Circle, _MotorCortex$HTMLClip);
@@ -2938,7 +3006,7 @@ var Circle = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
         html3 += html;
       }
 
-      var word = new MC.HTMLClip({
+      var word = new MotorCortex.HTMLClip({
         css: this.css,
         html: " <div class=\"wrapper\" >".concat(html3, " </div>"),
         selector: ".word"
@@ -3060,11 +3128,11 @@ var Circle = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   }]);
 
   return Circle;
-}(MC.HTMLClip);
+}(MotorCortex.HTMLClip);
 
 var Circle_1 = Circle;
 
-var Anime$7 = MC.loadPlugin(index);
+var Anime$7 = MotorCortex.loadPlugin(index);
 
 var LogoBox = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   _inherits(LogoBox, _MotorCortex$HTMLClip);
@@ -3175,11 +3243,11 @@ var LogoBox = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   }]);
 
   return LogoBox;
-}(MC.HTMLClip);
+}(MotorCortex.HTMLClip);
 
 var LogoBox_1 = LogoBox;
 
-var Anime$8 = MC.loadPlugin(index);
+var Anime$8 = MotorCortex.loadPlugin(index);
 
 var RightOpacity = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   _inherits(RightOpacity, _MotorCortex$HTMLClip);
@@ -3278,11 +3346,11 @@ var RightOpacity = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   }]);
 
   return RightOpacity;
-}(MC.HTMLClip);
+}(MotorCortex.HTMLClip);
 
 var RightOpacity_1 = RightOpacity;
 
-var Anime$9 = MC.loadPlugin(index);
+var Anime$9 = MotorCortex.loadPlugin(index);
 
 var FlushStroke = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   _inherits(FlushStroke, _MotorCortex$HTMLClip);
@@ -3330,11 +3398,11 @@ var FlushStroke = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   }]);
 
   return FlushStroke;
-}(MC.HTMLClip);
+}(MotorCortex.HTMLClip);
 
 var FlushStroke_1 = FlushStroke;
 
-var Anime$a = MC.loadPlugin(index);
+var Anime$a = MotorCortex.loadPlugin(index);
 
 var LetterScale = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   _inherits(LetterScale, _MotorCortex$HTMLClip);
@@ -3384,11 +3452,11 @@ var LetterScale = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   }]);
 
   return LetterScale;
-}(MC.HTMLClip);
+}(MotorCortex.HTMLClip);
 
 var LetterScale_1 = LetterScale;
 
-var Anime$b = MC.loadPlugin(index);
+var Anime$b = MotorCortex.loadPlugin(index);
 
 var CircularText = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   _inherits(CircularText, _MotorCortex$HTMLClip);
@@ -3430,7 +3498,7 @@ var CircularText = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   }]);
 
   return CircularText;
-}(MC.HTMLClip);
+}(MotorCortex.HTMLClip);
 
 var CircularText_1 = CircularText;
 
