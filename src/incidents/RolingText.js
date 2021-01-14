@@ -79,8 +79,6 @@ class RolingText extends MotorCortex.HTMLClip {
     }
     
     .textClip{
-      position: relative; 
-      
       position: relative;
       display: flex;
       flex-direction: column;
@@ -97,6 +95,8 @@ class RolingText extends MotorCortex.HTMLClip {
       left : -${this.attrs.width / 2}px;
       width : 100%;
       height: ${size.fontSizeLeft}px;
+      align-items: center;
+      display: flex;
     }
   `;
   }

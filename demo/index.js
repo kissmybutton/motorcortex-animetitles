@@ -46,7 +46,7 @@ const html = `<div class="container">
     <div class="cel"><div class="svgborder full"></div> </div>
     <div class="cel"> <div class="rotatedline full"></div> </div>
     <div class="cel"> <div class="rotatedlinereveal full"></div> </div>
-    <div class="cel"><div class="svgdrow full"></div> </div>
+    <div class="cel"><div class="svgdraw full"></div> </div>
     <div class="cel"><div class="circle full"></div> </div>
     <div class="cel"><div class="logobox full"></div> </div>
     <div class="cel"><div class="textwriting full"></div> </div>
@@ -105,7 +105,7 @@ const songPlayback = new MotorCortex.AudioPlayback(
 
 // clip.addIncident(songPlayback, 1);
 
-const svgdrow = new Titles.SvgDrow(
+const svgdraw = new Titles.SvgDraw(
   {
     duration: 3600,
     width: 900,
@@ -118,7 +118,7 @@ const svgdrow = new Titles.SvgDrow(
     // delayEnd : 3000
   },
   {
-    selector: ".svgdrow"
+    selector: ".svgdraw"
   }
 );
 
@@ -126,7 +126,7 @@ const rolinText = new Titles.RolingText(
   {
     duration: 6000,
     width: 350,
-    size: "S",
+    size: "XL",
     lineColor: "#ff0000",
     textColor: "#000",
     subTitle1: "The",
@@ -225,7 +225,8 @@ const logobox = new Titles.LogoBox(
     subTitle3: "BY",
     width: 200,
     stopOnLast: false,
-    fontFamily: 'Commissioner'
+    fontFamily: 'Commissioner',
+    logoUrl: "https://kissmybutton.github.io/motorcortex-animetitles/demo/logo.png"
   },
   {
     selector: ".logobox"
@@ -243,7 +244,7 @@ const RightOpacity = new Titles.RightOpacity(
     strokeSize: 2,
     strokeColor: "rebeccapurple",
     fontFamily: "Rubik Mono One",
-    exitTime: 900
+    exitTime: 1000
   },
   {
     selector: ".rightopacity"
@@ -291,7 +292,8 @@ const LetterScale = new Titles.LetterScale(
     stroke: false,
     strokeSize: 2,
     strokeColor: "rebeccapurple",
-    fontFamily: "Righteous"
+    fontFamily: "Righteous",
+    timing: 600
   },
   {
     selector: ".letterscale"
@@ -334,7 +336,7 @@ const CircularText = new Titles.CircularText(
     viewBox:100,
     path:38,
     fill: "#ff000000",
-    timing:10,
+    timing:3,
     repeats:2,
     fontFamily: "Righteous"
   },
@@ -367,7 +369,7 @@ clip.addIncident(svgborder, 11025);
 clip.addIncident(rotatedline, 16025);
 clip.addIncident(circle, 22025);
 clip.addIncident(logobox, 26225);
-clip.addIncident(svgdrow, 29725);
+clip.addIncident(svgdraw, 29725);
 clip.addIncident(rightopacityOpacity,35845)
 clip.addIncident(RightOpacity, 35846)
 clip.addIncident(LetterScaleOpacity,clip.calculatedDuration)

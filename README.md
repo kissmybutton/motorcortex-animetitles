@@ -259,7 +259,8 @@ const nameOfIncident = new Titles.LogoBox(
     subTitle2: "test2",
     subTitle3: "test3",
     width: 200,
-    stopOnLast: false
+    stopOnLast: false,
+    logoUrl: "https://kissmybutton.github.io/motorcortex-animetitles/demo/logo.png"
   },
   {
     selector: ".logobox"
@@ -279,6 +280,7 @@ const nameOfIncident = new Titles.LogoBox(
 | subTitle1 , subTitle2 , subTitle3 |  right texts |  normal text  |
 | width      | total width of text container | all positive numbers |
 | stopOnLast |  if you like to stop animation on last text line |  true,false |
+| logoUrl      | url of an image | string |
 
 
 # Add incident to your clip

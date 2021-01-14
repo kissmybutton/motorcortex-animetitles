@@ -232,7 +232,7 @@ export const Circle = {
   }
 };
 
-export const SvgDrow = {
+export const SvgDraw = {
   duration: {
     optional: false,
     type: "number",
@@ -315,6 +315,10 @@ export const LogoBox = {
   stopOnLast: {
     optional: false,
     type: "boolean"
+  },
+  logoUrl:{
+    optional: false,
+    type: "string"
   }
 };
 
@@ -408,6 +412,10 @@ export const LetterScaleValidation = {
   fontFamily: {
     optional: false,
     type: "string"
+  },
+  timing:{
+    optional: false,
+    type: "number",
   }
 };
 

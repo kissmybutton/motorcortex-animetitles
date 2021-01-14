@@ -2,10 +2,11 @@ const MotorCortex = require("@kissmybutton/motorcortex");
 const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 class Size {
-  constructor(fontSize, fontSizeSub, lineSize) {
+  constructor(fontSize, fontSizeSub, lineSize,lineHeight) {
     this.fontSize = fontSize;
     this.fontSizeSub = fontSizeSub;
     this.lineSize = lineSize;
+    this.lineHeight = lineHeight
   }
 }
 let size;
@@ -14,15 +15,15 @@ class RotatadLineReveal extends MotorCortex.HTMLClip {
   get html() {
     switch (this.attrs.size) {
       case "S":
-        size = new Size("1.5rem", "1rem", "3.5rem");
+        size = new Size("1.5rem", "1rem", "3.5rem","45px");
 
         break;
       case "M":
-        size = new Size("2.5rem", "2rem", "5rem");
+        size = new Size("2.5rem", "2rem", "5rem","80px");
 
         break;
       case "L":
-        size = new Size("3.5rem", "2rem", "7rem");
+        size = new Size("3.5rem", "2rem", "7rem","90px");
         break;
       default:
     }

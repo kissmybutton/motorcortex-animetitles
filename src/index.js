@@ -2,7 +2,7 @@ const RotatedLIne = require("./incidents/RotatedLine");
 const RolingText = require("./incidents/RolingText");
 const SvgBorder = require("./incidents/SvgBorder");
 const RotatadLineReveal = require("./incidents/RotatadLineReveal");
-const SvgDrow = require("./incidents/SvgDrow");
+const SvgDraw = require("./incidents/SvgDraw");
 const Circle = require("./incidents/Circle");
 const LogoBox = require("./incidents/LogoBox");
 const RightOpacity = require("./incidents/RightOpacity")
@@ -34,9 +34,9 @@ module.exports = {
       attributesValidationRules: attrs.RotatadLineReveal
     },
     {
-      exportable: SvgDrow,
-      name: "SvgDrow",
-      attributesValidationRules: attrs.SvgDrow
+      exportable: SvgDraw,
+      name: "SvgDraw",
+      attributesValidationRules: attrs.SvgDraw
     },
     {
       exportable: Circle,

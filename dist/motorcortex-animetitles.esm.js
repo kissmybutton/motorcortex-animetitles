@@ -2572,7 +2572,7 @@ var RolingText = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
           break;
       }
 
-      return "\n    body{\n     font-size: 62.5%;\n    }\n    .wrapper{\n      white-space: nowrap;\n      overflow: hidden;\n      display: flex;\n      height: ".concat(size$1.lineHeight, ";\n      width : ").concat(this.attrs.width, "px;\n      justify-content: center;\n      align-items: center;\n      font-family: ").concat(this.attrs.fontFamily, " !important;\n    }\n  \n    .line{\n      position: relative; \n      height: 0;\n      width: 3px;\n      justify-content: center;\n      background: ").concat(this.attrs.lineColor, " ;\n      margin-right: ").concat(size$1.gap, "rem;\n    \n    }\n    \n    .textClip{\n      position: relative; \n      \n      position: relative;\n      display: flex;\n      flex-direction: column;\n      font-size: ").concat(size$1.fontSizeLeft, "px;\n      white-space: nowrap;\n      overflow: hidden;\n      height: ").concat(size$1.fontSizeLeft, "px;\n      \n    }\n  \n    .textClip span{\n      color : ").concat(this.attrs.textColor, ";\n      position: relative;\n      left : -").concat(this.attrs.width / 2, "px;\n      width : 100%;\n      height: ").concat(size$1.fontSizeLeft, "px;\n    }\n  ");
+      return "\n    body{\n     font-size: 62.5%;\n    }\n    .wrapper{\n      white-space: nowrap;\n      overflow: hidden;\n      display: flex;\n      height: ".concat(size$1.lineHeight, ";\n      width : ").concat(this.attrs.width, "px;\n      justify-content: center;\n      align-items: center;\n      font-family: ").concat(this.attrs.fontFamily, " !important;\n    }\n  \n    .line{\n      position: relative; \n      height: 0;\n      width: 3px;\n      justify-content: center;\n      background: ").concat(this.attrs.lineColor, " ;\n      margin-right: ").concat(size$1.gap, "rem;\n    \n    }\n    \n    .textClip{\n      position: relative;\n      display: flex;\n      flex-direction: column;\n      font-size: ").concat(size$1.fontSizeLeft, "px;\n      white-space: nowrap;\n      overflow: hidden;\n      height: ").concat(size$1.fontSizeLeft, "px;\n      \n    }\n  \n    .textClip span{\n      color : ").concat(this.attrs.textColor, ";\n      position: relative;\n      left : -").concat(this.attrs.width / 2, "px;\n      width : 100%;\n      height: ").concat(size$1.fontSizeLeft, "px;\n      align-items: center;\n      display: flex;\n    }\n  ");
     }
   }]);
 
@@ -2718,7 +2718,7 @@ var SvgBorder = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
           break;
 
         case "L":
-          size$2 = new Size$2(1000, 110, "3.5rem", "2.5rem", 200, 55, 45, 80);
+          size$2 = new Size$2(1000, 110, "3.5rem", "2.5rem", 220, 55, 45, 80);
           break;
       }
 
@@ -2727,7 +2727,7 @@ var SvgBorder = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   }, {
     key: "css",
     get: function get() {
-      return "\n    body{\n     font-size: 62.5%;\n    }\n    .svg-wrapper {\n      position: relative;\n      top :10px;\n     \n      height: 100%;\n      color:  ".concat(this.attrs.textColor, ";\n      font-family: ").concat(this.attrs.fontFamily, " !important;\n    }\n    \n    .shape2 {\n      stroke-dasharray: 6000;\n      stroke-width: 5px;\n      fill: transparent;\n      stroke: ").concat(this.attrs.lineColor, ";\n      border-bottom: 5px solid black;\n      stroke-dashoffset: -6000;\n    }\n    \n    \n    .text {\n      font-size: ").concat(size$2.fontSizeTitle, ";\n      \n      letter-spacing: 8px;\n      position: relative;\n      top: ").concat(size$2.titleTop, "px;\n\n    }\n    \n    .sub--container {\n      position: absolute;\n      white-space: nowrap;\n      overflow: hidden;\n      left: 20px;\n      top: -7%;\n    }\n    .sloganContainer {\n      position: relative;\n      top: -30px;\n      left: 45%;\n      white-space: nowrap;\n      overflow: hidden;\n      width: 150px;\n    }\n    .titleContainer{\n      position: relative;\n      top: -").concat(size$2.titleContainerTop, "px;\n      white-space: nowrap;\n      overflow: hidden;\n      width: ").concat(size$2.borderWidth, "px;\n      height: 50px;\n      display: flex;\n      justify-content: center;\n    }\n    \n    \n    .sub{\n      position: relative;\n      top: ").concat(size$2.subTop, "px;\n      font-size : ").concat(size$2.fontSizeSub, ";\n    }\n    \n    .slogan{\n      position: relative;\n      top: -").concat(size$2.subTop, "px;\n      font-size : ").concat(size$2.fontSizeSub, ";\n    }\n    \n      \n  ");
+      return "\n    body{\n     font-size: 62.5%;\n    }\n    .svg-wrapper {\n      position: relative;\n      top :10px;\n     \n      height: 100%;\n      color:  ".concat(this.attrs.textColor, ";\n      font-family: ").concat(this.attrs.fontFamily, " !important;\n    }\n    \n    .shape2 {\n      stroke-dasharray: 6000;\n      stroke-width: 5px;\n      fill: transparent;\n      stroke: ").concat(this.attrs.lineColor, ";\n      border-bottom: 5px solid black;\n      stroke-dashoffset: -6000;\n    }\n    \n    \n    .text {\n      font-size: ").concat(size$2.fontSizeTitle, ";\n      \n      letter-spacing: 8px;\n      position: relative;\n      top: ").concat(size$2.titleTop, "px;\n\n    }\n    \n    .sub--container {\n      position: absolute;\n      white-space: nowrap;\n      overflow: hidden;\n      left: 20px;\n      top: -7%;\n    }\n    .sloganContainer {\n      position: relative;\n      top: -30px;\n      left: 45%;\n      white-space: nowrap;\n      overflow: hidden;\n      width: 150px;\n    }\n    .titleContainer{\n      position: relative;\n      top: -").concat(size$2.titleContainerTop, "px;\n      white-space: nowrap;\n      overflow: hidden;\n      width: ").concat(size$2.borderWidth, "px;\n      height: 50px;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n    }\n    \n    \n    .sub{\n      position: relative;\n      top: ").concat(size$2.subTop, "px;\n      font-size : ").concat(size$2.fontSizeSub, ";\n    }\n    \n    .slogan{\n      position: relative;\n      top: -").concat(size$2.subTop, "px;\n      font-size : ").concat(size$2.fontSizeSub, ";\n    }\n    \n      \n  ");
     }
   }]);
 
@@ -2738,12 +2738,13 @@ var SvgBorder_1 = SvgBorder;
 
 var Anime$4 = MotorCortex.loadPlugin(index);
 
-var Size$3 = function Size(fontSize, fontSizeSub, lineSize) {
+var Size$3 = function Size(fontSize, fontSizeSub, lineSize, lineHeight) {
   _classCallCheck(this, Size);
 
   this.fontSize = fontSize;
   this.fontSizeSub = fontSizeSub;
   this.lineSize = lineSize;
+  this.lineHeight = lineHeight;
 };
 
 var size$3;
@@ -2858,15 +2859,15 @@ var RotatadLineReveal = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
     get: function get() {
       switch (this.attrs.size) {
         case "S":
-          size$3 = new Size$3("1.5rem", "1rem", "3.5rem");
+          size$3 = new Size$3("1.5rem", "1rem", "3.5rem", "45px");
           break;
 
         case "M":
-          size$3 = new Size$3("2.5rem", "2rem", "5rem");
+          size$3 = new Size$3("2.5rem", "2rem", "5rem", "80px");
           break;
 
         case "L":
-          size$3 = new Size$3("3.5rem", "2rem", "7rem");
+          size$3 = new Size$3("3.5rem", "2rem", "7rem", "90px");
           break;
       }
 
@@ -2896,18 +2897,18 @@ var Size$4 = function Size(svgWidth, svgHeight, lineSize) {
 
 var size$4;
 
-var SvgDrow = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
-  _inherits(SvgDrow, _MotorCortex$HTMLClip);
+var SvgDraw = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
+  _inherits(SvgDraw, _MotorCortex$HTMLClip);
 
-  var _super = _createSuper(SvgDrow);
+  var _super = _createSuper(SvgDraw);
 
-  function SvgDrow() {
-    _classCallCheck(this, SvgDrow);
+  function SvgDraw() {
+    _classCallCheck(this, SvgDraw);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(SvgDrow, [{
+  _createClass(SvgDraw, [{
     key: "buildTree",
     value: function buildTree() {
       var textDrow = new Anime$5.Anime({
@@ -2977,10 +2978,10 @@ var SvgDrow = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
     }
   }]);
 
-  return SvgDrow;
+  return SvgDraw;
 }(MotorCortex.HTMLClip);
 
-var SvgDrow_1 = SvgDrow;
+var SvgDraw_1 = SvgDraw;
 
 var Anime$6 = MotorCortex.loadPlugin(index);
 
@@ -3233,7 +3234,7 @@ var LogoBox = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
   }, {
     key: "html",
     get: function get() {
-      return "\n    <div class=\"wrapper\">\n    <div class=\"onemore\">\n    <div class=\"redLineContainer\">\n      <div class=\"yellow\">\n        <div class=\"logo\"><img src=\"./logo.png\" alt=\"Italian Trulli\"></div>\n      </div>\n      <div class=\"redLine\">\n        <div class=\"text text1\">".concat(this.attrs.subTitle1, "</div>\n        <div class=\"text text2\">").concat(this.attrs.subTitle2, "</div>\n        <div class=\"text text3\">").concat(this.attrs.subTitle3, "</div>\n      </div>\n     \n    </div>\n    </div>\n    </div>\n        ");
+      return "\n    <div class=\"wrapper\">\n    <div class=\"onemore\">\n    <div class=\"redLineContainer\">\n      <div class=\"yellow\">\n        <div class=\"logo\"><img src=\"".concat(this.attrs.logoUrl, "\" alt=\"Italian Trulli\"></div>\n      </div>\n      <div class=\"redLine\">\n        <div class=\"text text1\">").concat(this.attrs.subTitle1, "</div>\n        <div class=\"text text2\">").concat(this.attrs.subTitle2, "</div>\n        <div class=\"text text3\">").concat(this.attrs.subTitle3, "</div>\n      </div>\n     \n    </div>\n    </div>\n    </div>\n        ");
     }
   }, {
     key: "css",
@@ -3426,10 +3427,10 @@ var LetterScale = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
           fontSize: "".concat(this.attrs.fontSize * 0.7, "px")
         }
       }, {
-        duration: 300,
+        duration: this.attrs.timing,
         selector: ".letter",
         easing: "easeOutExpo",
-        delay: "@stagger(0, 300,0.5,linear,omni)"
+        delay: "@stagger(0, ".concat(this.attrs.timing, ",0.5,linear,omni)")
       });
       this.addIncident(left, 0);
     }
@@ -3730,7 +3731,7 @@ var Circle$1 = {
     min: 0
   }
 };
-var SvgDrow$1 = {
+var SvgDraw$1 = {
   duration: {
     optional: false,
     type: "number",
@@ -3813,6 +3814,10 @@ var LogoBox$1 = {
   stopOnLast: {
     optional: false,
     type: "boolean"
+  },
+  logoUrl: {
+    optional: false,
+    type: "string"
   }
 };
 var RigthOpacityValidation = {
@@ -3902,6 +3907,10 @@ var LetterScaleValidation = {
   fontFamily: {
     optional: false,
     type: "string"
+  },
+  timing: {
+    optional: false,
+    type: "number"
   }
 };
 var CircularTextValidation = {
@@ -3964,7 +3973,7 @@ var validation = /*#__PURE__*/Object.freeze({
   RotatadLineReveal: RotatadLineReveal$1,
   SvgBorder: SvgBorder$1,
   Circle: Circle$1,
-  SvgDrow: SvgDrow$1,
+  SvgDraw: SvgDraw$1,
   LogoBox: LogoBox$1,
   RigthOpacityValidation: RigthOpacityValidation,
   LetterScaleValidation: LetterScaleValidation,
@@ -3990,9 +3999,9 @@ var src = {
     name: "RotatadLineReveal",
     attributesValidationRules: validation.RotatadLineReveal
   }, {
-    exportable: SvgDrow_1,
-    name: "SvgDrow",
-    attributesValidationRules: validation.SvgDrow
+    exportable: SvgDraw_1,
+    name: "SvgDraw",
+    attributesValidationRules: validation.SvgDraw
   }, {
     exportable: Circle_1,
     name: "Circle",

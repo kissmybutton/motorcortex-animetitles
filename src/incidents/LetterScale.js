@@ -65,10 +65,10 @@ class LetterScale extends MotorCortex.HTMLClip {
         }
       },
       {
-        duration: 300,
+        duration: this.attrs.timing,
         selector: ".letter",
         easing:"easeOutExpo",
-        delay: "@stagger(0, 300,0.5,linear,omni)"
+        delay: `@stagger(0, ${this.attrs.timing},0.5,linear,omni)`
       }
     );
     this.addIncident(left, 0)

@@ -9,7 +9,7 @@ class LogoBox extends MotorCortex.HTMLClip {
     <div class="onemore">
     <div class="redLineContainer">
       <div class="yellow">
-        <div class="logo"><img src="./logo.png" alt="Italian Trulli"></div>
+        <div class="logo"><img src="${this.attrs.logoUrl}" alt="Italian Trulli"></div>
       </div>
       <div class="redLine">
         <div class="text text1">${this.attrs.subTitle1}</div>
