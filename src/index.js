@@ -5,10 +5,10 @@ const RotatadLineReveal = require("./incidents/RotatadLineReveal");
 const SvgDraw = require("./incidents/SvgDraw");
 const Circle = require("./incidents/Circle");
 const LogoBox = require("./incidents/LogoBox");
-const RightOpacity = require("./incidents/RightOpacity")
-const FlushStroke = require("./incidents/FlushStroke")
-const LetterScale = require("./incidents/LetterScale")
-const CircularText = require("./incidents/CircularText")
+const RightOpacity = require("./incidents/RightOpacity");
+const FlushStroke = require("./incidents/FlushStroke");
+const LetterScale = require("./incidents/LetterScale");
+const CircularText = require("./incidents/CircularText");
 const attrs = require("./validation");
 module.exports = {
   npm_name: "@kissmybutton/motorcortex-animetitles",
@@ -54,7 +54,7 @@ module.exports = {
     },
     {
       exportable: FlushStroke,
-      name: "FlushStroke",
+      name: "FlushStroke"
       // attributesValidationRules: attrs.Circle
     },
     {
@@ -64,12 +64,8 @@ module.exports = {
     },
     {
       exportable: CircularText,
-      name: "CircularText",
+      name: "CircularText"
       // attributesValidationRules: attrs.CircularTextValidation
-    },
+    }
   ]
 };
-
-
-
-

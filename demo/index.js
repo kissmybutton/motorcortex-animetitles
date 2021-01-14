@@ -84,10 +84,10 @@ const clip = new MotorCortex.HTMLClip({
       src: `https://fonts.googleapis.com/css2?family=Righteous&display=swap`
     },
     {
-      type:"google-font",
-      src:"https://fonts.googleapis.com/css2?family=Commissioner:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      type: "google-font",
+      src:
+        "https://fonts.googleapis.com/css2?family=Commissioner:wght@100;200;300;400;500;600;700;800;900&display=swap"
     }
-
   ],
   host,
   containerParams,
@@ -134,7 +134,7 @@ const rolinText = new Titles.RolingText(
     subTitle3: "Presents",
     stopOnLast: false,
     delayEnd: 1000,
-    fontFamily: 'Commissioner'
+    fontFamily: "Commissioner"
   },
   {
     selector: ".rolingtext"
@@ -153,7 +153,7 @@ const rotatedlinereveal = new Titles.RotatadLineReveal(
     leftEnd: 100,
     stopOnLast: false,
     // delayEnd : 3000,
-    fontFamily: 'Commissioner'
+    fontFamily: "Commissioner"
   },
   {
     selector: ".rotatedlinereveal"
@@ -172,7 +172,7 @@ const rotatedline = new Titles.RotatedLine(
     subTitle3: "Modern",
     title: "Title",
     stopOnLast: false,
-    fontFamily: 'Commissioner'
+    fontFamily: "Commissioner"
     // delayEnd : 3000
   },
   {
@@ -190,7 +190,7 @@ const svgborder = new Titles.SvgBorder(
     slogan: "-KMB-",
     title: "MotorCortex Team",
     stopOnLast: false,
-    fontFamily: 'Commissioner'
+    fontFamily: "Commissioner"
     // delayEnd : 3000
   },
   {
@@ -207,7 +207,7 @@ const circle = new Titles.Circle(
     title: "ANIMATED",
     subTitle: "TITLES",
     stopOnLast: false,
-    fontFamily: 'Commissioner',
+    fontFamily: "Commissioner",
     width: 500
   },
   {
@@ -225,8 +225,9 @@ const logobox = new Titles.LogoBox(
     subTitle3: "BY",
     width: 200,
     stopOnLast: false,
-    fontFamily: 'Commissioner',
-    logoUrl: "https://kissmybutton.github.io/motorcortex-animetitles/demo/logo.png"
+    fontFamily: "Commissioner",
+    logoUrl:
+      "https://kissmybutton.github.io/motorcortex-animetitles/demo/logo.png"
   },
   {
     selector: ".logobox"
@@ -266,7 +267,6 @@ const rightopacityOpacity = new Anime.Anime(
   }
 );
 
-
 const FlushStroke = new Titles.FlushStroke(
   {
     width: 900,
@@ -298,7 +298,7 @@ const LetterScale = new Titles.LetterScale(
   {
     selector: ".letterscale"
   }
-)
+);
 
 const LetterScaleOpacity = new Anime.Anime(
   {
@@ -333,11 +333,11 @@ const CircularText = new Titles.CircularText(
     color: "#ff0000",
     text: "CircularText - AnimeTitles - MotorCortex - Plugin -",
     fontSize: 10,
-    viewBox:100,
-    path:38,
+    viewBox: 100,
+    path: 38,
     fill: "#ff000000",
-    timing:3,
-    repeats:2,
+    timing: 3,
+    repeats: 2,
     fontFamily: "Righteous"
   },
   {
@@ -360,9 +360,6 @@ const CircularTextOpacity = new Anime.Anime(
   }
 );
 
-
-
-
 clip.addIncident(rolinText, 0);
 clip.addIncident(rotatedlinereveal, 7000);
 clip.addIncident(svgborder, 11025);
@@ -370,14 +367,13 @@ clip.addIncident(rotatedline, 16025);
 clip.addIncident(circle, 22025);
 clip.addIncident(logobox, 26225);
 clip.addIncident(svgdraw, 29725);
-clip.addIncident(rightopacityOpacity,35845)
-clip.addIncident(RightOpacity, 35846)
-clip.addIncident(LetterScaleOpacity,clip.calculatedDuration)
+clip.addIncident(rightopacityOpacity, 35845);
+clip.addIncident(RightOpacity, 35846);
+clip.addIncident(LetterScaleOpacity, clip.calculatedDuration);
 // //clip.addIncident(FlushStroke, 0)
-clip.addIncident(LetterScale,clip.calculatedDuration)
-clip.addIncident(LetterScaleOpacityBack,clip.calculatedDuration)
-clip.addIncident(CircularTextOpacity,clip.calculatedDuration)
-clip.addIncident(CircularText,clip.calculatedDuration)
+clip.addIncident(LetterScale, clip.calculatedDuration);
+clip.addIncident(LetterScaleOpacityBack, clip.calculatedDuration);
+clip.addIncident(CircularTextOpacity, clip.calculatedDuration);
+clip.addIncident(CircularText, clip.calculatedDuration);
 
-
-new Player({ clip, pointerEvents: true ,timeFormat: "ms"});
+new Player({ clip, pointerEvents: true, timeFormat: "ms" });

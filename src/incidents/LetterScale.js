@@ -3,13 +3,14 @@ const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
 const Anime = MotorCortex.loadPlugin(AnimeDefinition);
 
 class LetterScale extends MotorCortex.HTMLClip {
-
   get html() {
-    this.list
-    this.list = this.attrs.text.split("")
-    const divList = this.list.map((e, i) => {
-      return `<div class="letter letter-item-${i}">${e}</div>`
-    }).join("")
+    this.list;
+    this.list = this.attrs.text.split("");
+    const divList = this.list
+      .map((e, i) => {
+        return `<div class="letter letter-item-${i}">${e}</div>`;
+      })
+      .join("");
     return `
     <div class="wrapper">
     <div class="letter-wrapper">
@@ -20,7 +21,10 @@ class LetterScale extends MotorCortex.HTMLClip {
   }
 
   get css() {
-    let stroke = this.attrs.stroke === true ? `-webkit-text-stroke:${this.attrs.strokeSize}px ${this.attrs.strokeColor};` : ``
+    const stroke =
+      this.attrs.stroke === true
+        ? `-webkit-text-stroke:${this.attrs.strokeSize}px ${this.attrs.strokeColor};`
+        : ``;
     return `
     .wrapper{
       width:${this.attrs.width}px;
@@ -56,23 +60,20 @@ class LetterScale extends MotorCortex.HTMLClip {
     const left = new Anime.Anime(
       {
         animatedAttrs: {
-
-          fontSize:  `${this.attrs.fontSize}px`
+          fontSize: `${this.attrs.fontSize}px`
         },
         initialValues: {
-          fontSize: `${this.attrs.fontSize*0.7}px`
-
+          fontSize: `${this.attrs.fontSize * 0.7}px`
         }
       },
       {
         duration: this.attrs.timing,
         selector: ".letter",
-        easing:"easeOutExpo",
+        easing: "easeOutExpo",
         delay: `@stagger(0, ${this.attrs.timing},0.5,linear,omni)`
       }
     );
-    this.addIncident(left, 0)
-    
+    this.addIncident(left, 0);
   }
 }
 

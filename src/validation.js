@@ -316,12 +316,11 @@ export const LogoBox = {
     optional: false,
     type: "boolean"
   },
-  logoUrl:{
+  logoUrl: {
     optional: false,
     type: "string"
   }
 };
-
 
 export const RigthOpacityValidation = {
   width: {
@@ -368,9 +367,8 @@ export const RigthOpacityValidation = {
     optional: false,
     type: "number",
     min: 0
-  },
+  }
 };
-
 
 export const LetterScaleValidation = {
   width: {
@@ -413,9 +411,9 @@ export const LetterScaleValidation = {
     optional: false,
     type: "string"
   },
-  timing:{
+  timing: {
     optional: false,
-    type: "number",
+    type: "number"
   }
 };
 
@@ -469,12 +467,5 @@ export const CircularTextValidation = {
     optional: false,
     type: "number",
     min: 1
-  },
+  }
 };
-
-
-
-
-
-
-
