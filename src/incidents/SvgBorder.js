@@ -28,13 +28,13 @@ class SvgBorder extends MotorCortex.HTMLClip {
   get html() {
     switch (this.attrs.size) {
       case "S":
-        size = new Size(600, 70, "2rem", "1rem", 100, 50, 17, 50);
+        size = new Size(600, 70, "2rem", "1rem", 130, 50, 17, 50);
         break;
       case "M":
-        size = new Size(700, 90, "3rem", "2rem", 200, 50, 34, 70);
+        size = new Size(700, 90, "3rem", "2rem", 230, 50, 34, 70);
         break;
       case "L":
-        size = new Size(1000, 110, "3.5rem", "2.5rem", 220, 55, 45, 80);
+        size = new Size(1000, 110, "3.5rem", "2.5rem", 250, 55, 45, 80);
         break;
       default:
     }

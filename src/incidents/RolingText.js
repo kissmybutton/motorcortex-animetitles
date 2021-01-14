@@ -28,26 +28,26 @@ class RolingText extends MotorCortex.HTMLClip {
   get css() {
     switch (this.attrs.size) {
       case "S":
-        size = new Size(21, "-21px", "21px", 0.5, "-42px");
+        size = new Size(21, "-21px", "31px", 0.5, "-42px");
 
         break;
       case "M":
-        size = new Size(28, "-28px", "28px", 1, "-56px");
+        size = new Size(28, "-28px", "38px", 1, "-56px");
 
         break;
       case "L":
-        size = new Size(35, "-35px", "35px", 1.5, "-70px");
+        size = new Size(35, "-35px", "45px", 1.5, "-70px");
         break;
       case "XL":
-        size = new Size(42, "-42px", "42px", 2, "-84px");
+        size = new Size(42, "-42px", "52px", 2, "-84px");
 
         break;
       case "XXL":
-        size = new Size(49, "-49px", "49px", 2, "-98px");
+        size = new Size(49, "-49px", "59px", 2, "-98px");
 
         break;
       case "XXXL":
-        size = new Size(70, "-70px", "70px", 2, "-140px", 86);
+        size = new Size(70, "-70px", "80px", 2, "-140px", 86);
 
         break;
 

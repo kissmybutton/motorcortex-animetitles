@@ -15,15 +15,15 @@ class RotatadLineReveal extends MotorCortex.HTMLClip {
   get html() {
     switch (this.attrs.size) {
       case "S":
-        size = new Size("1.5rem", "1rem", "3.5rem", "45px");
+        size = new Size("1.5rem", "1rem", "3.5rem", "55px");
 
         break;
       case "M":
-        size = new Size("2.5rem", "2rem", "5rem", "80px");
+        size = new Size("2.5rem", "2rem", "5rem", "90px");
 
         break;
       case "L":
-        size = new Size("3.5rem", "2rem", "7rem", "90px");
+        size = new Size("3.5rem", "2rem", "7rem", "100px");
         break;
       default:
     }

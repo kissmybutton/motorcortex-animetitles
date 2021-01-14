@@ -32,8 +32,6 @@ body {
     position: absolute;
    }
    .full{
-     width:${document.getElementById("clip").offsetWidth}px;
-     height:${document.getElementById("clip").offsetHeight}px;
      display: flex;
      justify-content: center;
      align-items: center;
@@ -60,8 +58,8 @@ const html = `<div class="container">
 const host = document.getElementById("clip");
 
 const containerParams = {
-  width: "100%",
-  height: "100%"
+  width: "1280px",
+  height: "720px"
 };
 
 const clip = new MotorCortex.HTMLClip({
@@ -125,7 +123,7 @@ const svgdraw = new Titles.SvgDraw(
 const rolinText = new Titles.RolingText(
   {
     duration: 6000,
-    width: 350,
+    width: 450,
     size: "XL",
     lineColor: "#ff0000",
     textColor: "#000",
@@ -377,3 +375,5 @@ clip.addIncident(CircularTextOpacity, clip.calculatedDuration);
 clip.addIncident(CircularText, clip.calculatedDuration);
 
 new Player({ clip, pointerEvents: true, timeFormat: "ms" });
+
+console.log(JSON.stringify(clip.exportDefinition()))
