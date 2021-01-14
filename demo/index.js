@@ -376,4 +376,4 @@ clip.addIncident(CircularText, clip.calculatedDuration);
 
 new Player({ clip, pointerEvents: true, timeFormat: "ms" });
 
-console.log(JSON.stringify(clip.exportDefinition()))
+console.log(JSON.stringify(clip.exportDefinition()));
