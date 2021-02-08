@@ -1,47 +1,50 @@
-const RotatedLIne = require("./incidents/RotatedLine");
-const RolingText = require("./incidents/RolingText");
-const SvgBorder = require("./incidents/SvgBorder");
-const RotatadLineReveal = require("./incidents/RotatadLineReveal");
-const SvgDraw = require("./incidents/SvgDraw");
-const Circle = require("./incidents/Circle");
-const LogoBox = require("./incidents/LogoBox");
-const RightOpacity = require("./incidents/RightOpacity");
-const FlushStroke = require("./incidents/FlushStroke");
-const LetterScale = require("./incidents/LetterScale");
-const CircularText = require("./incidents/CircularText");
-const attrs = require("./validation");
-module.exports = {
-  npm_name: "@kissmybutton/motorcortex-animetitles",
+import RotatedLIne from"./incidents/RotatedLine"
+import RolingText from"./incidents/RolingText"
+import SvgBorder from"./incidents/SvgBorder"
+import RotatadLineReveal from"./incidents/RotatadLineReveal"
+import SvgDraw from"./incidents/SvgDraw"
+import Circle from"./incidents/Circle"
+import LogoBox from"./incidents/LogoBox"
+import RightOpacity from"./incidents/RightOpacity"
+import FlushStroke from"./incidents/FlushStroke"
+import LetterScale from"./incidents/LetterScale"
+import CircularText from"./incidents/CircularText"
+import {RotatedLIneVal,RolingTextVal,SvgBorderVal,RotatadLineRevealVal,SvgDrawVal,CircleVal,RigthOpacityValidationVal,LetterScaleValidationVal} from "./validation"
+const pkg = require("../package.json");
+
+export default {
+  npm_name: pkg.name,
+  version: pkg.version,
   incidents: [
     {
       exportable: RotatedLIne,
       name: "RotatedLine",
-      attributesValidationRules: attrs.RotatedLIne
+      attributesValidationRules: RotatedLIneVal
     },
     {
       exportable: RolingText,
       name: "RolingText",
-      attributesValidationRules: attrs.RolingText
+      attributesValidationRules: RolingTextVal
     },
     {
       exportable: SvgBorder,
       name: "SvgBorder",
-      attributesValidationRules: attrs.SvgBorder
+      attributesValidationRules: SvgBorderVal
     },
     {
       exportable: RotatadLineReveal,
       name: "RotatadLineReveal",
-      attributesValidationRules: attrs.RotatadLineReveal
+      attributesValidationRules: RotatadLineRevealVal
     },
     {
       exportable: SvgDraw,
       name: "SvgDraw",
-      attributesValidationRules: attrs.SvgDraw
+      attributesValidationRules: SvgDrawVal
     },
     {
       exportable: Circle,
       name: "Circle",
-      attributesValidationRules: attrs.Circle
+      attributesValidationRules: CircleVal
     },
     {
       exportable: LogoBox,
@@ -50,22 +53,22 @@ module.exports = {
     {
       exportable: RightOpacity,
       name: "RightOpacity",
-      attributesValidationRules: attrs.RigthOpacityValidation
+      attributesValidationRules: RigthOpacityValidationVal
     },
     {
       exportable: FlushStroke,
       name: "FlushStroke"
-      // attributesValidationRules: attrs.Circle
+      // attributesValidationRules: Circle
     },
     {
       exportable: LetterScale,
       name: "LetterScale",
-      attributesValidationRules: attrs.LetterScaleValidation
+      attributesValidationRules: LetterScaleValidationVal
     },
     {
       exportable: CircularText,
       name: "CircularText"
-      // attributesValidationRules: attrs.CircularTextValidation
+      // attributesValidationRules: CircularTextValidation
     }
   ]
 };

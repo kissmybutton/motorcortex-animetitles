@@ -1,7 +1,5 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var MotorCortex = _interopDefault(require('@kissmybutton/motorcortex'));
@@ -253,8 +251,8 @@ function _createSuper$1(Derived) {
   };
 }
 /*
- * anime.js v3.1.4
- * (c) 2020 Julian Garnier
+ * anime.js v3.1.5
+ * (c) 2021 Julian Garnier
  * Released under the MIT license
  * animejs.com
  */
@@ -1219,8 +1217,10 @@ function getPathProgress(path, progress, isPathTargetInsideSVG) {
   var p = point();
   var p0 = point(-1);
   var p1 = point(+1);
-  var scaleX = isPathTargetInsideSVG ? 1 : svg.w / svg.vW;
-  var scaleY = isPathTargetInsideSVG ? 1 : svg.h / svg.vH;
+  var scaleX = 1; //isPathTargetInsideSVG ? 1 : svg.w / svg.vW;
+
+  var scaleY = 1; //isPathTargetInsideSVG ? 1 : svg.h / svg.vH;
+
   return {
     x: (p.x - svg.x) * scaleX,
     y: (p.y - svg.y) * scaleY,
@@ -1377,6 +1377,8 @@ var MotionPath = /*#__PURE__*/function (_MotorCortex$Effect) {
   _createClass$1(MotionPath, [{
     key: "onGetContext",
     value: function onGetContext() {
+      this.pixelsAccuracy = this.attrs.pixelsAccuracy || 4;
+      this.calculatedPoints = [];
       var svgEl = this.context.getElements(this.targetValue.pathElement)[0];
       this.path = anime_es.path(svgEl);
       this.isPathTargetInsideSVG = this.element instanceof SVGElement;
@@ -1384,9 +1386,18 @@ var MotionPath = /*#__PURE__*/function (_MotorCortex$Effect) {
   }, {
     key: "onProgress",
     value: function onProgress(f) {
-      var position = anime_es.getPathProgress(this.path, f, this.isPathTargetInsideSVG); // console.log(position);
+      var toSet;
+      var distance = Math.round(this.path.totalLength / this.pixelsAccuracy * f) * this.pixelsAccuracy;
 
-      var toSet = "\n            translateX(".concat(position.x, "px) \n            translateY(").concat(position.y, "px) \n            rotate(").concat(position.angle, "deg)\n        ");
+      if (this.calculatedPoints[distance] !== null && this.calculatedPoints[distance] !== undefined) {
+        toSet = this.calculatedPoints[distance];
+      } else {
+        var position = anime_es.getPathProgress(this.path, distance / this.path.totalLength, this.isPathTargetInsideSVG); // console.log(position);
+
+        toSet = "\n            translateX(".concat(position.x, "px)\n            translateY(").concat(position.y, "px)\n            rotate(").concat(position.angle, "deg)\n        ");
+        this.calculatedPoints[distance] = toSet;
+      }
+
       this.element.style.transform = toSet;
     }
   }]);
@@ -2257,8 +2268,12 @@ var animatedAttrs = {
     min: 0
   }
 };
+
+var pkg = require('../package.json');
+
 var index = {
-  npm_name: "@kissmybutton/motorcortex-anime",
+  npm_name: pkg.name,
+  version: pkg.version,
   incidents: [{
     exportable: Anime,
     name: "Anime",
@@ -3510,7 +3525,7 @@ var CircularText = /*#__PURE__*/function (_MotorCortex$HTMLClip) {
 var CircularText_1 = CircularText;
 
 var _COLOR$1 = "color";
-var RotatedLIne = {
+var RotatedLIneVal = {
   duration: {
     optional: false,
     type: "number",
@@ -3559,7 +3574,7 @@ var RotatedLIne = {
     min: 0
   }
 };
-var RolingText$1 = {
+var RolingTextVal = {
   duration: {
     optional: false,
     type: "number",
@@ -3604,7 +3619,7 @@ var RolingText$1 = {
     min: 0
   }
 };
-var RotatadLineReveal$1 = {
+var RotatadLineRevealVal = {
   duration: {
     optional: false,
     type: "number",
@@ -3650,7 +3665,7 @@ var RotatadLineReveal$1 = {
     min: 0
   }
 };
-var SvgBorder$1 = {
+var SvgBorderVal = {
   duration: {
     optional: false,
     type: "number",
@@ -3695,7 +3710,7 @@ var SvgBorder$1 = {
     min: 0
   }
 };
-var Circle$1 = {
+var CircleVal = {
   duration: {
     optional: false,
     type: "number",
@@ -3737,7 +3752,7 @@ var Circle$1 = {
     min: 0
   }
 };
-var SvgDraw$1 = {
+var SvgDrawVal = {
   duration: {
     optional: false,
     type: "number",
@@ -3786,47 +3801,7 @@ var SvgDraw$1 = {
     min: 0
   }
 };
-var LogoBox$1 = {
-  size: {
-    optional: true,
-    type: "number",
-    min: 0
-  },
-  bgColor: {
-    optional: true,
-    type: _COLOR$1
-  },
-  textColor: {
-    optional: true,
-    type: _COLOR$1
-  },
-  subTitle1: {
-    optional: false,
-    type: "string"
-  },
-  subTitle2: {
-    optional: false,
-    type: "string"
-  },
-  subTitle3: {
-    optional: false,
-    type: "string"
-  },
-  width: {
-    optional: true,
-    type: "number",
-    min: 0
-  },
-  stopOnLast: {
-    optional: false,
-    type: "boolean"
-  },
-  logoUrl: {
-    optional: false,
-    type: "string"
-  }
-};
-var RigthOpacityValidation = {
+var RigthOpacityValidationVal = {
   width: {
     optional: false,
     type: "number",
@@ -3873,7 +3848,7 @@ var RigthOpacityValidation = {
     min: 0
   }
 };
-var LetterScaleValidation = {
+var LetterScaleValidationVal = {
   width: {
     optional: false,
     type: "number",
@@ -3919,123 +3894,56 @@ var LetterScaleValidation = {
     type: "number"
   }
 };
-var CircularTextValidation = {
-  width: {
-    optional: false,
-    type: "number",
-    min: 0
-  },
-  height: {
-    optional: false,
-    type: "number",
-    min: 0
-  },
-  color: {
-    optional: true,
-    type: _COLOR$1
-  },
-  text: {
-    optional: false,
-    type: "string"
-  },
-  fontSize: {
-    optional: false,
-    type: "number",
-    min: 0
-  },
-  viewBox: {
-    optional: false,
-    type: "number"
-  },
-  path: {
-    optional: false,
-    type: "number",
-    min: 0
-  },
-  fill: {
-    optional: false,
-    type: _COLOR$1
-  },
-  fontFamily: {
-    optional: false,
-    type: "string"
-  },
-  timing: {
-    optional: false,
-    type: "number",
-    min: 1
-  },
-  repeats: {
-    optional: false,
-    type: "number",
-    min: 1
-  }
-};
 
-var validation = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  RotatedLIne: RotatedLIne,
-  RolingText: RolingText$1,
-  RotatadLineReveal: RotatadLineReveal$1,
-  SvgBorder: SvgBorder$1,
-  Circle: Circle$1,
-  SvgDraw: SvgDraw$1,
-  LogoBox: LogoBox$1,
-  RigthOpacityValidation: RigthOpacityValidation,
-  LetterScaleValidation: LetterScaleValidation,
-  CircularTextValidation: CircularTextValidation
-});
+var pkg$1 = require("../package.json");
 
-var src = {
-  npm_name: "@kissmybutton/motorcortex-animetitles",
+var index$1 = {
+  npm_name: pkg$1.name,
+  version: pkg$1.version,
   incidents: [{
     exportable: RotatedLine_1,
     name: "RotatedLine",
-    attributesValidationRules: validation.RotatedLIne
+    attributesValidationRules: RotatedLIneVal
   }, {
     exportable: RolingText_1,
     name: "RolingText",
-    attributesValidationRules: validation.RolingText
+    attributesValidationRules: RolingTextVal
   }, {
     exportable: SvgBorder_1,
     name: "SvgBorder",
-    attributesValidationRules: validation.SvgBorder
+    attributesValidationRules: SvgBorderVal
   }, {
     exportable: RotatadLineReveal_1,
     name: "RotatadLineReveal",
-    attributesValidationRules: validation.RotatadLineReveal
+    attributesValidationRules: RotatadLineRevealVal
   }, {
     exportable: SvgDraw_1,
     name: "SvgDraw",
-    attributesValidationRules: validation.SvgDraw
+    attributesValidationRules: SvgDrawVal
   }, {
     exportable: Circle_1,
     name: "Circle",
-    attributesValidationRules: validation.Circle
+    attributesValidationRules: CircleVal
   }, {
     exportable: LogoBox_1,
     name: "LogoBox"
   }, {
     exportable: RightOpacity_1,
     name: "RightOpacity",
-    attributesValidationRules: validation.RigthOpacityValidation
+    attributesValidationRules: RigthOpacityValidationVal
   }, {
     exportable: FlushStroke_1,
-    name: "FlushStroke" // attributesValidationRules: attrs.Circle
+    name: "FlushStroke" // attributesValidationRules: Circle
 
   }, {
     exportable: LetterScale_1,
     name: "LetterScale",
-    attributesValidationRules: validation.LetterScaleValidation
+    attributesValidationRules: LetterScaleValidationVal
   }, {
     exportable: CircularText_1,
-    name: "CircularText" // attributesValidationRules: attrs.CircularTextValidation
+    name: "CircularText" // attributesValidationRules: CircularTextValidation
 
   }]
 };
-var src_1 = src.npm_name;
-var src_2 = src.incidents;
 
-exports.default = src;
-exports.incidents = src_2;
-exports.npm_name = src_1;
+module.exports = index$1;

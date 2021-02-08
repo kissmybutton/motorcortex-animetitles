@@ -1,6 +1,6 @@
 const _COLOR = "color";
 
-export const RotatedLIne = {
+export const RotatedLIneVal = {
   duration: {
     optional: false,
     type: "number",
@@ -50,7 +50,7 @@ export const RotatedLIne = {
   }
 };
 
-export const RolingText = {
+export const RolingTextVal = {
   duration: {
     optional: false,
     type: "number",
@@ -96,7 +96,7 @@ export const RolingText = {
   }
 };
 
-export const RotatadLineReveal = {
+export const RotatadLineRevealVal = {
   duration: {
     optional: false,
     type: "number",
@@ -143,7 +143,7 @@ export const RotatadLineReveal = {
   }
 };
 
-export const SvgBorder = {
+export const SvgBorderVal = {
   duration: {
     optional: false,
     type: "number",
@@ -189,7 +189,7 @@ export const SvgBorder = {
   }
 };
 
-export const Circle = {
+export const CircleVal = {
   duration: {
     optional: false,
     type: "number",
@@ -232,7 +232,7 @@ export const Circle = {
   }
 };
 
-export const SvgDraw = {
+export const SvgDrawVal = {
   duration: {
     optional: false,
     type: "number",
@@ -281,7 +281,7 @@ export const SvgDraw = {
     min: 0
   }
 };
-export const LogoBox = {
+export const LogoBoxVal = {
   size: {
     optional: true,
     type: "number",
@@ -322,7 +322,7 @@ export const LogoBox = {
   }
 };
 
-export const RigthOpacityValidation = {
+export const RigthOpacityValidationVal = {
   width: {
     optional: false,
     type: "number",
@@ -370,7 +370,7 @@ export const RigthOpacityValidation = {
   }
 };
 
-export const LetterScaleValidation = {
+export const LetterScaleValidationVal = {
   width: {
     optional: false,
     type: "number",
@@ -417,7 +417,7 @@ export const LetterScaleValidation = {
   }
 };
 
-export const CircularTextValidation = {
+export const CircularTextValidationVal = {
   width: {
     optional: false,
     type: "number",
