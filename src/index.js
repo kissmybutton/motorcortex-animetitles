@@ -10,11 +10,11 @@ import FlushStroke from"./incidents/FlushStroke"
 import LetterScale from"./incidents/LetterScale"
 import CircularText from"./incidents/CircularText"
 import {RotatedLIneVal,RolingTextVal,SvgBorderVal,RotatadLineRevealVal,SvgDrawVal,CircleVal,RigthOpacityValidationVal,LetterScaleValidationVal} from "./validation"
-const pkg = require("../package.json");
+import {name,version}  from '../package.json'
 
 export default {
-  npm_name: pkg.name,
-  version: pkg.version,
+  npm_name: name,
+  version: version,
   incidents: [
     {
       exportable: RotatedLIne,
