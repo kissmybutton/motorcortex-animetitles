@@ -3895,7 +3895,7 @@ var LetterScaleValidationVal = {
 };
 
 var name$1 = "@kissmybutton/motorcortex-animetitles";
-var version$1 = "1.1.4";
+var version$1 = "1.1.5";
 
 var index$1 = {
   npm_name: name$1,
