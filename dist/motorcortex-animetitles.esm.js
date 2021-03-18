@@ -2265,7 +2265,7 @@ var animatedAttrs = {
   }
 };
 var name = "@kissmybutton/motorcortex-anime";
-var version = "2.1.11";
+var version = "2.1.12";
 var index = {
   npm_name: name,
   version: version,
@@ -3891,7 +3891,7 @@ var LetterScaleValidationVal = {
 };
 
 var name$1 = "@kissmybutton/motorcortex-animetitles";
-var version$1 = "1.1.5";
+var version$1 = "1.1.6";
 
 var index$1 = {
   npm_name: name$1,
