@@ -1,103 +1,102 @@
-const MotorCortex = require("@kissmybutton/motorcortex");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
-const Anime = MotorCortex.loadPlugin(AnimeDefinition);
+import { HTMLClip, loadPlugin } from "@kissmybutton/motorcortex";
+import AnimeDefinition from "@kissmybutton/motorcortex-anime";
+const Anime = loadPlugin(AnimeDefinition);
 
-class Circle extends MotorCortex.HTMLClip {
+export default class Circle extends HTMLClip {
   get html() {
     return `
-    <div class="wrapper"  >
-    <div class="circle">
-      <div class="word">
-      </div>
-    </div>
-    <div class="sub">
+      <div class="wrapper">
+        <div class="circle">
+          <div class="word"></div>
+        </div>
+        <div class="sub">
           <span >${this.attrs.subTitle}</span>
         </div>
-    </div>
-        `;
+      </div>
+    `;
   }
 
   get css() {
     return `
-    .wrapper{
-      white-space: nowrap;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: ${this.attrs.width}px;
-      height: ${this.attrs.width}px;
-      font-family: ${this.attrs.fontFamily} !important;
-    }
-    .circle{
-      width: 0px;
-      height: 0px;
-      background: ${this.attrs.circleColor};
-      position: relative;
-      border-radius: 100%;
-      mask: url(./img.svg);
-      mask-position-y: 69px;
-      mask-size: 810px;
-    }  
-    .word{
-      overflow: hidden;
-      width: 9px;
-      height: 3px;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-    }
-    
-    .letter{
-      font-size: ${this.attrs.fontSize}px;
-      color: ${this.attrs.textColor};
-      left: 2.5px;
-      position: relative;
-      text-align: center;
-      top : ${this.attrs.width}px;
-      width: 100%;
-      background-color:#ffffff00
+      .wrapper{
+        white-space: nowrap;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: ${this.attrs.width}px;
+        height: ${this.attrs.width}px;
+        font-family: ${this.attrs.fontFamily} !important;
+      }
+
+      .circle{
+        width: 0px;
+        height: 0px;
+        background: ${this.attrs.circleColor};
+        position: relative;
+        border-radius: 100%;
+        mask: url(./img.svg);
+        mask-position-y: 69px;
+        mask-size: 810px;
+      }
+
+      .word{
+        overflow: hidden;
+        width: 9px;
+        height: 3px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+      }
       
-    }
+      .letter{
+        font-size: ${this.attrs.fontSize}px;
+        color: ${this.attrs.textColor};
+        left: 2.5px;
+        position: relative;
+        text-align: center;
+        top : ${this.attrs.width}px;
+        width: 100%;
+        background-color:#ffffff00
+        
+      }
 
-  .sub{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    top: 33%;
-    transform: rotate(-10deg);
-    width: 400px;
-    height: 400px;
+      .sub{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        top: 33%;
+        transform: rotate(-10deg);
+        width: 400px;
+        height: 400px;
 
-  }
-  .sub span{
-    font-size: ${this.attrs.fontSize * 0.8}px;
-    position: relative;
-    top:100%;
-    letter-spacing: 3px;
-  }
+      }
 
-
-  `;
+      .sub span{
+        font-size: ${this.attrs.fontSize * 0.8}px;
+        position: relative;
+        top:100%;
+        letter-spacing: 3px;
+      }
+    `;
   }
 
   buildTree() {
     const array = this.attrs.title.split("");
 
-    let html3 = "";
+    let html = "";
     for (let i = 0; i < array.length; i++) {
-      const html = `<span class='letter letter${i + 1}'>${array[i]}</span>`;
-      html3 += html;
+      html += `<span class='letter letter${i + 1}'>${array[i]}</span>`;
     }
 
-    const word = new MotorCortex.HTMLClip({
+    const word = new HTMLClip({
       css: this.css,
-      html: ` <div class="wrapper" >${html3} </div>`,
+      html: ` <div class="wrapper" >${html} </div>`,
       selector: ".word"
     });
 
@@ -140,8 +139,8 @@ class Circle extends MotorCortex.HTMLClip {
     const circleScaleDown = new Anime.Anime(
       {
         animatedAttrs: {
-          width: `${this.attrs.width*0.8}px`,
-          height: `${this.attrs.width*0.8}px`
+          width: `${this.attrs.width * 0.8}px`,
+          height: `${this.attrs.width * 0.8}px`
         },
         attrs: {}
       },
@@ -155,8 +154,8 @@ class Circle extends MotorCortex.HTMLClip {
     const wrapperDown = new Anime.Anime(
       {
         animatedAttrs: {
-          width: `${this.attrs.width*0.8}px`,
-          height: `${this.attrs.width*0.8}px`,
+          width: `${this.attrs.width * 0.8}px`,
+          height: `${this.attrs.width * 0.8}px`,
           transform: {
             rotate: "10deg"
           }
@@ -173,7 +172,7 @@ class Circle extends MotorCortex.HTMLClip {
     const maskDown = new Anime.Anime(
       {
         animatedAttrs: {
-          maskSize: `${this.attrs.width*0.8}px`,
+          maskSize: `${this.attrs.width * 0.8}px`,
           transform: {
             rotate: "-10deg"
           }
@@ -234,5 +233,3 @@ class Circle extends MotorCortex.HTMLClip {
     }
   }
 }
-
-module.exports = Circle;

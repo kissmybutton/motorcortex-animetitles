@@ -6,6 +6,7 @@ coverage
 
 # Output folders
 build
+demo/bundle.js
 compiled
 .nyc_output
 

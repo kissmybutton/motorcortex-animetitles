@@ -1,62 +1,52 @@
-const MotorCortex = require("@kissmybutton/motorcortex");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
-const Anime = MotorCortex.loadPlugin(AnimeDefinition);
-class Size {
-  constructor(svgWidth, svgHeight, lineSize) {
-    this.svgWidth = svgWidth;
-    this.svgHeight = svgHeight;
-    this.lineSize = lineSize;
-  }
-}
-let size;
+import { HTMLClip, loadPlugin } from "@kissmybutton/motorcortex";
+import AnimeDefinition from "@kissmybutton/motorcortex-anime";
+const Anime = loadPlugin(AnimeDefinition);
 
-class SvgDraw extends MotorCortex.HTMLClip {
+export default class SvgDraw extends HTMLClip {
   get html() {
     switch (this.attrs.size) {
       case "S":
-        size = new Size(200, 100, "");
-
+        this.size = this.generateSize(200, 100, "");
         break;
       case "M":
-        size = new Size(300, 200, "5rem");
-
+        this.size = this.generateSize(300, 200, "5rem");
         break;
       case "L":
-        size = new Size(500, 400, "7rem");
+        this.size = this.generateSize(500, 400, "7rem");
         break;
-      default:
     }
-    return `<div class="svg-wrapper">${this.attrs.svg} </div>`;
+    return `<div class="svg-wrapper">${this.attrs.svg}</div>`;
   }
 
   get css() {
     return `
+      .svg-wrapper{
+        position: relative;
+        width: ${this.size.svgWidth * 1.5}px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-    .svg-wrapper{
-      position: relative;
-      width: ${size.svgWidth * 1.5}px;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+      svg{
+        width: ${this.size.svgWidth}px;
+        height: ${this.size.svgHeight}px;
+      }
 
-    svg{
-      width: ${size.svgWidth}px;
-      height: ${size.svgHeight}px;
-    }
+      .svgContainer{
+        height:100vh;
+      }
 
-    .svgContainer{
-      height:100vh;
-    }
-    svg path
-    {
-      stroke-dasharray: ${this.attrs.StrokeDashArray};
-      stroke-dashoffset: ${this.attrs.strokeDashOffset};
-      
-    }
-    
-  `;
+      svg path{
+        stroke-dasharray: ${this.attrs.StrokeDashArray};
+        stroke-dashoffset: ${this.attrs.strokeDashOffset};
+      }
+    `;
+  }
+
+  generateSize(svgWidth, svgHeight, lineSize) {
+    return { svgWidth, svgHeight, lineSize };
   }
 
   buildTree() {
@@ -113,5 +103,3 @@ class SvgDraw extends MotorCortex.HTMLClip {
     }
   }
 }
-
-module.exports = SvgDraw;

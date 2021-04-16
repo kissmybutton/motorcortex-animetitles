@@ -1,90 +1,91 @@
-const MotorCortex = require("@kissmybutton/motorcortex");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
-const Anime = MotorCortex.loadPlugin(AnimeDefinition);
+import { HTMLClip, loadPlugin } from "@kissmybutton/motorcortex";
+import AnimeDefinition from "@kissmybutton/motorcortex-anime";
+const Anime = loadPlugin(AnimeDefinition);
 
-class LogoBox extends MotorCortex.HTMLClip {
+export default class LogoBox extends HTMLClip {
   get html() {
     return `
-    <div class="wrapper">
-    <div class="onemore">
-    <div class="redLineContainer">
-      <div class="yellow">
-        <div class="logo"><img src="${this.attrs.logoUrl}" alt="Italian Trulli"></div>
+      <div class="wrapper">
+        <div class="onemore">
+          <div class="redLineContainer">
+            <div class="yellow">
+              <div class="logo"><img src="${this.attrs.logoUrl}" alt="Italian Trulli"></div>
+            </div>
+            <div class="redLine">
+              <div class="text text1">${this.attrs.subTitle1}</div>
+              <div class="text text2">${this.attrs.subTitle2}</div>
+              <div class="text text3">${this.attrs.subTitle3}</div>
+            </div>
+           
+          </div>
+        </div>
       </div>
-      <div class="redLine">
-        <div class="text text1">${this.attrs.subTitle1}</div>
-        <div class="text text2">${this.attrs.subTitle2}</div>
-        <div class="text text3">${this.attrs.subTitle3}</div>
-      </div>
-     
-    </div>
-    </div>
-    </div>
-        `;
+    `;
   }
 
   get css() {
     return `
-    .wrapper{
-      white-space: nowrap;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: ${this.attrs.fontFamily} !important;
-    }
-    .redLineContainer {
-      white-space: nowrap;
-      width: 0px;
-      overflow: hidden;
-      background: ${this.attrs.textColor};
-      display: flex;
-      
-      justify-content: center;
-      align-content: center;
-      opacity: 0;
-      border: ${1 * this.attrs.size}px solid ${this.attrs.textColor};
-    }
-    
-    .redLine {
-      position: relative;
-      right:  100px;
-      overflow: hidden;
-      background: ${this.attrs.bgColor};
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      height: ${70 * this.attrs.size}px;
-    }
-    
-    .yellow{
-      width: 0px;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .logo img{
-      width: ${50 * this.attrs.size}px;
-    }
-    .logo{
-      display: flex;
-      align-items: center;
-    }
-    
-    .text{ 
-      left: ${-100 * this.attrs.size}px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      height: ${22 * this.attrs.size}px;
-      padding-left: 8%;
-      color: ${this.attrs.textColor};
-      font-size :${14 * this.attrs.size}px;
-    }
+      .wrapper{
+        white-space: nowrap;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: ${this.attrs.fontFamily} !important;
+      }
 
-  `;
+      .redLineContainer {
+        white-space: nowrap;
+        width: 0px;
+        overflow: hidden;
+        background: ${this.attrs.textColor};
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        opacity: 0;
+        border: ${1 * this.attrs.size}px solid ${this.attrs.textColor};
+      }
+      
+      .redLine {
+        position: relative;
+        right:  100px;
+        overflow: hidden;
+        background: ${this.attrs.bgColor};
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: ${70 * this.attrs.size}px;
+      }
+      
+      .yellow{
+        width: 0px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .logo img{
+        width: ${50 * this.attrs.size}px;
+      }
+      
+      .logo{
+        display: flex;
+        align-items: center;
+      }
+      
+      .text{ 
+        left: ${-100 * this.attrs.size}px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: ${22 * this.attrs.size}px;
+        padding-left: 8%;
+        color: ${this.attrs.textColor};
+        font-size :${14 * this.attrs.size}px;
+      }
+    `;
   }
 
   buildTree() {
@@ -197,5 +198,3 @@ class LogoBox extends MotorCortex.HTMLClip {
     }
   }
 }
-
-module.exports = LogoBox;

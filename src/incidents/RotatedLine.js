@@ -1,60 +1,46 @@
-const MotorCortex = require("@kissmybutton/motorcortex");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
-const Anime = MotorCortex.loadPlugin(AnimeDefinition);
-class Size {
-  constructor(fontSizeLeft, fontSizeRigth, lineWidth, lineHeight, gap) {
-    this.fontSizeLeft = fontSizeLeft;
-    this.fontSizeRigth = fontSizeRigth;
-    this.lineWidth = lineWidth;
-    this.lineHeight = lineHeight;
-    this.gap = gap;
-  }
-}
-let size;
+import { HTMLClip, loadPlugin } from "@kissmybutton/motorcortex";
+import AnimeDefinition from "@kissmybutton/motorcortex-anime";
+const Anime = loadPlugin(AnimeDefinition);
 
-class RotatedLine extends MotorCortex.HTMLClip {
+export default class RotatedLine extends HTMLClip {
   get html() {
     return `
-          <div class="wrapper">
-            <div class="text--container text--container-left">
-              <div class="text-left">${this.attrs.title}</div>
-            </div>
-            <div class="line"></div>
-            <div class="text--container text--container-right">
-              <div class="text-right text-right1">${this.attrs.subTitle1}</div>
-              <div class="text-right text-right2">${this.attrs.subTitle2}</div>
-              <div class="text-right text-right3">${this.attrs.subTitle3}</div>
-            </div>
-          </div>
-        `;
+      <div class="wrapper">
+        <div class="text--container text--container-left">
+          <div class="text-left">${this.attrs.title}</div>
+        </div>
+        <div class="line"></div>
+        <div class="text--container text--container-right">
+          <div class="text-right text-right1">${this.attrs.subTitle1}</div>
+          <div class="text-right text-right2">${this.attrs.subTitle2}</div>
+          <div class="text-right text-right3">${this.attrs.subTitle3}</div>
+        </div>
+      </div>
+    `;
   }
 
   get css() {
     switch (this.attrs.size) {
       case "S":
-        size = new Size("1.5rem", "1rem", "0.2rem", "5rem", 3);
-
+        this.size = this.generateSize("1.5rem", "1rem", "0.2rem", "5rem", 3);
         break;
       case "M":
-        size = new Size("2rem", "1.2rem", "0.3rem", "7rem", 4);
-
+        this.size = this.generateSize("2rem", "1.2rem", "0.3rem", "7rem", 4);
         break;
       case "L":
-        size = new Size("2.5rem", "1.5rem", "0.3rem", "9rem", 4);
-
+        this.size = this.generateSize("2.5rem", "1.5rem", "0.3rem", "9rem", 4);
         break;
       case "XL":
-        size = new Size("3rem", "2rem", "0.3rem", "11rem", 4);
-
+        this.size = this.generateSize("3rem", "2rem", "0.3rem", "11rem", 4);
         break;
-      default:
     }
-    return `
 
-    body{
-     font-size: 62.5%;
-    }
-     .wrapper {
+    return `
+      body{
+       font-size: 62.5%;
+      }
+
+      .wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -62,11 +48,11 @@ class RotatedLine extends MotorCortex.HTMLClip {
         white-space: nowrap;
         overflow: hidden;
         width : 100%;
-        width : ${this.attrs.width + size.lineWidth}px;
+        width : ${this.attrs.width + this.size.lineWidth}px;
         color : ${this.attrs.textColor};
         font-family: ${this.attrs.fontFamily} !important;
-        
       }
+
       .line {
         width: 3px;
         background: ${this.attrs.lineColor} ;
@@ -76,15 +62,14 @@ class RotatedLine extends MotorCortex.HTMLClip {
       .text-left {
         position: relative;
         right : -100%;
-        font-size: ${size.fontSizeLeft};
+        font-size: ${this.size.fontSizeLeft};
         text-align: right;
       }
       
       .text-right {
         position: relative;
         right: 100%;
-        font-size: ${size.fontSizeRigth};
-
+        font-size: ${this.size.fontSizeRigth};
       }
       
       .text--container {
@@ -92,9 +77,18 @@ class RotatedLine extends MotorCortex.HTMLClip {
         overflow: hidden;
         position: relative;
         width :${this.attrs.width / 2}px;
-        
       } 
-      `;
+    `;
+  }
+
+  generateSize(fontSizeLeft, fontSizeRigth, lineWidth, lineHeight, gap) {
+    return {
+      fontSizeLeft,
+      fontSizeRigth,
+      lineWidth,
+      lineHeight,
+      gap
+    };
   }
 
   buildTree() {
@@ -117,7 +111,7 @@ class RotatedLine extends MotorCortex.HTMLClip {
     const widthLIne = new Anime.Anime(
       {
         animatedAttrs: {
-          height: size.lineHeight
+          height: this.size.lineHeight
         },
         attrs: {}
       },
@@ -131,7 +125,7 @@ class RotatedLine extends MotorCortex.HTMLClip {
     const leftTextAnimate = new Anime.Anime(
       {
         animatedAttrs: {
-          right: `${size.gap}%`
+          right: `${this.size.gap}%`
         },
         attrs: {}
       },
@@ -146,7 +140,7 @@ class RotatedLine extends MotorCortex.HTMLClip {
       const rightTextAnimate = new Anime.Anime(
         {
           animatedAttrs: {
-            right: `-${size.gap}%`
+            right: `-${this.size.gap}%`
           },
           attrs: {}
         },
@@ -237,5 +231,3 @@ class RotatedLine extends MotorCortex.HTMLClip {
     }
   }
 }
-
-module.exports = RotatedLine;

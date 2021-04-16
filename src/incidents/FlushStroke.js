@@ -1,46 +1,43 @@
-const MotorCortex = require("@kissmybutton/motorcortex");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
-const Anime = MotorCortex.loadPlugin(AnimeDefinition);
+import { HTMLClip /*, loadPlugin*/ } from "@kissmybutton/motorcortex";
+// import AnimeDefinition from "@kissmybutton/motorcortex-anime";
+// const Anime = loadPlugin(AnimeDefinition);
 
-class FlushStroke extends MotorCortex.HTMLClip {
-
+export default class FlushStroke extends HTMLClip {
   get html() {
+    const divList = this.attrs.text
+      .map((e, i) => {
+        return `<div class="letter letter-item-${i}">${e}</div>`;
+      })
+      .join("");
 
-    const divList = this.attrs.text.map((e, i) => {
-      return `<div class="letter letter-item-${i}">${e}</div>`
-    }).join("")
     return `
-    <div class="wrapper">
-    
-      ${divList}
-    
-    </div>
-        `;
+      <div class="wrapper">
+        ${divList}
+      </div>
+    `;
   }
 
   get css() {
-
     return `
-    .wrapper{
-      width:${this.attrs.width}px;
-      height: ${this.attrs.height}px;
-      white-space: nowrap;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
+      .wrapper{
+        width:${this.attrs.width}px;
+        height: ${this.attrs.height}px;
+        white-space: nowrap;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
 
-    .letter{
-      font-size:${this.attrs.fontSize}px;
-      color:rgba(${this.attrs.strokeColor[0]},${this.attrs.strokeColor[1]},${this.attrs.strokeColor[2]},0);
-      text-transform:uppercase;
-      font-family: ${this.attrs.fontFamily};
-      -webkit-text-stroke:${this.attrs.strokeSize}px rgb(${this.attrs.strokeColor[0]},${this.attrs.strokeColor[1]},${this.attrs.strokeColor[2]});
-
-    }
-  `;
+      .letter{
+        font-size:${this.attrs.fontSize}px;
+        color:rgba(${this.attrs.strokeColor[0]},${this.attrs.strokeColor[1]},${this.attrs.strokeColor[2]},0);
+        text-transform:uppercase;
+        font-family: ${this.attrs.fontFamily};
+        -webkit-text-stroke:${this.attrs.strokeSize}px rgb(${this.attrs.strokeColor[0]},${this.attrs.strokeColor[1]},${this.attrs.strokeColor[2]});
+      }
+    `;
   }
 
   buildTree() {
@@ -59,8 +56,6 @@ class FlushStroke extends MotorCortex.HTMLClip {
     //     delay: "@stagger(0, 300)"
     //   }
     // );
-    // this.addIncident(left, 0)
+    // this.addIncident(left, 0);
   }
 }
-
-module.exports = FlushStroke;

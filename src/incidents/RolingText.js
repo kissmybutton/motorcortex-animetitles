@@ -1,25 +1,16 @@
-const MotorCortex = require("@kissmybutton/motorcortex");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
-const Anime = MotorCortex.loadPlugin(AnimeDefinition);
-class Size {
-  constructor(fontSizeLeft, topMove, lineHeight, gap, topMove2) {
-    this.fontSizeLeft = fontSizeLeft;
-    this.topMove = topMove;
-    this.lineHeight = lineHeight;
-    this.gap = gap;
-    this.topMove2 = topMove2;
-  }
-}
+import { HTMLClip, loadPlugin } from "@kissmybutton/motorcortex";
+import AnimeDefinition from "@kissmybutton/motorcortex-anime";
+const Anime = loadPlugin(AnimeDefinition);
 
-let size;
-
-class RolingText extends MotorCortex.HTMLClip {
+export default class RolingText extends HTMLClip {
   get html() {
     return `
       <div class="wrapper">
         <div class="line"></div>
         <div class="textClip"> 
-          <span> ${this.attrs.subTitle1}</span> <span> ${this.attrs.subTitle2} </span><span> ${this.attrs.subTitle3}</span>
+          <span>${this.attrs.subTitle1}</span>
+          <span>${this.attrs.subTitle2}</span>
+          <span>${this.attrs.subTitle3}</span>
         </div>
       </div>
         `;
@@ -28,84 +19,88 @@ class RolingText extends MotorCortex.HTMLClip {
   get css() {
     switch (this.attrs.size) {
       case "S":
-        size = new Size(21, "-21px", "31px", 0.5, "-42px");
-
+        this.size = this.generateSize(21, "-21px", "31px", 0.5, "-42px");
         break;
       case "M":
-        size = new Size(28, "-28px", "38px", 1, "-56px");
-
+        this.size = this.generateSize(28, "-28px", "38px", 1, "-56px");
         break;
       case "L":
-        size = new Size(35, "-35px", "45px", 1.5, "-70px");
+        this.size = this.generateSize(35, "-35px", "45px", 1.5, "-70px");
         break;
       case "XL":
-        size = new Size(42, "-42px", "52px", 2, "-84px");
-
+        this.size = this.generateSize(42, "-42px", "52px", 2, "-84px");
         break;
       case "XXL":
-        size = new Size(49, "-49px", "59px", 2, "-98px");
-
+        this.size = this.generateSize(49, "-49px", "59px", 2, "-98px");
         break;
       case "XXXL":
-        size = new Size(70, "-70px", "80px", 2, "-140px", 86);
-
+        this.size = this.generateSize(70, "-70px", "80px", 2, "-140px", 86);
         break;
+    }
 
-      default:
-    }
     return `
-    body{
-     font-size: 62.5%;
-    }
-    .wrapper{
-      white-space: nowrap;
-      overflow: hidden;
-      display: flex;
-      height: ${size.lineHeight};
-      width : ${this.attrs.width}px;
-      justify-content: center;
-      align-items: center;
-      font-family: ${this.attrs.fontFamily} !important;
-    }
-  
-    .line{
-      position: relative; 
-      height: 0;
-      width: 3px;
-      justify-content: center;
-      background: ${this.attrs.lineColor} ;
-      margin-right: ${size.gap}rem;
+      body{
+       font-size: 62.5%;
+      }
+
+      .wrapper{
+        white-space: nowrap;
+        overflow: hidden;
+        display: flex;
+        height: ${this.size.lineHeight};
+        width : ${this.attrs.width}px;
+        justify-content: center;
+        align-items: center;
+        font-family: ${this.attrs.fontFamily} !important;
+      }
     
-    }
-    
-    .textClip{
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      font-size: ${size.fontSizeLeft}px;
-      white-space: nowrap;
-      overflow: hidden;
-      height: ${size.fontSizeLeft}px;
+      .line{
+        position: relative; 
+        height: 0;
+        width: 3px;
+        justify-content: center;
+        background: ${this.attrs.lineColor} ;
+        margin-right: ${this.size.gap}rem;
       
-    }
-  
-    .textClip span{
-      color : ${this.attrs.textColor};
-      position: relative;
-      left : -${this.attrs.width / 2}px;
-      width : 100%;
-      height: ${size.fontSizeLeft}px;
-      align-items: center;
-      display: flex;
-    }
+      }
+      
+      .textClip{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        font-size: ${this.size.fontSizeLeft}px;
+        white-space: nowrap;
+        overflow: hidden;
+        height: ${this.size.fontSizeLeft}px;
+      }
+    
+      .textClip span{
+        color : ${this.attrs.textColor};
+        position: relative;
+        left : -${this.attrs.width / 2}px;
+        width : 100%;
+        height: ${this.size.fontSizeLeft}px;
+        align-items: center;
+        display: flex;
+      }
   `;
+  }
+
+  generateSize(fontSizeLeft, topMove, lineHeight, gap, topMove2) {
+    return {
+      fontSizeLeft,
+      topMove,
+      lineHeight,
+      gap,
+      topMove2
+    };
   }
 
   buildTree() {
     const animeLineHeight = new Anime.Anime(
       {
         animatedAttrs: {
-          height: size.lineHeight
+          height: this.size.lineHeight
         },
         attrs: {}
       },
@@ -131,7 +126,7 @@ class RolingText extends MotorCortex.HTMLClip {
     const animeTextTop = new Anime.Anime(
       {
         animatedAttrs: {
-          top: size.topMove
+          top: this.size.topMove
         },
         attrs: {}
       },
@@ -144,7 +139,7 @@ class RolingText extends MotorCortex.HTMLClip {
     const animeTextTopNext = new Anime.Anime(
       {
         animatedAttrs: {
-          top: size.topMove2
+          top: this.size.topMove2
         },
         attrs: {}
       },
@@ -186,6 +181,7 @@ class RolingText extends MotorCortex.HTMLClip {
     this.addIncident(animeTextTopNext, this.attrs.duration * 0.575);
 
     const delayEnd = this.attrs.delayEnd || 0;
+
     if (!this.attrs.stopOnLast) {
       this.addIncident(
         animeTextLeftBack,
@@ -198,5 +194,3 @@ class RolingText extends MotorCortex.HTMLClip {
     }
   }
 }
-
-module.exports = RolingText;

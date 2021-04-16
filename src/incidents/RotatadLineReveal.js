@@ -1,86 +1,88 @@
-const MotorCortex = require("@kissmybutton/motorcortex");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
-const Anime = MotorCortex.loadPlugin(AnimeDefinition);
-class Size {
-  constructor(fontSize, fontSizeSub, lineSize, lineHeight) {
-    this.fontSize = fontSize;
-    this.fontSizeSub = fontSizeSub;
-    this.lineSize = lineSize;
-    this.lineHeight = lineHeight;
-  }
-}
-let size;
+import { HTMLClip, loadPlugin, Group } from "@kissmybutton/motorcortex";
+import AnimeDefinition from "@kissmybutton/motorcortex-anime";
+const Anime = loadPlugin(AnimeDefinition);
 
-class RotatadLineReveal extends MotorCortex.HTMLClip {
+export default class RotatadLineReveal extends HTMLClip {
   get html() {
     switch (this.attrs.size) {
       case "S":
-        size = new Size("1.5rem", "1rem", "3.5rem", "55px");
+        this.size = this.generateSize("1.5rem", "1rem", "3.5rem", "55px");
 
         break;
       case "M":
-        size = new Size("2.5rem", "2rem", "5rem", "90px");
+        this.size = this.generateSize("2.5rem", "2rem", "5rem", "90px");
 
         break;
       case "L":
-        size = new Size("3.5rem", "2rem", "7rem", "100px");
+        this.size = this.generateSize("3.5rem", "2rem", "7rem", "100px");
         break;
       default:
     }
     return `
-    <div class="wrapper">
-      <div class="redLine">
-        <div class="text text1"><div class="title ">${this.attrs.title}</div></div>
-        <div class="text text2"><div class="sub">${this.attrs.subtitle}</div></div>
+      <div class="wrapper">
+        <div class="redLine">
+          <div class="text text1"><div class="title ">${this.attrs.title}</div></div>
+          <div class="text text2"><div class="sub">${this.attrs.subtitle}</div></div>
+        </div>
       </div>
-    </div>
-        `;
+    `;
   }
 
   get css() {
     return `
+      .wrapper{
+        width:${this.attrs.width}px;
+        height:100%;
+        font-family: ${this.attrs.fontFamily} !important;
+      }
 
-    .wrapper{
-      width:${this.attrs.width}px;
-      height:100%;
-      font-family: ${this.attrs.fontFamily} !important;
-    }
-     .redLine {
-      border-left: 2px solid ${this.attrs.lineColor};
-      width: 0rem;
-      height: ${size.lineHeight};
-      display: flex;
-      align-items: flex-start;
-      flex-direction: column;
-      transform: rotate(30deg);
-      position: relative;
-      left: 150%;
-      transform-origin: top left;
-      white-space: nowrap;
-      overflow: hidden;
-      color : ${this.attrs.textColor}
-    }
-    .title{
-      font-size: ${size.fontSize};
-      font-weight: 600;
-    }
-    .sub{
-      font-size: ${size.fontSizeSub};
-      top: -60px;
-      position: relative;
-    }
+      .redLine {
+        border-left: 2px solid ${this.attrs.lineColor};
+        width: 0rem;
+        height: ${this.size.lineHeight};
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        transform: rotate(30deg);
+        position: relative;
+        left: 150%;
+        transform-origin: top left;
+        white-space: nowrap;
+        overflow: hidden;
+        color : ${this.attrs.textColor}
+      }
 
-    .text {
-      position: relative;
-      left: -50px;
-      white-space: nowrap;
-      overflow: hidden;
-    }
-  `;
+      .title{
+        font-size: ${this.size.fontSize};
+        font-weight: 600;
+      }
+
+      .sub{
+        font-size: ${this.size.fontSizeSub};
+        top: -60px;
+        position: relative;
+      }
+
+      .text {
+        position: relative;
+        left: -50px;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    `;
+  }
+
+  generateSize(fontSize, fontSizeSub, lineSize, lineHeight) {
+    return {
+      fontSize,
+      fontSizeSub,
+      lineSize,
+      lineHeight
+    };
   }
 
   buildTree() {
-    const grupMc = new MotorCortex.Group();
+    const grupMc = new Group();
 
     const lineRotateEnd = new Anime.Anime(
       {
@@ -140,6 +142,7 @@ class RotatadLineReveal extends MotorCortex.HTMLClip {
         easing: "easeOutExpo"
       }
     );
+
     const moveSub = new Anime.Anime(
       {
         animatedAttrs: {
@@ -199,5 +202,3 @@ class RotatadLineReveal extends MotorCortex.HTMLClip {
     }
   }
 }
-
-module.exports = RotatadLineReveal;

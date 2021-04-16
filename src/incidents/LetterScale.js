@@ -1,23 +1,23 @@
-const MotorCortex = require("@kissmybutton/motorcortex");
-const AnimeDefinition = require("@kissmybutton/motorcortex-anime");
-const Anime = MotorCortex.loadPlugin(AnimeDefinition);
+import { HTMLClip, loadPlugin } from "@kissmybutton/motorcortex";
+import AnimeDefinition from "@kissmybutton/motorcortex-anime";
+const Anime = loadPlugin(AnimeDefinition);
 
-class LetterScale extends MotorCortex.HTMLClip {
+export default class LetterScale extends HTMLClip {
   get html() {
-    this.list;
     this.list = this.attrs.text.split("");
     const divList = this.list
       .map((e, i) => {
         return `<div class="letter letter-item-${i}">${e}</div>`;
       })
       .join("");
+
     return `
-    <div class="wrapper">
-    <div class="letter-wrapper">
-      ${divList}
-    </div>
-    </div>
-        `;
+      <div class="wrapper">
+        <div class="letter-wrapper">
+          ${divList}
+        </div>
+      </div>
+    `;
   }
 
   get css() {
@@ -25,35 +25,36 @@ class LetterScale extends MotorCortex.HTMLClip {
       this.attrs.stroke === true
         ? `-webkit-text-stroke:${this.attrs.strokeSize}px ${this.attrs.strokeColor};`
         : ``;
+
     return `
-    .wrapper{
-      width:${this.attrs.width}px;
-      height: ${this.attrs.height}px;
-      white-space: nowrap;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+      .wrapper{
+        width:${this.attrs.width}px;
+        height: ${this.attrs.height}px;
+        white-space: nowrap;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-    .letter{
-      font-size:${this.attrs.fontSize}px;
-      color:${this.attrs.color};
-      text-transform:uppercase;
-      font-family: ${this.attrs.fontFamily};
-      position: relative;
-      ${stroke}
-    }
-    .letter-wrapper{
-      width:${this.attrs.width}px;
-      height: ${this.attrs.height}px;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-  `;
+      .letter{
+        font-size:${this.attrs.fontSize}px;
+        color:${this.attrs.color};
+        text-transform:uppercase;
+        font-family: ${this.attrs.fontFamily};
+        position: relative;
+        ${stroke}
+      }
+      
+      .letter-wrapper{
+        width:${this.attrs.width}px;
+        height: ${this.attrs.height}px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    `;
   }
 
   buildTree() {
@@ -76,5 +77,3 @@ class LetterScale extends MotorCortex.HTMLClip {
     this.addIncident(left, 0);
   }
 }
-
-module.exports = LetterScale;

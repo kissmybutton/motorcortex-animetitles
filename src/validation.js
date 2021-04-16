@@ -417,7 +417,7 @@ export const LetterScaleValidationVal = {
   }
 };
 
-export const CircularTextValidationVal = {
+export const CircularTextValidation = {
   width: {
     optional: false,
     type: "number",
