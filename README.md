@@ -13,9 +13,9 @@ $ yarn add @kissmybutton/motorcortex-animetitles
 ## Loading
 
 ```javascript
-const MotorCortex = require("@kissmybutton/motorcortex/");
-const TitlesPlugin = require("@kissmybutton/motorcortex-animetitles");
-const Titles = MotorCortex.loadPlugin(TitlesPlugin);
+import {loadPlugin} from "@kissmybutton/motorcortex";
+import TitlesPlugin from "@kissmybutton/motorcortex-animetitles";
+const Titles = loadPlugin(TitlesPlugin);
 ```
 
 # Create incident
@@ -192,6 +192,7 @@ const nameOfIncident = new Titles.Circle(
     selector: ".circle"
   }
 );
+
 ```
 ## In order to use tin incident you should include the img.svg that is in demo folder in your clip.js directory
 ### Circle Attrs
