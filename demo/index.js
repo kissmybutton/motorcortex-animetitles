@@ -1,0 +1,351 @@
+import MotorCortex from "@kissmybutton/motorcortex";
+import Player from "@kissmybutton/motorcortex-player";
+import AnimeDefinition from "@kissmybutton/motorcortex-anime";
+import TitlesPlugin from "../dist/motorcortex-animetitles.umd";
+import imgsvg from "./assets/imgsvg.js";
+
+const Anime = MotorCortex.loadPlugin(AnimeDefinition);
+const Titles = MotorCortex.loadPlugin(TitlesPlugin);
+
+const clip = new MotorCortex.HTMLClip({
+  css: `
+    body{ 
+      background-color : white; 
+    }
+
+    .container{
+      position: relative; 
+      background:linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%);
+      height:100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .row{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .cel{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: absolute;
+    }
+
+    .full{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  `,
+  html: `
+    <div class="container">
+      <div class="row" >
+        <div class="cel"> <div class="rolingtext full"></div>  </div>
+        <div class="cel"><div class="svgborder full"></div> </div>
+        <div class="cel"> <div class="rotatedline full"></div> </div>
+        <div class="cel"> <div class="rotatedlinereveal full"></div> </div>
+        <div class="cel"><div class="svgdraw full"></div> </div>
+        <div class="cel"><div class="circle full"></div> </div>
+        <div class="cel"><div class="logobox full"></div> </div>
+        <div class="cel"><div class="textwriting full"></div> </div>
+        <div class="cel"><div class="rightopacity full"></div> </div>
+        <div class="cel"><div class="letterscale full"></div> </div>
+        <div class="cel"><div class="circulartext full"></div> </div>
+      </div>
+    </div>
+  `,
+  fonts: [
+    {
+      type: `google-font`,
+      src: `https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap`
+    },
+    {
+      type: `google-font`,
+      src: `https://fonts.googleapis.com/css2?family=Righteous&display=swap`
+    },
+    {
+      type: "google-font",
+      src:
+        "https://fonts.googleapis.com/css2?family=Commissioner:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    }
+  ],
+  host: document.getElementById("clip"),
+  containerParams: {
+    width: "1280px",
+    height: "720px"
+  }
+});
+
+const svgdraw = new Titles.SvgDraw(
+  {
+    duration: 3600,
+    width: 900,
+    size: "L",
+    lineColor: "#ff0000",
+    strokeDashOffset: 10000,
+    StrokeDashArray: 10000,
+    svg: imgsvg,
+    stopOnLast: false
+  },
+  {
+    selector: ".svgdraw"
+  }
+);
+
+const rolinText = new Titles.RolingText(
+  {
+    duration: 6000,
+    width: 450,
+    size: "XL",
+    lineColor: "#ff0000",
+    textColor: "#000",
+    subTitle1: "The",
+    subTitle2: "MotorCortex Team",
+    subTitle3: "Presents",
+    stopOnLast: false,
+    delayEnd: 1000,
+    fontFamily: "Commissioner"
+  },
+  {
+    selector: ".rolingtext"
+  }
+);
+
+const rotatedlinereveal = new Titles.RotatadLineReveal(
+  {
+    duration: 5000,
+    width: 800,
+    size: "M",
+    lineColor: "#ff0000",
+    textColor: "#000",
+    title: "Animetitles",
+    subtitle: "MC Plugin",
+    leftEnd: 100,
+    stopOnLast: false,
+    fontFamily: "Commissioner"
+  },
+  {
+    selector: ".rotatedlinereveal"
+  }
+);
+
+const rotatedline = new Titles.RotatedLine(
+  {
+    duration: 6000,
+    width: 400,
+    size: "XL",
+    lineColor: "#ff0000",
+    textColor: "#000",
+    subTitle1: "Minimal",
+    subTitle2: "Elegant",
+    subTitle3: "Modern",
+    title: "Title",
+    stopOnLast: false,
+    fontFamily: "Commissioner"
+  },
+  {
+    selector: ".rotatedline"
+  }
+);
+
+const svgborder = new Titles.SvgBorder(
+  {
+    duration: 5000,
+    size: "L",
+    lineColor: "#ff0000",
+    textColor: "#000",
+    subTitle: "Developed by",
+    slogan: "-KMB-",
+    title: "MotorCortex Team",
+    stopOnLast: false,
+    fontFamily: "Commissioner"
+  },
+  {
+    selector: ".svgborder"
+  }
+);
+
+const circle = new Titles.Circle(
+  {
+    duration: 5000,
+    fontSize: 40,
+    circleColor: "#ff0000",
+    textColor: "#000",
+    title: "ANIMATED",
+    subTitle: "TITLES",
+    stopOnLast: false,
+    fontFamily: "Commissioner",
+    width: 500
+  },
+  {
+    selector: ".circle"
+  }
+);
+
+const logobox = new Titles.LogoBox(
+  {
+    size: 2,
+    textColor: "#fff",
+    bgColor: "#000",
+    subTitle1: "TYPOGRAPHY",
+    subTitle2: "ANIMATION",
+    subTitle3: "BY",
+    width: 200,
+    stopOnLast: false,
+    fontFamily: "Commissioner",
+    logoUrl:
+      "https://kissmybutton.github.io/motorcortex-animetitles/demo/assets/logo.png"
+  },
+  {
+    selector: ".logobox"
+  }
+);
+
+const RightOpacity = new Titles.RightOpacity(
+  {
+    width: 1000,
+    height: 250,
+    text: "RightOpacity",
+    color: "#0000",
+    fontSize: 100,
+    stroke: true,
+    strokeSize: 2,
+    strokeColor: "rebeccapurple",
+    fontFamily: "Rubik Mono One",
+    exitTime: 1000
+  },
+  {
+    selector: ".rightopacity"
+  }
+);
+
+const rightopacityOpacity = new Anime.Anime(
+  {
+    animatedAttrs: {
+      opacity: 1
+    },
+    initialValues: {
+      opacity: 0
+    }
+  },
+  {
+    duration: 1,
+    selector: ".rightopacity"
+  }
+);
+
+// const FlushStroke = new Titles.FlushStroke(
+//   {
+//     width: 900,
+//     height: 900,
+//     text: ["souka", "bliat", "ti", "ven", "katalavenis"],
+//     fontSize: 100,
+//     strokeSize: 2,
+//     strokeColor: [102, 51, 143],
+//     fontFamily: "Rubik Mono One"
+//   },
+//   {
+//     selector: ".rightopacity"
+//   }
+// );
+
+const LetterScale = new Titles.LetterScale(
+  {
+    width: 900,
+    height: 900,
+    color: "rebeccapurple",
+    text: "LetterScale",
+    fontSize: 100,
+    stroke: false,
+    strokeSize: 2,
+    strokeColor: "rebeccapurple",
+    fontFamily: "Righteous",
+    timing: 600
+  },
+  {
+    selector: ".letterscale"
+  }
+);
+
+const LetterScaleOpacity = new Anime.Anime(
+  {
+    animatedAttrs: {
+      opacity: 1
+    },
+    initialValues: {
+      opacity: 0
+    }
+  },
+  {
+    duration: 1,
+    selector: ".letterscale"
+  }
+);
+const LetterScaleOpacityBack = new Anime.Anime(
+  {
+    animatedAttrs: {
+      opacity: 0
+    }
+  },
+  {
+    duration: 1,
+    selector: ".letterscale"
+  }
+);
+
+const CircularText = new Titles.CircularText(
+  {
+    width: 500,
+    height: 500,
+    color: "#ff0000",
+    text: "CircularText - AnimeTitles - MotorCortex - Plugin -",
+    fontSize: 10,
+    viewBox: 100,
+    path: 38,
+    fill: "#ff000000",
+    timing: 3,
+    repeats: 2,
+    fontFamily: "Righteous"
+  },
+  {
+    selector: ".circulartext"
+  }
+);
+
+const CircularTextOpacity = new Anime.Anime(
+  {
+    animatedAttrs: {
+      opacity: 1
+    },
+    initialValues: {
+      opacity: 0
+    }
+  },
+  {
+    duration: 1,
+    selector: ".circulartext"
+  }
+);
+
+clip.addIncident(rolinText, 0);
+clip.addIncident(rotatedlinereveal, 7000);
+clip.addIncident(svgborder, 11025);
+clip.addIncident(rotatedline, 16025);
+clip.addIncident(circle, 22025);
+clip.addIncident(logobox, 26225);
+clip.addIncident(svgdraw, 29725);
+clip.addIncident(rightopacityOpacity, 35845);
+clip.addIncident(RightOpacity, 35846);
+clip.addIncident(LetterScaleOpacity, clip.calculatedDuration);
+clip.addIncident(LetterScale, clip.calculatedDuration);
+clip.addIncident(LetterScaleOpacityBack, clip.calculatedDuration);
+clip.addIncident(CircularTextOpacity, clip.calculatedDuration);
+clip.addIncident(CircularText, clip.calculatedDuration);
+
+new Player({ clip });

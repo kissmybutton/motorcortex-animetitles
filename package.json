@@ -1,0 +1,154 @@
+{
+  "name": "@kissmybutton/motorcortex-animetitles",
+  "version": "1.1.6",
+  "description": "Animetitles plugin for MotorCortex",
+  "main": "dist/motorcortex-animetitles.cjs.js",
+  "module": "dist/motorcortex-animetitles.esm.js",
+  "browser": "dist/motorcortex-animetitles.umd.js",
+  "author": "KissMyButton PC (kissmybutton.gr) <opensource@kissmybutton.gr>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kissmybutton/motorcortex-animetitles.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.3.2"
+  },
+  "scripts": {
+    "update-force:packages": "./node_modules/npm-check-updates/bin/ncu -u && npm i",
+    "update:packages": "npm update --save/--save-dev",
+    "concurrently": "concurrently -c \"cyan.bold,magenta.bold\" --names \"JS,Styles\"",
+    "lint:styles": "stylelint \"src/**.css\" \"src/**/*.scss\" --config .stylelintrc.json",
+    "lint:js": "eslint -c .eslintrc src/**/*.js",
+    "lint": "npm run concurrently \"npm:lint:js\" \"npm:lint:styles\"",
+    "lint:fix": "npm run concurrently  \"npm:lint:js -- --fix\" \"npm:lint:styles -- --fix\"",
+    "build": "npm run build:lib && npm run build:demo",
+    "build:lib": "rollup -c",
+    "start": "npm run build:lib && concurrently -c \"cyan.bold,magenta.bold\" \"npm:build:lib -- -w\"  \"npm:start:demo\" ",
+    "start:demo": "webpack-dev-server --mode=development --config ./demo/webpack.config.js",
+    "build:demo": "webpack --mode=production --config ./demo/webpack.config.js",
+    "test": "HERE GOES YOUR TEST TASK",
+    "test:prod": "npm run lint",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls",
+    "commit": "git-cz",
+    "prebuild": "rimraf dist"
+  },
+  "keywords": [
+    "motorcortex",
+    "animation"
+  ],
+  "lint-staged": {
+    "linters": {
+      "*.json": [
+        "prettier --write",
+        "git add"
+      ],
+      "*.{css,scss}": [
+        "stylelint  \"src/**.css\" \"src/**/*.scss\" --config .stylelintrc.json --fix",
+        "git add"
+      ],
+      "*.{js,jsx}": [
+        "eslint --fix",
+        "git add"
+      ]
+    }
+  },
+  "release": {
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      "@semantic-release/git"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "@kissmybutton/motorcortex-anime": "^2.1.14"
+  },
+  "peerDependencies": {
+    "@kissmybutton/motorcortex": "^6.4.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@commitlint/cli": "^7.2.1",
+    "@commitlint/config-conventional": "^7.0.1",
+    "@kissmybutton/motorcortex": "6.4.1",
+    "@kissmybutton/motorcortex-player": "^1.9.4",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^18.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^11.2.1",
+    "@semantic-release/changelog": "^3.0.6",
+    "@semantic-release/git": "^7.0.18",
+    "@semantic-release/github": "^5.5.8",
+    "@semantic-release/npm": "^5.3.5",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "babel-preset-es2015-node5": "^1.2.0",
+    "browserslist": "^4.12.0",
+    "caniuse-lite": "^1.0.30001045",
+    "commitizen": "^3.0.5",
+    "concurrently": "^4.1.0",
+    "coveralls": "^3.0.13",
+    "css-loader": "^2.1.0",
+    "cz-conventional-changelog": "^2.1.0",
+    "es6-promise": "^4.2.4",
+    "eslint": "^5.12.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "exports-loader": "^0.7.0",
+    "husky": "^1.3.1",
+    "imports-loader": "^0.8.0",
+    "json-stringify-safe": "^5.0.1",
+    "lint-staged": "^8.1.0",
+    "npm-check-updates": "^4.1.2",
+    "npx": "^10.2.2",
+    "prettier": "^1.19.1",
+    "react-svg-loader": "^3.0.3",
+    "rimraf": "^2.6.3",
+    "rollup": "^2.3.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.3.0",
+    "sass-loader": "^7.0.1",
+    "semantic-release": "^17.0.0",
+    "shelljs": "^0.8.3",
+    "stylelint": "^9.9.0",
+    "stylelint-config-prettier": "^4.0.0",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-config-recommended-scss": "^3.2.0",
+    "stylelint-config-sass-guidelines": "^5.3.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^3.17.1",
+    "svg-url-loader": "^3.0.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test:prod"
+    }
+  }
+}
