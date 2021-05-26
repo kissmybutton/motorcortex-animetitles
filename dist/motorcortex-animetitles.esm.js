@@ -1667,7 +1667,7 @@ var CircularTextValidation = {
 };
 
 var name = "@kissmybutton/motorcortex-animetitles";
-var version = "1.1.7";
+var version = "1.1.8";
 
 var index = {
   npm_name: name,
