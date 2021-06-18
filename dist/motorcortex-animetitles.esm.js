@@ -165,7 +165,7 @@ var RotatedLine = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.075,
+        duration: 450,
         selector: ".wrapper",
         easing: "easeInOutQuart"
       });
@@ -175,7 +175,7 @@ var RotatedLine = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.075,
+        duration: 450,
         selector: ".line",
         easing: "easeInOutQuart"
       });
@@ -185,7 +185,7 @@ var RotatedLine = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.15,
+        duration: 900,
         selector: ".text-left",
         easing: "easeInOutQuart"
       });
@@ -197,11 +197,11 @@ var RotatedLine = /*#__PURE__*/function (_HTMLClip) {
           },
           attrs: {}
         }, {
-          duration: this.attrs.duration * 0.15 * i,
+          duration: 900 * i,
           selector: ".text-right" + i,
           easing: "easeOutExpo"
         });
-        this.addIncident(rightTextAnimate, this.attrs.duration * 0.25);
+        this.addIncident(rightTextAnimate, 1500);
       }
 
       var rightTextAnimateIn = new Anime$9.Anime({
@@ -210,7 +210,7 @@ var RotatedLine = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.15,
+        duration: 900,
         selector: ".text-right",
         easing: "easeOutExpo"
       });
@@ -220,7 +220,7 @@ var RotatedLine = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.15,
+        duration: 900,
         selector: ".text-left",
         easing: "easeOutExpo"
       });
@@ -232,7 +232,7 @@ var RotatedLine = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.075,
+        duration: 450,
         selector: ".wrapper",
         easing: "easeInOutQuart"
       });
@@ -242,20 +242,20 @@ var RotatedLine = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.075,
+        duration: 450,
         selector: ".line",
         easing: "easeInOutQuart"
       });
       var delayEnd = this.attrs.delayEnd || 0;
       this.addIncident(widthLIne, 0);
-      this.addIncident(rotateAminmeEnd, this.attrs.duration * 0.075);
-      this.addIncident(leftTextAnimate, this.attrs.duration * 0.15);
+      this.addIncident(rotateAminmeEnd, 450);
+      this.addIncident(leftTextAnimate, 900);
 
       if (!this.attrs.stopOnLast) {
-        this.addIncident(rightTextAnimateIn, this.attrs.duration * 0.7 + delayEnd);
-        this.addIncident(leftTextAnimateIn, this.attrs.duration * 0.7 + delayEnd);
-        this.addIncident(rotateAminmeStartOut, this.attrs.duration * 0.85 + delayEnd);
-        this.addIncident(widthLIneOut, this.attrs.duration * 0.925 + delayEnd);
+        this.addIncident(rightTextAnimateIn, 4200 + delayEnd);
+        this.addIncident(leftTextAnimateIn, 4200 + delayEnd);
+        this.addIncident(rotateAminmeStartOut, 5100 + delayEnd);
+        this.addIncident(widthLIneOut, 5550 + delayEnd);
       }
     }
   }]);
@@ -332,7 +332,7 @@ var RolingText = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.075,
+        duration: 450,
         selector: ".line"
       });
       var animeTextLeft = new Anime$8.Anime({
@@ -350,7 +350,7 @@ var RolingText = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.15,
+        duration: 900,
         selector: ".textClip span"
       });
       var animeTextTopNext = new Anime$8.Anime({
@@ -359,7 +359,7 @@ var RolingText = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.15,
+        duration: 900,
         selector: ".textClip span"
       });
       var animeTextLeftBack = new Anime$8.Anime({
@@ -368,7 +368,7 @@ var RolingText = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.15,
+        duration: 900,
         selector: ".textClip span"
       });
       var animeLineHeightBack = new Anime$8.Anime({
@@ -377,18 +377,18 @@ var RolingText = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.075,
+        duration: 450,
         selector: ".line"
       });
       this.addIncident(animeLineHeight, 0);
-      this.addIncident(animeTextLeft, this.attrs.duration * 0.075);
-      this.addIncident(animeTextTop, this.attrs.duration * 0.375);
-      this.addIncident(animeTextTopNext, this.attrs.duration * 0.575);
+      this.addIncident(animeTextLeft, 450);
+      this.addIncident(animeTextTop, 2250);
+      this.addIncident(animeTextTopNext, 3450);
       var delayEnd = this.attrs.delayEnd || 0;
 
       if (!this.attrs.stopOnLast) {
-        this.addIncident(animeTextLeftBack, this.attrs.duration * 0.75 + delayEnd);
-        this.addIncident(animeLineHeightBack, this.attrs.duration * 0.925 + delayEnd);
+        this.addIncident(animeTextLeftBack, 4500 + delayEnd);
+        this.addIncident(animeLineHeightBack, 5550 + delayEnd);
       }
     }
   }]);
@@ -457,7 +457,7 @@ var SvgBorder = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: Math.round(this.attrs.duration * 0.28),
+        duration: 1400,
         selector: ".shape2",
         easing: "easeInOutQuart"
       });
@@ -467,7 +467,7 @@ var SvgBorder = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.12,
+        duration: 600,
         selector: ".text"
       });
       var subAnimate = new Anime$7.Anime({
@@ -476,7 +476,7 @@ var SvgBorder = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.12,
+        duration: 600,
         selector: ".sub",
         easing: "easeInOutQuart"
       });
@@ -486,7 +486,7 @@ var SvgBorder = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.12,
+        duration: 600,
         selector: ".slogan",
         easing: "easeInOutQuart"
       });
@@ -496,7 +496,7 @@ var SvgBorder = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.24,
+        duration: 1200,
         selector: ".shape2"
       });
       var titleAnimeteLeft = new Anime$7.Anime({
@@ -505,7 +505,7 @@ var SvgBorder = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.16,
+        duration: 800,
         selector: ".text"
       });
       var subAnimateLeft = new Anime$7.Anime({
@@ -514,7 +514,7 @@ var SvgBorder = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.16,
+        duration: 800,
         selector: ".sub",
         easing: "easeInOutQuart"
       });
@@ -524,22 +524,22 @@ var SvgBorder = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.16,
+        duration: 800,
         selector: ".slogan",
         easing: "easeInOutQuart"
       });
       this.addIncident(borderAnimete, 0);
-      this.addIncident(titleAnimete, this.attrs.duration * 0.12);
-      this.addIncident(subAnimate, this.attrs.duration * 0.24);
-      this.addIncident(sloganAnimate, this.attrs.duration * 0.24);
+      this.addIncident(titleAnimete, 600);
+      this.addIncident(subAnimate, 1200);
+      this.addIncident(sloganAnimate, 1200);
       var grupMc = new Group();
-      grupMc.addIncident(borderAnimeteLeft, this.attrs.duration * 0.16);
-      grupMc.addIncident(titleAnimeteLeft, this.attrs.duration * 0.08);
-      grupMc.addIncident(subAnimateLeft, this.attrs.duration * 0.08);
-      grupMc.addIncident(sloganAnimateLeft, this.attrs.duration * 0.08);
+      grupMc.addIncident(borderAnimeteLeft, 800);
+      grupMc.addIncident(titleAnimeteLeft, 400);
+      grupMc.addIncident(subAnimateLeft, 400);
+      grupMc.addIncident(sloganAnimateLeft, 400);
 
       if (!this.attrs.stopOnLast) {
-        this.addIncident(grupMc, this.attrs.duration * 0.6 + delayEnd);
+        this.addIncident(grupMc, 3000 + delayEnd);
       }
     }
   }]);
@@ -606,7 +606,7 @@ var RotatadLineReveal = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.24,
+        duration: 1200,
         selector: ".redLine",
         easing: "easeOutExpo"
       });
@@ -616,7 +616,7 @@ var RotatadLineReveal = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.4,
+        duration: 2000,
         selector: ".redLine",
         easing: "easeOutExpo"
       });
@@ -628,7 +628,7 @@ var RotatadLineReveal = /*#__PURE__*/function (_HTMLClip) {
           easing: "easeOutExpo"
         }
       }, {
-        duration: this.attrs.duration * 0.16,
+        duration: 800,
         selector: ".redLine"
       });
       var moveText = new Anime$6.Anime({
@@ -637,7 +637,7 @@ var RotatadLineReveal = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.16,
+        duration: 800,
         selector: ".text",
         easing: "easeOutExpo"
       });
@@ -647,7 +647,7 @@ var RotatadLineReveal = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.08,
+        duration: 400,
         selector: ".sub",
         easing: "easeOutExpo"
       });
@@ -659,11 +659,11 @@ var RotatadLineReveal = /*#__PURE__*/function (_HTMLClip) {
           },
           attrs: {}
         }, {
-          duration: Math.round(this.attrs.duration * 0.34),
+          duration: Math.round(1700),
           selector: ".text" + i,
           easing: "easeOutExpo"
         });
-        grupMc.addIncident(moveTextOut, this.attrs.duration * 0.625 + i * 100);
+        grupMc.addIncident(moveTextOut, 3125 + i * 100);
       }
 
       var lineHeight = new Anime$6.Anime({
@@ -672,20 +672,20 @@ var RotatadLineReveal = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.08,
+        duration: 400,
         selector: ".redLine",
         easing: "easeInSine"
       });
       this.addIncident(lineRotateEnd, 0);
       this.addIncident(lineMoveEnd, 0);
-      this.addIncident(lineWidthEnd, this.attrs.duration * 0.24);
-      this.addIncident(moveText, this.attrs.duration * 0.24);
-      this.addIncident(moveSub, this.attrs.duration * 0.4);
+      this.addIncident(lineWidthEnd, 1200);
+      this.addIncident(moveText, 1200);
+      this.addIncident(moveSub, 2000);
       var delayEnd = this.attrs.delayEnd || 0;
 
       if (!this.attrs.stopOnLast) {
         this.addIncident(grupMc, delayEnd);
-        this.addIncident(lineHeight, this.attrs.duration * 0.85 + delayEnd);
+        this.addIncident(lineHeight, 4250 + delayEnd);
       }
     }
   }]);
@@ -748,7 +748,7 @@ var SvgDraw = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.75,
+        duration: 2700,
         selector: "svg path",
         easing: "easeInSine"
       });
@@ -760,7 +760,7 @@ var SvgDraw = /*#__PURE__*/function (_HTMLClip) {
           }
         }
       }, {
-        duration: this.attrs.duration * 0.425,
+        duration: 1530,
         selector: "svg",
         id: "transform2",
         easing: "easeOutElastic"
@@ -771,16 +771,16 @@ var SvgDraw = /*#__PURE__*/function (_HTMLClip) {
         },
         attrs: {}
       }, {
-        duration: this.attrs.duration * 0.75,
+        duration: 2700,
         selector: "svg path",
         easing: "easeInSine"
       });
       this.addIncident(textDrow, 0);
-      this.addIncident(textBigBack, this.attrs.duration * 0.75);
+      this.addIncident(textBigBack, 2700);
       var delayEnd = this.attrs.delayEnd || 0;
 
       if (!this.attrs.stopOnLast) {
-        this.addIncident(textErase, this.attrs.duration * 0.95 + delayEnd);
+        this.addIncident(textErase, 3420 + delayEnd);
       }
     }
   }]);
@@ -1187,10 +1187,10 @@ var LetterScale = /*#__PURE__*/function (_HTMLClip) {
           fontSize: "".concat(this.attrs.fontSize * 0.7, "px")
         }
       }, {
-        duration: this.attrs.timing,
+        duration: 600,
         selector: ".letter",
         easing: "easeOutExpo",
-        delay: "@stagger(0, ".concat(this.attrs.timing, ",0.5,linear,omni)")
+        delay: "@stagger(0, 600,0.5,linear,omni)"
       });
       this.addIncident(left, 0);
     }
@@ -1232,9 +1232,8 @@ var CircularText = /*#__PURE__*/function (_HTMLClip) {
           }
         }
       }, {
-        duration: 1000 * this.attrs.timing,
-        selector: ".circle svg",
-        repeats: this.attrs.repeats
+        duration: 3000,
+        selector: ".circle svg"
       });
       this.addIncident(left, 0);
     }
@@ -1245,11 +1244,6 @@ var CircularText = /*#__PURE__*/function (_HTMLClip) {
 
 var _COLOR = "color";
 var RotatedLIneVal = {
-  duration: {
-    optional: false,
-    type: "number",
-    min: 0
-  },
   width: {
     optional: false,
     type: "number",
@@ -1294,11 +1288,6 @@ var RotatedLIneVal = {
   }
 };
 var RolingTextVal = {
-  duration: {
-    optional: false,
-    type: "number",
-    min: 0
-  },
   width: {
     optional: false,
     type: "number",
@@ -1339,11 +1328,6 @@ var RolingTextVal = {
   }
 };
 var RotatadLineRevealVal = {
-  duration: {
-    optional: false,
-    type: "number",
-    min: 0
-  },
   width: {
     optional: false,
     type: "number",
@@ -1385,11 +1369,6 @@ var RotatadLineRevealVal = {
   }
 };
 var SvgBorderVal = {
-  duration: {
-    optional: false,
-    type: "number",
-    min: 0
-  },
   width: {
     optional: true,
     type: "number",
@@ -1430,11 +1409,6 @@ var SvgBorderVal = {
   }
 };
 var CircleVal = {
-  duration: {
-    optional: false,
-    type: "number",
-    min: 0
-  },
   width: {
     optional: true,
     type: "number",
@@ -1472,11 +1446,6 @@ var CircleVal = {
   }
 };
 var SvgDrawVal = {
-  duration: {
-    optional: false,
-    type: "number",
-    min: 0
-  },
   width: {
     optional: true,
     type: "number",
@@ -1607,10 +1576,6 @@ var LetterScaleValidationVal = {
   fontFamily: {
     optional: false,
     type: "string"
-  },
-  timing: {
-    optional: false,
-    type: "number"
   }
 };
 var CircularTextValidation = {
@@ -1653,21 +1618,11 @@ var CircularTextValidation = {
   fontFamily: {
     optional: false,
     type: "string"
-  },
-  timing: {
-    optional: false,
-    type: "number",
-    min: 1
-  },
-  repeats: {
-    optional: false,
-    type: "number",
-    min: 1
   }
 };
 
 var name = "@kissmybutton/motorcortex-animetitles";
-var version = "1.1.9";
+var version = "1.2.0";
 
 var index = {
   npm_name: name,

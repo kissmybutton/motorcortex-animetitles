@@ -74,9 +74,8 @@ export default class CircularText extends HTMLClip {
         }
       },
       {
-        duration: 1000 * this.attrs.timing,
+        duration: 3000,
         selector: ".circle svg",
-        repeats: this.attrs.repeats
       }
     );
     this.addIncident(left, 0);

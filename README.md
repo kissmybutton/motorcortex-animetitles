@@ -25,7 +25,6 @@ const Titles = loadPlugin(TitlesPlugin);
 ```javascript
 const nameOfIncident = new Titles.RotatedLine(
   {
-    duration: 4000,
     width: 400,
     size: "XL",
     lineColor: "#ff0000",
@@ -47,7 +46,6 @@ const nameOfIncident = new Titles.RotatedLine(
 
 | Name        | Are           | Values  |
 | ------------- |:-------------:| -----:|
-| duration     | is the total time that animation will play  | all positive numbers |
 | width      | total width of clip container | all positive numbers |
 | size |  scale of clip components   |  "S","M","L","XL"  |
 | lineColor |  the color of line |  hex values or RGB  |
@@ -64,7 +62,6 @@ const nameOfIncident = new Titles.RotatedLine(
 ```javascript
 const nameOfIncident = new Titles.RolingText(
   {
-    duration: 4000,
     width: 250,
     size: "L",
     lineColor: "#ff0000",
@@ -85,7 +82,6 @@ const nameOfIncident = new Titles.RolingText(
 
 | Name        | Are           | Values  |
 | ------------- |:-------------:| -----:|
-| duration     | is the total time that animation will play  | all positive numbers |
 | width      | total width of clip container | all positive numbers |
 | size |  scale of clip components   |  "S","M","L","XL","XXL","XXXL"    |
 | lineColor |  the color of line |  hex values or RGB  |
@@ -122,7 +118,6 @@ const nameOfIncident = new Titles.RotatadLineReveal(
 
 | Name        | Are           | Values  |
 | ------------- |:-------------:| -----:|
-| duration     | is the total time that animation will play  | all positive numbers |
 | width      | total width of clip container | all positive numbers |
 | size |  scale of clip components   |  "S","M","L"    |
 | lineColor |  the color of line |  hex values or RGB  |
@@ -160,7 +155,6 @@ const nameOfIncident = new Titles.SvgBorder(
 
 | Name        | Are           | Values  |
 | ------------- |:-------------:| -----:|
-| duration     | is the total time that animation will play  | all positive numbers |
 | width      | total width of clip container | all positive numbers |
 | size |  scale of clip components   |  "S","M","L" |
 | lineColor |  the color of line |  hex values or RGB  |
@@ -178,7 +172,6 @@ const nameOfIncident = new Titles.SvgBorder(
 ```javascript
 const nameOfIncident = new Titles.Circle(
   {
-    duration: 4000,
     fontSize: 40,
     circleColor: "#ff0000",
     textColor: "#000",
@@ -199,7 +192,6 @@ const nameOfIncident = new Titles.Circle(
 
 | Name        | Are           | Values  |
 | ------------- |:-------------:| -----:|
-| duration     | is the total time that animation will play  | all positive numbers |
 | width      | total width of clip container and width/height of the circle | all positive numbers |
 | circleColor |  the color of circle |  hex values or RGB  |
 | textColor |  the color of text |  hex values or RGB  |
@@ -235,7 +227,6 @@ const nameOfIncident = new Titles.SvgDrow(
 
 | Name        | Are           | Values  |
 | ------------- |:-------------:| -----:|
-| duration     | is the total time that animation will play  | all positive numbers |
 | width      | total width of clip container | all positive numbers |
 | size |  scale of clip components   |  "S","M","L" |
 | lineColor |  the color of line |  hex values or RGB  |
@@ -274,7 +265,6 @@ const nameOfIncident = new Titles.LogoBox(
 
 | Name        | Are           | Values  |
 | ------------- |:-------------:| -----:|
-| size     | change the size of element  | all positive numbers |
 | size     | change the size of element  | all positive numbers |
 | bgColor   |  the color of bg |  hex values or RGB  |
 | textColor |  the color of text |  hex values or RGB  |

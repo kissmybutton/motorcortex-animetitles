@@ -68,10 +68,10 @@ export default class LetterScale extends HTMLClip {
         }
       },
       {
-        duration: this.attrs.timing,
+        duration: 600,
         selector: ".letter",
         easing: "easeOutExpo",
-        delay: `@stagger(0, ${this.attrs.timing},0.5,linear,omni)`
+        delay: `@stagger(0, 600,0.5,linear,omni)`
       }
     );
     this.addIncident(left, 0);

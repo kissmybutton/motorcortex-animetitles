@@ -94,7 +94,7 @@ export default class RotatadLineReveal extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.24,
+        duration: 1200,
         selector: `.redLine`,
         easing: "easeOutExpo"
       }
@@ -108,7 +108,7 @@ export default class RotatadLineReveal extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.4,
+        duration: 2000,
         selector: `.redLine`,
         easing: "easeOutExpo"
       }
@@ -124,7 +124,7 @@ export default class RotatadLineReveal extends HTMLClip {
         }
       },
       {
-        duration: this.attrs.duration * 0.16,
+        duration: 800,
         selector: `.redLine`
       }
     );
@@ -137,7 +137,7 @@ export default class RotatadLineReveal extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.16,
+        duration: 800,
         selector: `.text`,
         easing: "easeOutExpo"
       }
@@ -151,7 +151,7 @@ export default class RotatadLineReveal extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.08,
+        duration: 400,
         selector: `.sub`,
         easing: "easeOutExpo"
       }
@@ -166,13 +166,13 @@ export default class RotatadLineReveal extends HTMLClip {
           attrs: {}
         },
         {
-          duration: Math.round(this.attrs.duration * 0.34),
+          duration: Math.round(1700),
           selector: ".text" + i,
           easing: "easeOutExpo"
         }
       );
 
-      grupMc.addIncident(moveTextOut, this.attrs.duration * 0.625 + i * 100);
+      grupMc.addIncident(moveTextOut, 3125 + i * 100);
     }
 
     const lineHeight = new Anime.Anime(
@@ -183,7 +183,7 @@ export default class RotatadLineReveal extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.08,
+        duration: 400,
         selector: `.redLine`,
         easing: "easeInSine"
       }
@@ -191,14 +191,14 @@ export default class RotatadLineReveal extends HTMLClip {
 
     this.addIncident(lineRotateEnd, 0);
     this.addIncident(lineMoveEnd, 0);
-    this.addIncident(lineWidthEnd, this.attrs.duration * 0.24);
-    this.addIncident(moveText, this.attrs.duration * 0.24);
-    this.addIncident(moveSub, this.attrs.duration * 0.4);
+    this.addIncident(lineWidthEnd, 1200);
+    this.addIncident(moveText, 1200);
+    this.addIncident(moveSub, 2000);
 
     const delayEnd = this.attrs.delayEnd || 0;
     if (!this.attrs.stopOnLast) {
       this.addIncident(grupMc, delayEnd);
-      this.addIncident(lineHeight, this.attrs.duration * 0.85 + delayEnd);
+      this.addIncident(lineHeight, 4250 + delayEnd);
     }
   }
 }
