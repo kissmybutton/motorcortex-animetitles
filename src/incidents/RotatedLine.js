@@ -102,7 +102,7 @@ export default class RotatedLine extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.075,
+        duration: 450,
         selector: `.wrapper`,
         easing: "easeInOutQuart"
       }
@@ -116,7 +116,7 @@ export default class RotatedLine extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.075,
+        duration: 450,
         selector: `.line`,
         easing: "easeInOutQuart"
       }
@@ -130,7 +130,7 @@ export default class RotatedLine extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.15,
+        duration: 900,
         selector: `.text-left`,
         easing: "easeInOutQuart"
       }
@@ -145,13 +145,13 @@ export default class RotatedLine extends HTMLClip {
           attrs: {}
         },
         {
-          duration: this.attrs.duration * 0.15 * i,
+          duration: 900 * i,
           selector: ".text-right" + i,
           easing: "easeOutExpo"
         }
       );
 
-      this.addIncident(rightTextAnimate, this.attrs.duration * 0.25);
+      this.addIncident(rightTextAnimate, 1500);
     }
 
     const rightTextAnimateIn = new Anime.Anime(
@@ -162,7 +162,7 @@ export default class RotatedLine extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.15,
+        duration: 900,
         selector: ".text-right",
         easing: "easeOutExpo"
       }
@@ -176,7 +176,7 @@ export default class RotatedLine extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.15,
+        duration: 900,
         selector: `.text-left`,
         easing: "easeOutExpo"
       }
@@ -192,7 +192,7 @@ export default class RotatedLine extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.075,
+        duration: 450,
         selector: `.wrapper`,
         easing: "easeInOutQuart"
       }
@@ -206,7 +206,7 @@ export default class RotatedLine extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.075,
+        duration: 450,
         selector: `.line`,
         easing: "easeInOutQuart"
       }
@@ -215,19 +215,19 @@ export default class RotatedLine extends HTMLClip {
     const delayEnd = this.attrs.delayEnd || 0;
 
     this.addIncident(widthLIne, 0);
-    this.addIncident(rotateAminmeEnd, this.attrs.duration * 0.075);
-    this.addIncident(leftTextAnimate, this.attrs.duration * 0.15);
+    this.addIncident(rotateAminmeEnd, 450);
+    this.addIncident(leftTextAnimate, 900);
     if (!this.attrs.stopOnLast) {
       this.addIncident(
         rightTextAnimateIn,
-        this.attrs.duration * 0.7 + delayEnd
+        4200 + delayEnd
       );
-      this.addIncident(leftTextAnimateIn, this.attrs.duration * 0.7 + delayEnd);
+      this.addIncident(leftTextAnimateIn, 4200 + delayEnd);
       this.addIncident(
         rotateAminmeStartOut,
-        this.attrs.duration * 0.85 + delayEnd
+        5100 + delayEnd
       );
-      this.addIncident(widthLIneOut, this.attrs.duration * 0.925 + delayEnd);
+      this.addIncident(widthLIneOut, 5550 + delayEnd);
     }
   }
 }

@@ -173,7 +173,6 @@ const svgborder = new Titles.SvgBorder(
 
 const circle = new Titles.Circle(
   {
-    duration: 5000,
     fontSize: 40,
     circleColor: "#ff0000",
     textColor: "#000",
@@ -240,21 +239,6 @@ const rightopacityOpacity = new Anime.Anime(
   }
 );
 
-// const FlushStroke = new Titles.FlushStroke(
-//   {
-//     width: 900,
-//     height: 900,
-//     text: ["souka", "bliat", "ti", "ven", "katalavenis"],
-//     fontSize: 100,
-//     strokeSize: 2,
-//     strokeColor: [102, 51, 143],
-//     fontFamily: "Rubik Mono One"
-//   },
-//   {
-//     selector: ".rightopacity"
-//   }
-// );
-
 const LetterScale = new Titles.LetterScale(
   {
     width: 900,
@@ -266,7 +250,6 @@ const LetterScale = new Titles.LetterScale(
     strokeSize: 2,
     strokeColor: "rebeccapurple",
     fontFamily: "Righteous",
-    timing: 600
   },
   {
     selector: ".letterscale"
@@ -308,13 +291,12 @@ const CircularText = new Titles.CircularText(
     fontSize: 10,
     viewBox: 100,
     path: 38,
-    fill: "#ff000000",
-    timing: 3,
-    repeats: 2,
+    fill: "#ff000000",    
     fontFamily: "Righteous"
   },
   {
-    selector: ".circulartext"
+    selector: ".circulartext",
+    repeats: 2,
   }
 );
 

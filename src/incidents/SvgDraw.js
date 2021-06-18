@@ -58,7 +58,7 @@ export default class SvgDraw extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.75,
+        duration: 2700,
         selector: `svg path`,
         easing: "easeInSine"
       }
@@ -74,7 +74,7 @@ export default class SvgDraw extends HTMLClip {
         }
       },
       {
-        duration: this.attrs.duration * 0.425,
+        duration: 1530,
         selector: `svg`,
         id: "transform2",
         easing: "easeOutElastic"
@@ -89,17 +89,17 @@ export default class SvgDraw extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.75,
+        duration: 2700,
         selector: `svg path`,
         easing: "easeInSine"
       }
     );
 
     this.addIncident(textDrow, 0);
-    this.addIncident(textBigBack, this.attrs.duration * 0.75);
+    this.addIncident(textBigBack, 2700);
     const delayEnd = this.attrs.delayEnd || 0;
     if (!this.attrs.stopOnLast) {
-      this.addIncident(textErase, this.attrs.duration * 0.95 + delayEnd);
+      this.addIncident(textErase, 3420 + delayEnd);
     }
   }
 }

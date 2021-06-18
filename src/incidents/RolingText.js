@@ -105,7 +105,7 @@ export default class RolingText extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.075,
+        duration: 450,
         selector: ".line"
       }
     );
@@ -131,7 +131,7 @@ export default class RolingText extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.15,
+        duration: 900,
         selector: ".textClip span"
       }
     );
@@ -144,7 +144,7 @@ export default class RolingText extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.15,
+        duration: 900,
         selector: ".textClip span"
       }
     );
@@ -157,7 +157,7 @@ export default class RolingText extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.15,
+        duration: 900,
         selector: ".textClip span"
       }
     );
@@ -170,26 +170,26 @@ export default class RolingText extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.075,
+        duration: 450,
         selector: ".line"
       }
     );
 
     this.addIncident(animeLineHeight, 0);
-    this.addIncident(animeTextLeft, this.attrs.duration * 0.075);
-    this.addIncident(animeTextTop, this.attrs.duration * 0.375);
-    this.addIncident(animeTextTopNext, this.attrs.duration * 0.575);
+    this.addIncident(animeTextLeft, 450);
+    this.addIncident(animeTextTop, 2250);
+    this.addIncident(animeTextTopNext, 3450);
 
     const delayEnd = this.attrs.delayEnd || 0;
 
     if (!this.attrs.stopOnLast) {
       this.addIncident(
         animeTextLeftBack,
-        this.attrs.duration * 0.75 + delayEnd
+        4500 + delayEnd
       );
       this.addIncident(
         animeLineHeightBack,
-        this.attrs.duration * 0.925 + delayEnd
+        5550 + delayEnd
       );
     }
   }

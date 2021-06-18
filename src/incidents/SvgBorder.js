@@ -149,7 +149,7 @@ export default class SvgBorder extends HTMLClip {
         attrs: {}
       },
       {
-        duration: Math.round(this.attrs.duration * 0.28),
+        duration: 1400,
         selector: `.shape2`,
         easing: "easeInOutQuart"
       }
@@ -163,7 +163,7 @@ export default class SvgBorder extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.12,
+        duration: 600,
         selector: `.text`
       }
     );
@@ -176,7 +176,7 @@ export default class SvgBorder extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.12,
+        duration: 600,
         selector: `.sub`,
         easing: "easeInOutQuart"
       }
@@ -190,7 +190,7 @@ export default class SvgBorder extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.12,
+        duration: 600,
         selector: `.slogan`,
         easing: "easeInOutQuart"
       }
@@ -204,7 +204,7 @@ export default class SvgBorder extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.24,
+        duration: 1200,
         selector: `.shape2`
       }
     );
@@ -217,7 +217,7 @@ export default class SvgBorder extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.16,
+        duration: 800,
         selector: `.text`
       }
     );
@@ -230,7 +230,7 @@ export default class SvgBorder extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.16,
+        duration: 800,
         selector: `.sub`,
         easing: "easeInOutQuart"
       }
@@ -244,24 +244,24 @@ export default class SvgBorder extends HTMLClip {
         attrs: {}
       },
       {
-        duration: this.attrs.duration * 0.16,
+        duration: 800,
         selector: `.slogan`,
         easing: "easeInOutQuart"
       }
     );
 
     this.addIncident(borderAnimete, 0);
-    this.addIncident(titleAnimete, this.attrs.duration * 0.12);
-    this.addIncident(subAnimate, this.attrs.duration * 0.24);
-    this.addIncident(sloganAnimate, this.attrs.duration * 0.24);
+    this.addIncident(titleAnimete, 600);
+    this.addIncident(subAnimate, 1200);
+    this.addIncident(sloganAnimate, 1200);
     const grupMc = new Group();
-    grupMc.addIncident(borderAnimeteLeft, this.attrs.duration * 0.16);
-    grupMc.addIncident(titleAnimeteLeft, this.attrs.duration * 0.08);
-    grupMc.addIncident(subAnimateLeft, this.attrs.duration * 0.08);
-    grupMc.addIncident(sloganAnimateLeft, this.attrs.duration * 0.08);
+    grupMc.addIncident(borderAnimeteLeft, 800);
+    grupMc.addIncident(titleAnimeteLeft, 400);
+    grupMc.addIncident(subAnimateLeft, 400);
+    grupMc.addIncident(sloganAnimateLeft, 400);
 
     if (!this.attrs.stopOnLast) {
-      this.addIncident(grupMc, this.attrs.duration * 0.6 + delayEnd);
+      this.addIncident(grupMc, 3000 + delayEnd);
     }
   }
 }

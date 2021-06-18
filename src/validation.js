@@ -1,11 +1,6 @@
 const _COLOR = "color";
 
 export const RotatedLIneVal = {
-  duration: {
-    optional: false,
-    type: "number",
-    min: 0
-  },
   width: {
     optional: false,
     type: "number",
@@ -51,11 +46,6 @@ export const RotatedLIneVal = {
 };
 
 export const RolingTextVal = {
-  duration: {
-    optional: false,
-    type: "number",
-    min: 0
-  },
   width: {
     optional: false,
     type: "number",
@@ -97,11 +87,6 @@ export const RolingTextVal = {
 };
 
 export const RotatadLineRevealVal = {
-  duration: {
-    optional: false,
-    type: "number",
-    min: 0
-  },
   width: {
     optional: false,
     type: "number",
@@ -144,11 +129,6 @@ export const RotatadLineRevealVal = {
 };
 
 export const SvgBorderVal = {
-  duration: {
-    optional: false,
-    type: "number",
-    min: 0
-  },
   width: {
     optional: true,
     type: "number",
@@ -190,11 +170,6 @@ export const SvgBorderVal = {
 };
 
 export const CircleVal = {
-  duration: {
-    optional: false,
-    type: "number",
-    min: 0
-  },
   width: {
     optional: true,
     type: "number",
@@ -233,11 +208,6 @@ export const CircleVal = {
 };
 
 export const SvgDrawVal = {
-  duration: {
-    optional: false,
-    type: "number",
-    min: 0
-  },
   width: {
     optional: true,
     type: "number",
@@ -410,10 +380,6 @@ export const LetterScaleValidationVal = {
   fontFamily: {
     optional: false,
     type: "string"
-  },
-  timing: {
-    optional: false,
-    type: "number"
   }
 };
 
@@ -458,14 +424,4 @@ export const CircularTextValidation = {
     optional: false,
     type: "string"
   },
-  timing: {
-    optional: false,
-    type: "number",
-    min: 1
-  },
-  repeats: {
-    optional: false,
-    type: "number",
-    min: 1
-  }
 };
